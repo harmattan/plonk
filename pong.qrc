@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/pong/main.qml</file>
+        <file>qml/pong/Paddle.qml</file>
+    </qresource>
+</RCC>
