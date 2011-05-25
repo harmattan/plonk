@@ -7,6 +7,25 @@ Item {
     width: 400
     height: 400
 
+    function collisionCheck(paddleObj, ballObj, isTop) {
+        if (ballObj.x > paddleObj.x &&
+            (ballObj.x + ballObj.width) < (paddleObj.x + paddleObj.width)) {
+            /* horizontal collision */
+            if (isTop) {
+                if (ballObj.y < paddleObj.height) {
+                    /* vertical collision */
+                    ballObj.velocityY *= -1
+                    ballObj.y = paddleObj.height
+                }
+            } else {
+                if ((ballObj.y + ballObj.height) > (playfield.height - paddleObj.height)) {
+                    ballObj.velocityY *= -1
+                    ballObj.y = (playfield.height - paddleObj.height - ballObj.height)
+                }
+            }
+        }
+    }
+
     Text {
         id: score1
         font.pixelSize: 60
@@ -117,11 +136,11 @@ Item {
             //console.log("y changed:" + ball.y);
             //console.log("Playfield height:" + playfield.height)
             //console.log("Playfield width:" + playfield.width)
-            var paddles = [paddle1, paddle2]
+            /*var paddles = [paddle1, paddle2]
 
             for (var i=0; i<paddles.length; i++) {
                 //console.log('paddle ' + i + ' -> ' + paddles[i].x)
-            }
+            }*/
 
             if (y < 0) {
                 velocityY *= -1
@@ -151,6 +170,9 @@ Item {
                 //console.log('triggered')
                 ball.x += ball.velocityX
                 ball.y += ball.velocityY
+
+                playfield.collisionCheck(paddle1, ball, true)
+                playfield.collisionCheck(paddle2, ball, false)
             }
         }
     }
