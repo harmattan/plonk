@@ -1,27 +1,25 @@
-import QtQuick 1.0
+import Qt 4.7
 
 Image {
     id: ball
-    //height: 20
-    //width: 20
-    source: "img/ball.png"
-    y: 10
-    x: 10
+    property bool active: false
 
     property real velocityX: 7
     property real velocityY: 10
 
-    //Behavior on y { PropertyAnimation { duration: 33 } }
+    source: "img/ball.png"
 
     onYChanged: {
         if (y < 0) {
             velocityY *= -1
             y = 0
             paddle1.score += 1
+            ball.active = false
         } else if (y > playfield.height) {
             velocityY *= -1
             y = playfield.height
             paddle2.score += 1
+            ball.active = false
         }
 
         if (x < 0) {
@@ -34,12 +32,12 @@ Image {
     }
 
     Timer {
-        running: true
+        id: ticker
+        running: ball.active
         repeat: true
         interval: 1000 / 60 // 60 FPS
 
         onTriggered: {
-            //console.log('triggered')
             ball.x += ball.velocityX
             ball.y += ball.velocityY
 
@@ -47,4 +45,19 @@ Image {
             playfield.collisionCheck(paddle2, ball, true)
         }
     }
+
+    Binding {
+        target: ball
+        property: "x"
+        value: parent.width / 2
+        when: !ball.active
+    }
+
+    Binding {
+        target: ball
+        property: "y"
+        value: parent.height / 2
+        when: !ball.active
+    }
+
 }

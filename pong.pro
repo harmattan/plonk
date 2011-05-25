@@ -18,4 +18,5 @@ qtcAddDeployment()
 OTHER_FILES += \
     qml/pong/main.qml \
     qml/pong/Paddle.qml \
-    qml/pong/Ball.qml
+    qml/pong/Ball.qml \
+    qml/pong/Menu.qml

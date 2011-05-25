@@ -100,6 +100,19 @@ Item {
 
     Ball {
         id: ball
+        onActiveChanged: {
+            if (!active) {
+                timer.start();
+            }
+        }
+    }
+
+    Timer {
+        id: timer
+        repeat: false
+        interval: 2000
+        running: true
+        onTriggered: ball.active = true
     }
 
 }
