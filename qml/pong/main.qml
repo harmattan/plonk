@@ -160,15 +160,15 @@ Item {
         Timer {
             running: true
             repeat: true
-            interval: 30
+            interval: 1000 / 60 // 60 FPS
 
             onTriggered: {
                 //console.log('triggered')
                 ball.x += ball.velocityX
                 ball.y += ball.velocityY
 
-                playfield.collisionCheck(paddle1, ball, true)
-                playfield.collisionCheck(paddle2, ball, false)
+                playfield.collisionCheck(paddle1, ball, false)
+                playfield.collisionCheck(paddle2, ball, true)
             }
         }
     }
