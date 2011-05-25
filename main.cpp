@@ -19,6 +19,7 @@ int main(int argc, char *argv[])
     viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
     viewer.setSource(QUrl("qrc:qml/pong/main.qml"));
     viewer.showExpanded();
+    viewer.setResizeMode(QmlApplicationViewer::SizeRootObjectToView);
 
     return app.exec();
 }

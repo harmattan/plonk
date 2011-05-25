@@ -2,6 +2,8 @@ import QtQuick 1.0
 import com.meego 1.0
 
 Item {
+    id: playfield
+
     width: 400
     height: 400
 
@@ -72,7 +74,28 @@ Item {
         height: 20
         width: 20
         color: "yellow"
+
+        Behavior on y {
+            PropertyAnimation { duration: 1000; easing.type: Easing.InQuad }
+        }
+
+        onYChanged: {
+            //console.log("y changed:" + ball.y);
+            //console.log("Playfield height:" + playfield.height)
+            if (y == 0) {
+                y = playfield.height;
+            }
+            if (y == playfield.height) {
+                y = 0;
+            }
+        }
     }
+
+    onHeightChanged: {
+        ball.y = playfield.height
+    }
+
+
 
 }
 
