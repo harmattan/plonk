@@ -4,8 +4,8 @@ Image {
     id: ball
     property bool active: false
 
-    property real velocityX: 7
-    property real velocityY: 10
+    property real velocityX: 10
+    property real velocityY: 15
 
     source: "img/ball.png"
 
@@ -35,7 +35,7 @@ Image {
         id: ticker
         running: ball.active
         repeat: true
-        interval: 1000 / 60 // 60 FPS
+        interval: 16 // 1000 / 60 // 60 FPS
 
         onTriggered: {
             ball.x += ball.velocityX
