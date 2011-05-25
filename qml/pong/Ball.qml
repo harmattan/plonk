@@ -1,10 +1,10 @@
 import QtQuick 1.0
 
-Rectangle {
+Image {
     id: ball
-    height: 20
-    width: 20
-    color: "black"
+    //height: 20
+    //width: 20
+    source: "img/ball.png"
     y: 10
     x: 10
 
