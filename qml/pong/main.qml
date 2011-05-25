@@ -115,12 +115,12 @@ Item {
 
         onYChanged: {
             //console.log("y changed:" + ball.y);
-            console.log("Playfield height:" + playfield.height)
-            console.log("Playfield width:" + playfield.width)
+            //console.log("Playfield height:" + playfield.height)
+            //console.log("Playfield width:" + playfield.width)
             var paddles = [paddle1, paddle2]
 
             for (var i=0; i<paddles.length; i++) {
-                console.log('paddle ' + i + ' -> ' + paddles[i].x)
+                //console.log('paddle ' + i + ' -> ' + paddles[i].x)
             }
 
             if (y < 0) {
@@ -148,7 +148,7 @@ Item {
             interval: 30
 
             onTriggered: {
-                console.log('triggered')
+                //console.log('triggered')
                 ball.x += ball.velocityX
                 ball.y += ball.velocityY
             }
