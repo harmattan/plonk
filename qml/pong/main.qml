@@ -7,6 +7,34 @@ Item {
     width: 400
     height: 400
 
+    Text {
+        id: score1
+        font.pixelSize: 60
+        font.bold: true
+        color: paddle1.color
+        text: paddle1.score
+
+        anchors {
+            left: parent.left
+            leftMargin: 20
+            verticalCenter: parent.verticalCenter
+        }
+    }
+
+    Text {
+        id: score2
+        font.pixelSize: 60
+        font.bold: true
+        color: paddle2.color
+        text: paddle2.score
+
+        anchors {
+            right: parent.right
+            rightMargin: 20
+            verticalCenter: parent.verticalCenter
+        }
+    }
+
     Item {
         id: bottomHalf
         //color: "gray"
@@ -18,6 +46,8 @@ Item {
 
         Rectangle {
             id: paddle1
+            property int score: 0
+
             width: 200
             height: 100
             color: "red"
@@ -54,6 +84,7 @@ Item {
             color: "blue"
             x: tp2.x
             anchors.top: parent.top
+            property int score: 0
 
             Behavior on x {
                 NumberAnimation { duration: 100 }
@@ -95,9 +126,11 @@ Item {
             if (y < 0) {
                 velocityY *= -1
                 y = 0
+                paddle1.score += 1
             } else if (y > playfield.height) {
                 velocityY *= -1
                 y = playfield.height
+                paddle2.score += 1
             }
 
             if (x < 0) {
