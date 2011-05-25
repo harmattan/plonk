@@ -68,7 +68,7 @@ Item {
             property int score: 0
 
             source: "img/paddle_blue.png"
-            x: tp1.x
+            x: tp1.x - paddle1.width / 2
             anchors.bottom: parent.bottom
 
             Behavior on x {
@@ -97,7 +97,7 @@ Item {
         Image {
             id: paddle2
             source: "img/paddle_red.png"
-            x: tp2.x
+            x: tp2.x - paddle1.width / 2
             anchors.top: parent.top
             property int score: 0
 
