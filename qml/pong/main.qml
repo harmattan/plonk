@@ -1,4 +1,4 @@
-import QtQuick 1.0
+import Qt 4.7
 import com.meego 1.0
 
 Item {
@@ -73,20 +73,51 @@ Item {
         id: ball
         height: 20
         width: 20
-        color: "yellow"
+        color: "black"
+        y: 10
+        x: 10
 
-        Behavior on y {
-            PropertyAnimation { duration: 1000; easing.type: Easing.InQuad }
-        }
+        property real velocityX: 7
+        property real velocityY: 10
+
+        //Behavior on y { PropertyAnimation { duration: 33 } }
 
         onYChanged: {
             //console.log("y changed:" + ball.y);
-            //console.log("Playfield height:" + playfield.height)
-            if (y == 0) {
-                y = playfield.height;
+            console.log("Playfield height:" + playfield.height)
+            console.log("Playfield width:" + playfield.width)
+            var paddles = [paddle1, paddle2]
+
+            for (var i=0; i<paddles.length; i++) {
+                console.log('paddle ' + i + ' -> ' + paddles[i].x)
             }
-            if (y == playfield.height) {
-                y = 0;
+
+            if (y < 0) {
+                velocityY *= -1
+                y = 0
+            } else if (y > playfield.height) {
+                velocityY *= -1
+                y = playfield.height
+            }
+
+            if (x < 0) {
+                velocityX *= -1
+                x = 0
+            } else if (x > playfield.width) {
+                velocityX *= -1
+                x = playfield.width
+            }
+        }
+
+        Timer {
+            running: true
+            repeat: true
+            interval: 30
+
+            onTriggered: {
+                console.log('triggered')
+                ball.x += ball.velocityX
+                ball.y += ball.velocityY
             }
         }
     }
