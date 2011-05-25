@@ -1,13 +1,9 @@
-import Qt 4.7
+import QtQuick 1.0
 
-Rectangle {
-    property color color: "green"
+Image {
+    property int score: 0
 
-    width: 200
-    height: 100
-    color: "blue"
-    x: tp2.x
-    anchors.top: parent.top
+    source: "img/paddle_blue.png"
 
     Behavior on x {
         NumberAnimation { duration: 100 }

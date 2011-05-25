@@ -16,6 +16,6 @@ include(qmlapplicationviewer/qmlapplicationviewer.pri)
 qtcAddDeployment()
 
 OTHER_FILES += \
-    qml/pong/main_old.qml \
     qml/pong/main.qml \
-    qml/pong/Paddle.qml
+    qml/pong/Paddle.qml \
+    qml/pong/Ball.qml
