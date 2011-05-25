@@ -102,18 +102,57 @@ Item {
         id: ball
         onActiveChanged: {
             if (!active) {
-                timer.start();
+                countDown.start();
             }
         }
     }
 
-    Timer {
-        id: timer
-        repeat: false
-        interval: 2000
-        running: true
-        onTriggered: ball.active = true
+    Rectangle {
+        id: countDown
+        property int seconds: 3
+        height: 200
+        width: 200
+        color: "lightblue"
+        opacity: 0.8
+        radius: 20
+        anchors.centerIn: parent
+
+        Text {
+            text: countDown.seconds
+            font.pixelSize: 150
+            anchors.centerIn: parent
+        }
+
+        Timer {
+            id: innerTimer
+            repeat: true
+            interval: 1000
+            onTriggered: {
+                countDown.seconds--;
+                if (countDown.seconds == 0) {
+                    running = false;
+                    countDown.seconds = 3;
+                    countDown.opacity = 0;
+                    ball.active = true;
+                }
+            }
+        }
+
+        function start() {
+            opacity = 1;
+            innerTimer.start();
+        }
     }
+
+    Component.onCompleted: countDown.start()
+
+//    Timer {
+//        id: timer
+//        repeat: false
+//        interval: 2000
+//        running: true
+//        onTriggered: ball.active = true
+//    }
 
 }
 
