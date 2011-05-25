@@ -6,5 +6,6 @@
         <file>qml/pong/img/paddle_red.png</file>
         <file>qml/pong/Ball.qml</file>
         <file>qml/pong/img/ball.png</file>
+        <file>qml/pong/img/paddle.png</file>
     </qresource>
 </RCC>
