@@ -30,7 +30,7 @@ Item {
         id: score1
         font.pixelSize: 60
         font.bold: true
-        color: paddle1.color
+        color: "blue"
         text: paddle1.score
 
         anchors {
@@ -44,7 +44,7 @@ Item {
         id: score2
         font.pixelSize: 60
         font.bold: true
-        color: paddle2.color
+        color: "red"
         text: paddle2.score
 
         anchors {
@@ -63,13 +63,11 @@ Item {
         anchors.left: parent.left
         anchors.right: parent.right
 
-        Rectangle {
+        Image {
             id: paddle1
             property int score: 0
 
-            width: 200
-            height: 100
-            color: "red"
+            source: "img/paddle_blue.png"
             x: tp1.x
             anchors.bottom: parent.bottom
 
@@ -96,11 +94,9 @@ Item {
         anchors.left: parent.left
         anchors.right: parent.right
 
-        Rectangle {
+        Image {
             id: paddle2
-            width: 200
-            height: 100
-            color: "blue"
+            source: "img/paddle_red.png"
             x: tp2.x
             anchors.top: parent.top
             property int score: 0
