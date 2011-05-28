@@ -48,6 +48,14 @@
 #include <QDeclarativeInfo>
 #include <math.h>
 
+
+void
+QDeclarativeTouchArea::registerQML()
+{
+    qmlRegisterType<QDeclarativeTouchArea>("com.meego", 1, 0, "TouchArea");
+    qmlRegisterType<QDeclarativeTouchPoint>("com.meego", 1, 0, "TouchPoint");
+}
+
 QDeclarativeTouchArea::QDeclarativeTouchArea(QDeclarativeItem *parent)
     : QDeclarativeItem(parent),
       _minimumTouches(0),

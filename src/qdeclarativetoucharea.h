@@ -137,6 +137,8 @@ class QDeclarativeTouchArea : public QDeclarativeItem
     Q_PROPERTY(QDeclarativeScriptString keepMouseFocus READ keepMouseFocus WRITE setKeepMouseFocus)
 
 public:
+    static void registerQML();
+
     QDeclarativeTouchArea(QDeclarativeItem *parent=0);
     ~QDeclarativeTouchArea();
 
