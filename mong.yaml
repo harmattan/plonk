@@ -1,0 +1,9 @@
+Name: mong
+Summary: MeeGo Pong
+Description: Mong is a multi-touch pong game for MeeGo tablets.
+Version: 1.0.0
+Group: Amusements/Games
+License: GPL
+URL: http://gitorious.org/mong/mong/
+Builder: qmake
+
