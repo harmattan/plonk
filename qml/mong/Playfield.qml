@@ -109,6 +109,7 @@ Item {
 
     Rectangle {
         id: countDown
+        rotation: (ball.velocityY < 0)?180:0
         property int seconds: 3
         height: 200
         width: 200
@@ -118,8 +119,8 @@ Item {
         anchors.centerIn: parent
 
         Text {
-            text: countDown.seconds
-            font.pixelSize: 150
+            text: innerTimer.running?countDown.seconds:'GO!'
+            font.pixelSize: innerTimer.running?150:100
             anchors.centerIn: parent
         }
 
