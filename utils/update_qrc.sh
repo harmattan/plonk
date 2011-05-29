@@ -10,13 +10,13 @@ echo -n "Updating $QRC_FILE from files in $SRC_DIRS ... "
 (
 cat <<EOF
 <RCC>
-<qresource prefix="/">
+    <qresource prefix="/">
 EOF
 
-find $SRCS_DIR -type f -exec echo "<file>{}</file>" \;
+find $SRC_DIRS -type f -exec echo "        <file>{}</file>" \; | sort
 
 cat <<EOF
-</qresource>
+    </qresource>
 </RCC>
 EOF
 ) >$QRC_FILE
