@@ -1,16 +1,15 @@
 <RCC>
     <qresource prefix="/">
         <file>qml/mong/Ball.qml</file>
-        <file>qml/mong/img/ball.png</file>
-        <file>qml/mong/main.qml</file>
-        <file>qml/mong/Paddle.qml</file>
-        <file>qml/mong/Playfield.qml</file>
-        <file>qml/mong/Menu.qml</file>
         <file>qml/mong/img/background.png</file>
+        <file>qml/mong/img/ball.png</file>
         <file>qml/mong/img/paddle/base.png</file>
         <file>qml/mong/img/paddle/extender.png</file>
         <file>qml/mong/img/paddle/gauge.png</file>
-        <file>qml/mong/img/paddle/gear_l.png</file>
-        <file>qml/mong/img/paddle/gear_r.png</file>
+        <file>qml/mong/img/paddle/gear.png</file>
+        <file>qml/mong/main.qml</file>
+        <file>qml/mong/Menu.qml</file>
+        <file>qml/mong/Paddle.qml</file>
+        <file>qml/mong/Playfield.qml</file>
     </qresource>
 </RCC>

@@ -4,6 +4,7 @@ Item {
     property int score: 0
     property bool rotated: false
     property color beamColor: "red"
+    property color beamHighlightColor: "yellow"
 
     height: base.height
     width: base.width
@@ -27,7 +28,7 @@ Item {
                 ColorAnimation {
                     target: beam
                     property: 'color'
-                    to: 'yellow'
+                    to: beamHighlightColor
                     duration: 150
                 }
 
@@ -45,11 +46,45 @@ Item {
         }
 
         Image {
-            source: "img/paddle/gear_l.png"
+            id: leftGear
+            source: "img/paddle/gear.png"
+
+            anchors {
+                left: parent.left
+                top: parent.top
+                leftMargin: 33
+                topMargin: 55
+            }
+
+            // TODO: Only animate when moving/expanding/shrinking
+            RotationAnimation on rotation {
+                running: true
+                loops: Animation.Infinite
+                from: 0
+                to: 360
+                duration: 3000
+            }
         }
 
         Image {
-            source: "img/paddle/gear_r.png"
+            id: rightGear
+            source: "img/paddle/gear.png"
+
+            anchors {
+                left: parent.left
+                top: parent.top
+                leftMargin: 252
+                topMargin: 55
+            }
+
+            // TODO: Only animate when moving/expanding/shrinking
+            RotationAnimation on rotation {
+                running: true
+                loops: Animation.Infinite
+                from: 360
+                to: 0
+                duration: 3000
+            }
         }
 
         Image {
