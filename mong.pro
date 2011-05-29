@@ -1,4 +1,3 @@
-
 QT += declarative
 
 SOURCES += src/main.cpp
@@ -27,3 +26,20 @@ unix {
   icon64.files += $${TARGET}.png
 }
 
+# Add more folders to ship with the application, here
+# Adding them here also makes them show up in Qt Creators
+# project view.
+folder_01.source = qml/mong
+folder_01.target = qml
+DEPLOYMENTFOLDERS = folder_01
+
+for(deploymentfolder, DEPLOYMENTFOLDERS) {
+    item = item$${deploymentfolder}
+    itemsources = $${item}.sources
+    $$itemsources = $$eval($${deploymentfolder}.source)
+    itempath = $${item}.path
+    $$itempath= $$eval($${deploymentfolder}.target)
+    export($$itemsources)
+    export($$itempath)
+    DEPLOYMENT += $$item
+}
