@@ -18,11 +18,13 @@ Image {
                     /* vertical collision */
                     ballObj.velocityY *= -1
                     ballObj.y = paddleObj.height
+                    paddleObj.glow()
                 }
             } else {
                 if ((ballObj.y + ballObj.height) > (playfield.height - paddleObj.height)) {
                     ballObj.velocityY *= -1
                     ballObj.y = (playfield.height - paddleObj.height - ballObj.height)
+                    paddleObj.glow()
                 }
             }
         }
@@ -65,7 +67,7 @@ Image {
 
         Paddle {
             id: paddle1
-            color: "blue"
+            beamColor: "blue"
             x: tp1.x - paddle1.width / 2
             anchors.bottom: parent.bottom
         }
@@ -88,7 +90,7 @@ Image {
 
         Paddle {
             id: paddle2
-            color: "red"
+            beamColor: "red"
             rotated: true
             x: tp2.x - paddle2.width / 2
             anchors.top: parent.top

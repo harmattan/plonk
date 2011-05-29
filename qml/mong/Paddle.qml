@@ -3,7 +3,7 @@ import Qt 4.7
 Item {
     property int score: 0
     property bool rotated: false
-    property alias color: beam.color
+    property color beamColor: "red"
 
     height: base.height
     width: base.width
@@ -15,10 +15,29 @@ Item {
 
         Rectangle {
             id: beam
+            color: beamColor
             height: 16
             width: 300
             x: 21
             y: 21
+
+            SequentialAnimation {
+                id: lightUp
+
+                ColorAnimation {
+                    target: beam
+                    property: 'color'
+                    to: 'yellow'
+                    duration: 150
+                }
+
+                ColorAnimation {
+                    target: beam
+                    property: 'color'
+                    to: beamColor
+                    duration: 250
+                }
+            }
         }
 
         Image {
@@ -45,5 +64,9 @@ Item {
 
     Behavior on x {
         NumberAnimation { duration: 100 }
+    }
+
+    function glow() {
+        lightUp.start()
     }
 }
