@@ -1,11 +1,13 @@
 import Qt 4.7
 import com.meego 1.0
 
-Item {
+Image {
     id: playfield
 
     width: 400
     height: 400
+
+    source: "img/background.png"
 
     function collisionCheck(paddleObj, ballObj, isTop) {
         if (ballObj.x > paddleObj.x &&
@@ -63,6 +65,7 @@ Item {
 
         Paddle {
             id: paddle1
+            color: "blue"
             x: tp1.x - paddle1.width / 2
             anchors.bottom: parent.bottom
         }
@@ -85,6 +88,8 @@ Item {
 
         Paddle {
             id: paddle2
+            color: "red"
+            rotated: true
             x: tp2.x - paddle2.width / 2
             anchors.top: parent.top
         }
