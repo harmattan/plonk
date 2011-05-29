@@ -1,4 +1,6 @@
-QT += declarative opengl
+
+QT += declarative
+QT += opengl
 
 SOURCES += src/main.cpp
 
