@@ -68,17 +68,41 @@ Image {
         Paddle {
             id: paddle1
             beamColor: "blue"
-            x: tp1.x - paddle1.width / 2
+            //x: tp1.x - paddle1.width / 2
+            //x: touchArea1.mouseX - paddle1.width / 2
             anchors.bottom: parent.bottom
         }
 
+
+        // The touch must originate inside the paddle otherwise it's ignored.
+        // Because of the offset, it's also possible to grab the paddle at the left or right end.
+        // TODO: Maybe do a MongTouchArea, that encapsulates some of that stuff
         TouchArea {
             id: touchArea1
+            property int xOffset: 0
+            property bool paddleTouched: false
             anchors.fill: parent
             touchPoints: [
-                TouchPoint { id: tp1 }
+                TouchPoint {
+                    id: tp1
+                    onXChanged: {
+                        if (touchArea1.paddleTouched) {
+                            paddle1.x = tp1.x - touchArea1.xOffset
+                        }
+                    }
+                }
             ]
+            onTouchStart: {
+                if (paddle1.x < tp1.x && tp1.x < paddle1.x + paddle1.width) {
+                    touchArea1.xOffset = tp1.x - paddle1.x;
+                    touchArea1.paddleTouched = true;
+                }
+            }
+            onTouchEnd: {
+                touchArea1.paddleTouched = false;
+            }
         }
+
     }
 
     Item {
@@ -92,16 +116,36 @@ Image {
             id: paddle2
             beamColor: "red"
             rotated: true
-            x: tp2.x - paddle2.width / 2
             anchors.top: parent.top
         }
 
+        // The touch must originate inside the paddle otherwise it's ignored.
+        // Because of the offset, it's also possible to grab the paddle at the left or right end.
+        // TODO: Maybe do a MongTouchArea, that encapsulates some of that stuff
         TouchArea {
             id: touchArea2
+            property int xOffset: 0
+            property bool paddleTouched: false
             anchors.fill: parent
             touchPoints: [
-                TouchPoint { id: tp2 }
+                TouchPoint {
+                    id: tp2
+                    onXChanged: {
+                        if (touchArea2.paddleTouched) {
+                            paddle2.x = tp2.x - touchArea2.xOffset
+                        }
+                    }
+                }
             ]
+            onTouchStart: {
+                if (paddle2.x < tp2.x && tp2.x < paddle2.x + paddle2.width) {
+                    touchArea2.xOffset = tp2.x - paddle2.x;
+                    touchArea2.paddleTouched = true;
+                }
+            }
+            onTouchEnd: {
+                touchArea2.paddleTouched = false;
+            }
         }
     }
 
