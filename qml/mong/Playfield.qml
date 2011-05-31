@@ -22,6 +22,9 @@ import com.meego 1.0
 Image {
     id: playfield
 
+    /* Set this to true to visualize collision checks */
+    property bool collisionDebug: false
+
     width: 400
     height: 400
 
@@ -32,21 +35,49 @@ Image {
     source: "img/background.png"
 
     function collisionCheck(paddleObj, ballObj, isTop) {
-        if (ballObj.x > paddleObj.x &&
-            (ballObj.x + ballObj.width) < (paddleObj.x + paddleObj.width)) {
+        var paddlePos = playfield.mapFromItem(paddleObj, paddleObj.beamX, paddleObj.beamY)
+        var ballPos = playfield.mapFromItem(ballObj, 0, 0)
+
+        if (paddleObj.rotated) {
+            /* Fix beam position for rotated paddle */
+            paddlePos.x -= paddleObj.beamWidth
+            paddlePos.y -= paddleObj.beamHeight
+        }
+
+        if (playfield.collisionDebug) {
+            var dbgPaddle = dbgPaddle1
+            if (isTop) {
+                dbgPaddle = dbgPaddle2
+            }
+
+            dbgPaddle.x = paddlePos.x
+            dbgPaddle.y = paddlePos.y
+            dbgPaddle.width = paddleObj.beamWidth
+            dbgPaddle.height = paddleObj.beamHeight
+
+            dbgBall.x = ballPos.x
+            dbgBall.y = ballPos.y
+            dbgBall.width = ballObj.width
+            dbgBall.height = ballObj.height
+        }
+
+        if ((ballObj.x + (ballObj.width/2)) > paddlePos.x &&
+            (ballObj.x + (ballObj.width/2)) < (paddlePos.x + paddleObj.beamWidth)) {
             /* horizontal collision */
             if (isTop) {
-                if (ballObj.y < paddleObj.height) {
+                if (ballObj.y < (paddlePos.y + paddleObj.beamHeight) &&
+                    ballObj.y > (paddlePos.y - ballObj.height)) {
                     /* vertical collision */
                     ballObj.velocityY *= -1
-                    ballObj.y = paddleObj.height
+                    ballObj.y = (paddlePos.y + paddleObj.beamHeight)
                     paddleObj.glow()
                     sounds.playHit()
                 }
             } else {
-                if ((ballObj.y + ballObj.height) > (playfield.height - paddleObj.height)) {
+                if (ballObj.y > (paddlePos.y - ballObj.height) &&
+                    ballObj.y < (paddlePos.y + paddleObj.beamHeight)) {
                     ballObj.velocityY *= -1
-                    ballObj.y = (playfield.height - paddleObj.height - ballObj.height)
+                    ballObj.y = (paddlePos.y - ballObj.height)
                     paddleObj.glow()
                     sounds.playHit()
                 }
@@ -176,6 +207,30 @@ Image {
             opacity = 1;
             innerTimer.start();
         }
+    }
+
+    Rectangle {
+        id: dbgPaddle1
+        color: 'red'
+        opacity: playfield.collisionDebug?.5:0
+        width: 10
+        height: 10
+    }
+
+    Rectangle {
+        id: dbgPaddle2
+        color: 'green'
+        opacity: playfield.collisionDebug?.5:0
+        width: 10
+        height: 10
+    }
+
+    Rectangle {
+        id: dbgBall
+        color: 'blue'
+        opacity: playfield.collisionDebug?.5:0
+        width: 10
+        height: 10
     }
 
     Component.onCompleted: countDown.start()

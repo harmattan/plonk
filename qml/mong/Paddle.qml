@@ -24,6 +24,11 @@ Item {
     property color beamColor: "red"
     property color beamHighlightColor: "yellow"
 
+    property int beamX: beam.x
+    property int beamY: beam.y
+    property int beamWidth: beam.width
+    property int beamHeight: beam.height
+
     height: base.height
     width: base.width
 
