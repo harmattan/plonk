@@ -9,8 +9,17 @@
         <file>qml/mong/img/paddle/gear.png</file>
         <file>qml/mong/main.qml</file>
         <file>qml/mong/Menu.qml</file>
+        <file>qml/mong/MongSounds.qml</file>
         <file>qml/mong/MongTouchArea.qml</file>
         <file>qml/mong/Paddle.qml</file>
         <file>qml/mong/Playfield.qml</file>
+        <file>qml/mong/snd/hit1.wav</file>
+        <file>qml/mong/snd/hit2.wav</file>
+        <file>qml/mong/snd/hit3.wav</file>
+        <file>qml/mong/snd/hit4.wav</file>
+        <file>qml/mong/snd/out1.wav</file>
+        <file>qml/mong/snd/out2.wav</file>
+        <file>qml/mong/snd/out3.wav</file>
+        <file>qml/mong/snd/out4.wav</file>
     </qresource>
 </RCC>

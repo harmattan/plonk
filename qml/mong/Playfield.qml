@@ -25,6 +25,10 @@ Image {
     width: 400
     height: 400
 
+    MongSounds {
+        id: sounds
+    }
+
     source: "img/background.png"
 
     function collisionCheck(paddleObj, ballObj, isTop) {
@@ -37,12 +41,14 @@ Image {
                     ballObj.velocityY *= -1
                     ballObj.y = paddleObj.height
                     paddleObj.glow()
+                    sounds.playHit()
                 }
             } else {
                 if ((ballObj.y + ballObj.height) > (playfield.height - paddleObj.height)) {
                     ballObj.velocityY *= -1
                     ballObj.y = (playfield.height - paddleObj.height - ballObj.height)
                     paddleObj.glow()
+                    sounds.playHit()
                 }
             }
         }
@@ -124,6 +130,7 @@ Image {
         id: ball
         onActiveChanged: {
             if (!active) {
+                sounds.playOut()
                 countDown.start();
             }
         }
