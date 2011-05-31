@@ -63,12 +63,23 @@ Image {
 
         if ((ballObj.x + (ballObj.width/2)) > paddlePos.x &&
             (ballObj.x + (ballObj.width/2)) < (paddlePos.x + paddleObj.beamWidth)) {
+            var paddleCenter = paddlePos.x + (paddleObj.beamWidth / 2)
+            var ballCenter = ballObj.x + (ballObj.width / 2)
+
+            /* Direction that can be used for X velocity changes below. */
+            var direction = (paddleCenter > ballCenter)?1:-1
+
+            /* Accuracy: If the ball hits the paddle in the middle, it's 1.
+                         Otherwise it's decreasing to 0 towards the paddle edges. */
+            var accuracy = 2 * (.5 - (Math.abs(paddleCenter-ballCenter) / paddleObj.beamWidth))
             /* horizontal collision */
             if (isTop) {
                 if (ballObj.y < (paddlePos.y + paddleObj.beamHeight) &&
                     ballObj.y > (paddlePos.y - ballObj.height)) {
                     /* vertical collision */
                     ballObj.velocityY *= -1
+                    ballObj.velocityY *= .5 + (1-accuracy)
+                    ballObj.velocityX += 2 * direction * (1-accuracy)
                     ballObj.y = (paddlePos.y + paddleObj.beamHeight)
                     paddleObj.glow()
                     sounds.playHit()
@@ -77,11 +88,18 @@ Image {
                 if (ballObj.y > (paddlePos.y - ballObj.height) &&
                     ballObj.y < (paddlePos.y + paddleObj.beamHeight)) {
                     ballObj.velocityY *= -1
+                    ballObj.velocityY *= .5 + (1-accuracy)
+                    ballObj.velocityX += 2 * direction * (1-accuracy)
                     ballObj.y = (paddlePos.y - ballObj.height)
                     paddleObj.glow()
                     sounds.playHit()
                 }
             }
+        }
+
+        /* Make sure the ball isn't too slow */
+        while (Math.abs(ballObj.velocityY) < 5) {
+            ballObj.velocityY *= 1.5
         }
     }
 
