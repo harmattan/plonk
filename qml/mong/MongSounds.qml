@@ -31,6 +31,15 @@ Item {
         }
     }
 
+    /**
+     * Just in case you were wondering why we don't simply use a single
+     * SoundEffect item here: This allows the system to load all the
+     * effects into memory and prepare them for playback (as opposed to
+     * setting the "source" property every time). It also allows for more
+     * than one sound to play simultaneously, which could become important
+     * when we add even more sound effects to the whole game.
+     **/
+
     SoundEffect { id: hit1; source: 'snd/hit1.wav' }
     SoundEffect { id: hit2; source: 'snd/hit2.wav' }
     SoundEffect { id: hit3; source: 'snd/hit3.wav' }
