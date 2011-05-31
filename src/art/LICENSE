@@ -1,3 +1,4 @@
+
 /*
     Mong - A multi-touch pong-like game for MeeGo Tablets
     Copyright (C) 2011 Cornelius Hald, Thomas Perl, Tim Samoff
@@ -16,19 +17,3 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import Qt 4.7
-
-Item {
-    id: container
-
-    height: 400
-    width: 400
-
-    Playfield {
-        height: container.width
-        width: container.height
-        rotation: 270
-        anchors.centerIn: parent
-    }
-
-}
