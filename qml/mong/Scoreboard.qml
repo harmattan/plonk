@@ -39,6 +39,20 @@ Item {
     }
 
     Image {
+        id: gearLeft
+        x: 0
+        y: 34
+        source: "img/scoreboard/gear.png"
+    }
+
+    Image {
+        id: gearRight
+        x: 357
+        y: 34
+        source: "img/scoreboard/gear.png"
+    }
+
+    Image {
         id: base
         source: "img/scoreboard/base.png"
     }
@@ -90,6 +104,7 @@ Item {
         source: "img/scoreboard/score_red.png"
         Behavior on opacity { PropertyAnimation { duration: fadeTime } }
     }
+
 
     function decreaseRedCount() {
         if (redCount == 3) scoreRed3.opacity = 0;

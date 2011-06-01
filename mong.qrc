@@ -33,5 +33,6 @@
         <file>qml/mong/img/scoreboard/shadow.png</file>
         <file>qml/mong/MenuButton.qml</file>
         <file>qml/mong/Scoreboard.qml</file>
+        <file>qml/mong/img/scoreboard/gear.png</file>
     </qresource>
 </RCC>
