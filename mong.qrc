@@ -21,5 +21,15 @@
         <file>qml/mong/snd/out2.wav</file>
         <file>qml/mong/snd/out3.wav</file>
         <file>qml/mong/snd/out4.wav</file>
+        <file>qml/mong/img/menu/base.png</file>
+        <file>qml/mong/img/menu/btn_about_off.png</file>
+        <file>qml/mong/img/menu/btn_about_on.png</file>
+        <file>qml/mong/img/menu/btn_play_off.png</file>
+        <file>qml/mong/img/menu/btn_play_on.png</file>
+        <file>qml/mong/img/menu/title.png</file>
+        <file>qml/mong/img/scoreboard/base.png</file>
+        <file>qml/mong/img/scoreboard/score_blue.png</file>
+        <file>qml/mong/img/scoreboard/score_red.png</file>
+        <file>qml/mong/img/scoreboard/shadow.png</file>
     </qresource>
 </RCC>

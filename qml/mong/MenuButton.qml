@@ -18,33 +18,29 @@
 
 import Qt 4.7
 
-Image {
-    id: menu
-    source: "img/menu/base.png"
+Item {
+    id: button
+    signal clicked
+    property alias imageOn:  imgOn.source
+    property alias imageOff: imgOff.source
+
+    height: imgOn.height
+    width: imgOn.width
 
     Image {
-        id: image1
-        x: 57
-        y: 37
-        source: "img/menu/title.png"
+        id: imgOff
+        anchors.centerIn: parent
     }
 
-    MenuButton {
-        id: playButton
-        x: 72
-        y: 168
-        imageOff: "img/menu/btn_play_off.png"
-        imageOn:  "img/menu/btn_play_on.png"
-        onClicked: console.log("Play clicked")
+    Image {
+        id: imgOn
+        opacity: mouse.pressed ? 1 : 0
+        anchors.centerIn: parent
     }
 
-    MenuButton {
-        id: aboutButton
-        x: 73
-        y: 262
-        imageOff: "img/menu/btn_about_off.png"
-        imageOn:  "img/menu/btn_about_on.png"
-        onClicked: console.log("About clicked")
+    MouseArea {
+        id: mouse
+        anchors.fill: parent
+        onClicked: button.clicked()
     }
-
 }
