@@ -24,11 +24,23 @@ Item {
     height: 400
     width: 400
 
-    Playfield {
+    Item {
         height: container.width
         width: container.height
         rotation: 270
         anchors.centerIn: parent
+
+        Playfield {
+            id: playfield
+            anchors.fill: parent
+        }
+
+        Menu {
+            anchors.centerIn: parent
+            opacity: playfield.state == "pause" ? 1 : 0
+            onPlayClicked: playfield.state = "play"
+            onAboutClicked: console.log("About clicked")
+        }
     }
 
 }

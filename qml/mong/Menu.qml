@@ -20,6 +20,9 @@ import Qt 4.7
 
 Image {
     id: menu
+    signal playClicked
+    signal aboutClicked
+
     source: "img/menu/base.png"
 
     Image {
@@ -35,7 +38,7 @@ Image {
         y: 168
         imageOff: "img/menu/btn_play_off.png"
         imageOn:  "img/menu/btn_play_on.png"
-        onClicked: console.log("Play clicked")
+        onClicked: menu.playClicked()
     }
 
     MenuButton {
@@ -44,7 +47,7 @@ Image {
         y: 262
         imageOff: "img/menu/btn_about_off.png"
         imageOn:  "img/menu/btn_about_on.png"
-        onClicked: console.log("About clicked")
+        onClicked: menu.aboutClicked
     }
 
 }

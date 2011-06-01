@@ -25,6 +25,9 @@ Image {
     /* Set this to true to visualize collision checks */
     property bool collisionDebug: false
 
+    /* By default the playfield is in 'pause' state */
+    state: "pause"
+
     width: 400
     height: 400
 
@@ -225,6 +228,11 @@ Image {
             opacity = 1;
             innerTimer.start();
         }
+
+        function stop() {
+            opacity = 0;
+            innerTimer.stop();
+        }
     }
 
     Rectangle {
@@ -251,7 +259,16 @@ Image {
         height: 10
     }
 
-    Component.onCompleted: countDown.start()
-
+    states: [
+        State {
+            name: "pause"
+            StateChangeScript { script: countDown.stop() }
+        },
+        State {
+            name: "play"
+            // Currently we just start the countdown
+            StateChangeScript { script: countDown.start() }
+        }
+    ]
 }
 
