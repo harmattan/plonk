@@ -27,15 +27,15 @@ Image {
 
     Image {
         id: image1
-        x: 57
-        y: 37
+        x: 58
+        y: 56
         source: "img/menu/title.png"
     }
 
     MenuButton {
         id: playButton
         x: 72
-        y: 168
+        y: 181
         imageOff: "img/menu/btn_play_off.png"
         imageOn:  "img/menu/btn_play_on.png"
         onClicked: menu.playClicked()
@@ -43,8 +43,8 @@ Image {
 
     MenuButton {
         id: aboutButton
-        x: 73
-        y: 262
+        x: 72
+        y: 281
         imageOff: "img/menu/btn_about_off.png"
         imageOn:  "img/menu/btn_about_on.png"
         onClicked: menu.aboutClicked
