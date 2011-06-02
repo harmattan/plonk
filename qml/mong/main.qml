@@ -41,7 +41,19 @@ Item {
 
         Playfield {
             id: playfield
+            onBallOutPlayer1: scoreboard.decreaseBlueCount()
+            onBallOutPlayer2: scoreboard.decreaseRedCount()
             anchors.fill: parent
+        }
+
+        Scoreboard {
+            id: scoreboard
+            opacity: 0
+            anchors.centerIn: playfield
+            onGameOver: {
+                playfield.state = "pause";
+                reset();
+            }
         }
 
         Menu {
@@ -50,5 +62,4 @@ Item {
             onPlayClicked: playfield.state = "play"
         }
     }
-
 }

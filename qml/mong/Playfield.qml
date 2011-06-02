@@ -22,6 +22,9 @@ import com.meego 1.0
 Image {
     id: playfield
 
+    signal ballOutPlayer1;
+    signal ballOutPlayer2;
+
     /* Set this to true to visualize collision checks */
     property bool collisionDebug: false
 
@@ -106,6 +109,7 @@ Image {
         }
     }
 
+    /*
     Text {
         id: score1
         font.pixelSize: 60
@@ -133,6 +137,7 @@ Image {
             verticalCenter: parent.verticalCenter
         }
     }
+    */
 
     Item {
         id: bottomHalf
@@ -143,7 +148,7 @@ Image {
 
         Paddle {
             id: paddle1
-            beamColor: "blue"
+            beamColor: "red"
             //x: tp1.x - paddle1.width / 2
             //x: touchArea1.mouseX - paddle1.width / 2
             anchors.bottom: parent.bottom
@@ -168,7 +173,7 @@ Image {
 
         Paddle {
             id: paddle2
-            beamColor: "red"
+            beamColor: "blue"
             rotated: true
             anchors.top: parent.top
             animationActive: playfield.state == 'play'
@@ -190,6 +195,8 @@ Image {
                 countDown.start();
             }
         }
+        onBallOutPlayer1: playfield.ballOutPlayer1()
+        onBallOutPlayer2: playfield.ballOutPlayer2()
     }
 
     Rectangle {

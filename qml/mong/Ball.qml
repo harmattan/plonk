@@ -20,6 +20,10 @@ import Qt 4.7
 
 Item {
     id: ball
+
+    signal ballOutPlayer1
+    signal ballOutPlayer2
+
     property bool active: false
 
     property real velocityX: 10
@@ -34,12 +38,12 @@ Item {
         if (y < 0) {
             velocityY *= -1
             y = 0
-            paddle1.score += 1
+            ball.ballOutPlayer1()
             ball.active = false
         } else if (y > playfield.height) {
             velocityY *= -1
             y = playfield.height
-            paddle2.score += 1
+            ball.ballOutPlayer2()
             ball.active = false
         }
 

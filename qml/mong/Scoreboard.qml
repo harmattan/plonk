@@ -21,12 +21,12 @@ import Qt 4.7
 Item {
     id: scoreboard
 
-    signal redDied()
-    signal blueDied()
+    signal gameOver
 
     property int blueCount: 3
     property int redCount: 3
     property int fadeTime: 150
+    property alias busy: showScoreboard.running
 
     width: base.width
     height: base.height
@@ -105,28 +105,57 @@ Item {
         Behavior on opacity { PropertyAnimation { duration: fadeTime } }
     }
 
+    SequentialAnimation {
+        id: showScoreboard
+
+        PropertyAnimation {
+            target: scoreboard
+            property: "opacity"
+            from: 0
+            to: 1
+            duration: 500
+        }
+
+        PropertyAnimation {
+            // Just wait some time and do nothing
+            duration: 1000
+        }
+
+        PropertyAnimation {
+            target: scoreboard
+            property: "opacity"
+            from: 1
+            to: 0
+            duration: 300
+        }
+    }
 
     function decreaseRedCount() {
+        showScoreboard.start();
         if (redCount == 3) scoreRed3.opacity = 0;
         if (redCount == 2) scoreRed2.opacity = 0;
         if (redCount == 1) scoreRed1.opacity = 0;
-        if (redCount == 0) redDied();
+        if (redCount == 0) scoreboard.gameOver();
         if (redCount  < 0) return false;
-        redCount--;
+        scoreboard.redCount--;
         return true;
     }
 
     function decreaseBlueCount() {
+        showScoreboard.start();
         if (blueCount == 3) scoreBlue3.opacity = 0;
         if (blueCount == 2) scoreBlue2.opacity = 0;
         if (blueCount == 1) scoreBlue1.opacity = 0;
-        if (blueCount == 0) blueDied();
+        if (blueCount == 0) scoreboard.gameOver();
         if (blueCount  < 0) return false;
-        blueCount--;
+        scoreboard.blueCount--;
         return true;
     }
 
     function reset() {
+        blueCount = 3;
+        redCount = 3;
+
         scoreBlue1.opacity = 1;
         scoreBlue2.opacity = 1;
         scoreBlue3.opacity = 1;
