@@ -48,5 +48,7 @@
         <file>qml/mong/snd/out2.wav</file>
         <file>qml/mong/snd/out3.wav</file>
         <file>qml/mong/snd/out4.wav</file>
+        <file>qml/mong/ScoreboardPaddle.qml</file>
+        <file>qml/mong/img/particle.png</file>
     </qresource>
 </RCC>

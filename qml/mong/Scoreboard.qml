@@ -57,52 +57,46 @@ Item {
         source: "img/scoreboard/base.png"
     }
 
-    Image {
+    ScoreboardPaddle {
         id: scoreBlue1
         x: 305
         y: 58
-        source: "img/scoreboard/score_blue.png"
-        Behavior on opacity { PropertyAnimation { duration: fadeTime } }
+        color: "blue"
     }
 
-    Image {
+    ScoreboardPaddle {
         id: scoreBlue2
         x: 209
         y: 58
-        source: "img/scoreboard/score_blue.png"
-        Behavior on opacity { PropertyAnimation { duration: fadeTime } }
+        color: "blue"
     }
 
-    Image {
+    ScoreboardPaddle {
         id: scoreBlue3
         x: 115
         y: 58
-        source: "img/scoreboard/score_blue.png"
-        Behavior on opacity { PropertyAnimation { duration: fadeTime } }
+        color: "blue"
     }
 
-    Image {
+    ScoreboardPaddle {
         id: scoreRed1
         x: 115
         y: 112
-        source: "img/scoreboard/score_red.png"
-        Behavior on opacity { PropertyAnimation { duration: fadeTime } }
+        color: "red"
     }
 
-    Image {
+    ScoreboardPaddle {
         id: scoreRed2
         x: 209
         y: 112
-        source: "img/scoreboard/score_red.png"
-        Behavior on opacity { PropertyAnimation { duration: fadeTime } }
+        color: "red"
     }
 
-    Image {
+    ScoreboardPaddle {
         id: scoreRed3
         x: 305
         y: 112
-        source: "img/scoreboard/score_red.png"
-        Behavior on opacity { PropertyAnimation { duration: fadeTime } }
+        color: "red"
     }
 
     SequentialAnimation {
@@ -130,11 +124,19 @@ Item {
         }
     }
 
+// For testing (remove later)
+//    Timer {
+//        interval: 1000
+//        running: true
+//        repeat: true
+//        onTriggered: decreaseBlueCount()
+//    }
+
     function decreaseRedCount() {
         showScoreboard.start();
-        if (redCount == 3) scoreRed3.opacity = 0;
-        if (redCount == 2) scoreRed2.opacity = 0;
-        if (redCount == 1) scoreRed1.opacity = 0;
+        if (redCount == 3) scoreRed3.hidden = true;
+        if (redCount == 2) scoreRed2.hidden = true;
+        if (redCount == 1) scoreRed1.hidden = true;
         if (redCount == 0) scoreboard.gameOver();
         if (redCount  < 0) return false;
         scoreboard.redCount--;
@@ -143,9 +145,9 @@ Item {
 
     function decreaseBlueCount() {
         showScoreboard.start();
-        if (blueCount == 3) scoreBlue3.opacity = 0;
-        if (blueCount == 2) scoreBlue2.opacity = 0;
-        if (blueCount == 1) scoreBlue1.opacity = 0;
+        if (blueCount == 3) scoreBlue3.hidden = true;
+        if (blueCount == 2) scoreBlue2.hidden = true;
+        if (blueCount == 1) scoreBlue1.hidden = true;
         if (blueCount == 0) scoreboard.gameOver();
         if (blueCount  < 0) return false;
         scoreboard.blueCount--;
@@ -156,12 +158,12 @@ Item {
         blueCount = 3;
         redCount = 3;
 
-        scoreBlue1.opacity = 1;
-        scoreBlue2.opacity = 1;
-        scoreBlue3.opacity = 1;
+        scoreBlue1.hidden = false;
+        scoreBlue2.hidden = false;
+        scoreBlue3.hidden = false;
 
-        scoreRed1.opacity = 1;
-        scoreRed2.opacity = 1;
-        scoreRed3.opacity = 1;
+        scoreRed1.hidden = false;
+        scoreRed2.hidden = false;
+        scoreRed3.hidden = false;
     }
 }
