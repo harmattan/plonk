@@ -29,12 +29,14 @@ Item {
     property real velocityX: 10
     property real velocityY: 15
 
+    property int lastMilliseconds: mongView.currentTimeMillis()
+
     width: 48
     height: 48
 
     Marble { active: ball.active }
 
-    onYChanged: {
+    function checkBorderCollision() {
         if (y < 0) {
             velocityY *= -1
             y = 0
@@ -62,9 +64,24 @@ Item {
         repeat: true
         interval: 16 // 1000 / 60 // 60 FPS
 
+        onRunningChanged: {
+            if (running) {
+                ball.lastMilliseconds = mongView.currentTimeMillis()
+            }
+        }
+
         onTriggered: {
-            ball.x += ball.velocityX
-            ball.y += ball.velocityY
+            var now = mongView.currentTimeMillis()
+            var diff = now - ball.lastMilliseconds
+            var xdiff = ball.velocityX * diff / 16
+            var ydiff = ball.velocityY * diff / 16
+
+            ball.lastMilliseconds = now
+            console.log('step: ' + diff + ', xdiff: ' + xdiff + ', ydiff: ' + ydiff)
+
+            ball.x += xdiff
+            ball.y += ydiff
+            ball.checkBorderCollision()
 
             playfield.collisionCheck(paddle1, ball, false)
             playfield.collisionCheck(paddle2, ball, true)

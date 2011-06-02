@@ -37,9 +37,6 @@ int main(int argc, char *argv[])
     /* Use our Mong-specific QDeclarativeView with active window tracking */
     MongView view;
 
-    /* Expose our QDeclarativeView as 'mongView' to QML */
-    view.rootContext()->setContextProperty("mongView", &view);
-
 #ifdef QT_OPENGL_LIB
     /* Using OpenGL for increased performance */
     QGLFormat format = QGLFormat::defaultFormat();

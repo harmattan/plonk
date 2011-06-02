@@ -22,12 +22,18 @@
 #include <QtCore>
 #include <QtDeclarative>
 
+#include <sys/time.h>
+
 class MongView : public QDeclarativeView
 {
     Q_OBJECT
 
 public:
-    MongView() : QDeclarativeView(), _active(true) {}
+    MongView() : QDeclarativeView(), _active(true) {
+        /* Expose our QDeclarativeView as 'mongView' to QML */
+        rootContext()->setContextProperty("mongView", this);
+    }
+
     bool active() { return _active; }
 
     Q_PROPERTY(bool active READ active NOTIFY activeChanged)
@@ -53,6 +59,14 @@ public:
         }
 
         return QDeclarativeView::event(event);
+    }
+
+    Q_INVOKABLE
+    long currentTimeMillis() {
+        /* Get the current time in milliseconds */
+        struct timeval now;
+        gettimeofday(&now, NULL);
+        return (now.tv_sec*1000 + now.tv_usec/1000);
     }
 
 private:
