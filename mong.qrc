@@ -3,16 +3,43 @@
         <file>qml/mong/Ball.qml</file>
         <file>qml/mong/img/background.png</file>
         <file>qml/mong/img/ball.png</file>
+        <file>qml/mong/img/marble/mong_marble_highlight.png</file>
+        <file>qml/mong/img/marble/mong_marble_orange_a.png</file>
+        <file>qml/mong/img/marble/mong_marble_orange_b.png</file>
+        <file>qml/mong/img/marble/mong_marble_orange_c.png</file>
+        <file>qml/mong/img/marble/mong_marble_orange_d.png</file>
+        <file>qml/mong/img/marble/mong_marble_orange_e.png</file>
+        <file>qml/mong/img/marble/mong_marble_orange_f.png</file>
+        <file>qml/mong/img/marble/mong_marble_orange_g.png</file>
+        <file>qml/mong/img/marble/mong_marble_orange_h.png</file>
+        <file>qml/mong/img/marble/mong_marble_orange_i.png</file>
+        <file>qml/mong/img/marble/mong_marble_orange_j.png</file>
+        <file>qml/mong/img/marble/mong_marble_orange_k.png</file>
+        <file>qml/mong/img/marble/mong_marble_orange_l.png</file>
+        <file>qml/mong/img/menu/base.png</file>
+        <file>qml/mong/img/menu/btn_about_off.png</file>
+        <file>qml/mong/img/menu/btn_about_on.png</file>
+        <file>qml/mong/img/menu/btn_play_off.png</file>
+        <file>qml/mong/img/menu/btn_play_on.png</file>
+        <file>qml/mong/img/menu/title.png</file>
         <file>qml/mong/img/paddle/base.png</file>
         <file>qml/mong/img/paddle/extender.png</file>
         <file>qml/mong/img/paddle/gauge.png</file>
         <file>qml/mong/img/paddle/gear.png</file>
+        <file>qml/mong/img/scoreboard/base.png</file>
+        <file>qml/mong/img/scoreboard/gear.png</file>
+        <file>qml/mong/img/scoreboard/score_blue.png</file>
+        <file>qml/mong/img/scoreboard/score_red.png</file>
+        <file>qml/mong/img/scoreboard/shadow.png</file>
         <file>qml/mong/main.qml</file>
+        <file>qml/mong/Marble.qml</file>
+        <file>qml/mong/MenuButton.qml</file>
         <file>qml/mong/Menu.qml</file>
         <file>qml/mong/MongSounds.qml</file>
         <file>qml/mong/MongTouchArea.qml</file>
         <file>qml/mong/Paddle.qml</file>
         <file>qml/mong/Playfield.qml</file>
+        <file>qml/mong/Scoreboard.qml</file>
         <file>qml/mong/snd/hit1.wav</file>
         <file>qml/mong/snd/hit2.wav</file>
         <file>qml/mong/snd/hit3.wav</file>
@@ -21,18 +48,5 @@
         <file>qml/mong/snd/out2.wav</file>
         <file>qml/mong/snd/out3.wav</file>
         <file>qml/mong/snd/out4.wav</file>
-        <file>qml/mong/img/menu/base.png</file>
-        <file>qml/mong/img/menu/btn_about_off.png</file>
-        <file>qml/mong/img/menu/btn_about_on.png</file>
-        <file>qml/mong/img/menu/btn_play_off.png</file>
-        <file>qml/mong/img/menu/btn_play_on.png</file>
-        <file>qml/mong/img/menu/title.png</file>
-        <file>qml/mong/img/scoreboard/base.png</file>
-        <file>qml/mong/img/scoreboard/score_blue.png</file>
-        <file>qml/mong/img/scoreboard/score_red.png</file>
-        <file>qml/mong/img/scoreboard/shadow.png</file>
-        <file>qml/mong/MenuButton.qml</file>
-        <file>qml/mong/Scoreboard.qml</file>
-        <file>qml/mong/img/scoreboard/gear.png</file>
     </qresource>
 </RCC>

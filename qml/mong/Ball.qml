@@ -18,14 +18,17 @@
 
 import Qt 4.7
 
-Image {
+Item {
     id: ball
     property bool active: false
 
-    property real velocityX: 10
-    property real velocityY: 15
+    property real velocityX: 1
+    property real velocityY: 5
 
-    source: "img/ball.png"
+    width: 48
+    height: 48
+
+    Marble { active: ball.active }
 
     onYChanged: {
         if (y < 0) {
