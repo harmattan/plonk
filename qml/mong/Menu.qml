@@ -40,6 +40,10 @@ BorderImage {
                 target: aboutMenuContainer
                 opacity: 0
             }
+            PropertyChanges {
+                target: imageTitleAbout
+                scale: 4
+            }
         },
         State {
             name: 'aboutMenu'
@@ -55,6 +59,10 @@ BorderImage {
             PropertyChanges {
                 target: aboutMenuContainer
                 opacity: 1
+            }
+            PropertyChanges {
+                target: imageTitle
+                scale: .25
             }
         }
     ]
@@ -75,19 +83,21 @@ BorderImage {
         bottom: 100
     }
 
-    Image {
-        id: imageTitle
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: parent.top
-        anchors.topMargin: 40
-        source: "img/menu/title.png"
-    }
-
     Item {
         id: mainMenuContainer
         anchors.fill: parent
 
         Behavior on opacity { PropertyAnimation { } }
+
+        Image {
+            id: imageTitle
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: parent.top
+            anchors.topMargin: 40
+            source: "img/menu/title.png"
+            transformOrigin: Item.Top
+            Behavior on scale { PropertyAnimation { } }
+        }
 
         MenuButton {
             id: playButton
@@ -110,18 +120,25 @@ BorderImage {
 
     MouseArea {
         id: aboutMenuContainer
-        anchors {
-            top: imageTitle.bottom
-            left: parent.left
-            bottom: parent.bottom
-            right: parent.right
-        }
-
+        anchors.fill: parent
         Behavior on opacity { PropertyAnimation { } }
+
+        Image {
+            id: imageTitleAbout
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: parent.top
+            anchors.topMargin: 40
+            source: "img/menu/title_about.png"
+            transformOrigin: Item.Top
+            Behavior on scale { PropertyAnimation { } }
+        }
 
         Item {
             anchors {
-                fill: parent
+                top: imageTitleAbout.bottom
+                left: parent.left
+                bottom: parent.bottom
+                right: parent.right
                 leftMargin: 50
                 topMargin: 20
                 rightMargin: 50
