@@ -20,6 +20,8 @@ import Qt 4.7
 import Qt.labs.particles 1.0
 
 Item {
+    id: scoreboardPaddle
+
     property string color
     property bool hidden: false
     height: img.height
@@ -27,7 +29,7 @@ Item {
 
     Image {
         id: img
-        source: color == "blue" ? "img/scoreboard/score_blue.png" : "img/scoreboard/score_red.png"
+        source: 'img/scoreboard/score_' + scoreboardPaddle.color + '.png'
         opacity: hidden ? 0 : 1
         Behavior on opacity {
             ParallelAnimation {
@@ -42,12 +44,12 @@ Item {
         anchors.centerIn: parent
         width: 1
         height: 1
-        source: "img/particle.png"
+        source: 'img/particle_' + scoreboardPaddle.color + '.png'
         count: 0 // Don't emit anything by default
-        lifeSpan: 500
-        lifeSpanDeviation: 200
+        lifeSpan: 800
+        lifeSpanDeviation: 100
         angleDeviation: 360
         velocity: 200
-        velocityDeviation: 100
+        velocityDeviation: 190
     }
 }

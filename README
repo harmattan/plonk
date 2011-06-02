@@ -1,0 +1,7 @@
+
+Dependencies:
+
+ * Qt >= 4.7
+ * Qt Mobility >= 1.1 Declarative Plugins
+ * Qt Declarative Particles Plugin (libqt4-declarative-particles)
+
