@@ -48,7 +48,6 @@ Item {
             anchors.centerIn: parent
             opacity: playfield.state == "pause" ? 1 : 0
             onPlayClicked: playfield.state = "play"
-            onAboutClicked: console.log("About clicked")
         }
     }
 

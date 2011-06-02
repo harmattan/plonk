@@ -25,6 +25,9 @@ import com.meego 1.0
 TouchArea {
     id: touchArea
 
+    /* Enabled or disabled? (disable while in menu, etc..) */
+    property bool enabled: true
+
     /* True while the paddle is touched */
     property bool paddleTouched: false
 
@@ -39,7 +42,7 @@ TouchArea {
         TouchPoint {
             id: touchPoint
             onXChanged: {
-                if (touchArea.paddleTouched) {
+                if (touchArea.paddleTouched && touchArea.enabled) {
                     touchArea.paddle.x = touchPoint.x - touchArea.offsetXStart
                 }
             }

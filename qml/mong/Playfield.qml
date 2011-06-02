@@ -154,6 +154,7 @@ Image {
             id: touchArea1
             paddle: paddle1
             anchors.fill: parent
+            enabled: playfield.state == 'play'
         }
 
     }
@@ -177,6 +178,7 @@ Image {
             id: touchArea2
             paddle: paddle2
             anchors.fill: parent
+            enabled: playfield.state == 'play'
         }
     }
 

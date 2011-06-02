@@ -18,36 +18,129 @@
 
 import Qt 4.7
 
-Image {
+BorderImage {
     id: menu
     signal playClicked
     signal aboutClicked
 
+    state: 'mainMenu'
+    states: [
+        State {
+            name: 'mainMenu'
+            PropertyChanges {
+                target: menu
+                width: 500
+                height: 416
+            }
+            PropertyChanges {
+                target: mainMenuContainer
+                opacity: 1
+            }
+            PropertyChanges {
+                target: aboutMenuContainer
+                opacity: 0
+            }
+        },
+        State {
+            name: 'aboutMenu'
+            PropertyChanges {
+                target: menu
+                width: 600
+                height: 600
+            }
+            PropertyChanges {
+                target: mainMenuContainer
+                opacity: 0
+            }
+            PropertyChanges {
+                target: aboutMenuContainer
+                opacity: 1
+            }
+        }
+    ]
+
+    onAboutClicked: {
+        state = 'aboutMenu'
+    }
+
+    Behavior on width { PropertyAnimation { duration: 500 } }
+    Behavior on height { PropertyAnimation { easing.type: Easing.OutBounce; duration: 1000 } }
+
     source: "img/menu/base.png"
 
+    border {
+        left: 100
+        top: 100
+        right: 100
+        bottom: 100
+    }
+
     Image {
-        id: image1
-        x: 58
-        y: 56
+        id: imageTitle
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
+        anchors.topMargin: 40
         source: "img/menu/title.png"
     }
 
-    MenuButton {
-        id: playButton
-        x: 72
-        y: 181
-        imageOff: "img/menu/btn_play_off.png"
-        imageOn:  "img/menu/btn_play_on.png"
-        onClicked: menu.playClicked()
+    Item {
+        id: mainMenuContainer
+        anchors.fill: parent
+
+        Behavior on opacity { PropertyAnimation { } }
+
+        MenuButton {
+            id: playButton
+            anchors.horizontalCenter: parent.horizontalCenter
+            y: 181
+            imageOff: "img/menu/btn_play_off.png"
+            imageOn:  "img/menu/btn_play_on.png"
+            onClicked: menu.playClicked()
+        }
+
+        MenuButton {
+            id: aboutButton
+            anchors.horizontalCenter: parent.horizontalCenter
+            y: 281
+            imageOff: "img/menu/btn_about_off.png"
+            imageOn:  "img/menu/btn_about_on.png"
+            onClicked: menu.aboutClicked()
+        }
     }
 
-    MenuButton {
-        id: aboutButton
-        x: 72
-        y: 281
-        imageOff: "img/menu/btn_about_off.png"
-        imageOn:  "img/menu/btn_about_on.png"
-        onClicked: menu.aboutClicked
+    MouseArea {
+        id: aboutMenuContainer
+        anchors {
+            top: imageTitle.bottom
+            left: parent.left
+            bottom: parent.bottom
+            right: parent.right
+        }
+
+        Behavior on opacity { PropertyAnimation { } }
+
+        Item {
+            anchors {
+                fill: parent
+                leftMargin: 50
+                topMargin: 20
+                rightMargin: 50
+                bottomMargin: 50
+            }
+
+            /* TODO: Scroll this by setting the y offset of the Text
+               below as with the movie credits (when we got enough text) */
+
+            clip: true
+
+            Text {
+                anchors.centerIn: parent
+                horizontalAlignment: Text.AlignHCenter
+                text: '<center><h1>Version 1.0</h1><h2>"Revenge of the Killer Paddle"</h2><p><strong>Programming</strong><br>Cornelius Hald<br>Thomas Perl</p><p><strong>Graphics</strong><br>Tim Samoff</p><p><strong>Sound Effects</strong><br>Erik Stein</p><br><p>Initially developed at the MeeGo Conference 2011 in San Francisco.<br>Sound effects from the air hockey tables at the Hacker Lounge.</p></center>'
+            }
+        }
+
+        onClicked: menu.state = 'mainMenu'
     }
 
 }
