@@ -43,7 +43,10 @@ TouchArea {
             id: touchPoint
             onXChanged: {
                 if (touchArea.paddleTouched && touchArea.enabled) {
-                    touchArea.paddle.x = touchPoint.x - touchArea.offsetXStart
+                    var newX = touchPoint.x - touchArea.offsetXStart
+                    if (Math.abs(newX - touchArea.paddle.x) > 3) {
+                        touchArea.paddle.x = newX
+                    }
                 }
             }
         }

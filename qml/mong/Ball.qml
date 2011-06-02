@@ -77,7 +77,6 @@ Item {
             var ydiff = ball.velocityY * diff / 16
 
             ball.lastMilliseconds = now
-            console.log('step: ' + diff + ', xdiff: ' + xdiff + ', ydiff: ' + ydiff)
 
             ball.x += xdiff
             ball.y += ydiff
