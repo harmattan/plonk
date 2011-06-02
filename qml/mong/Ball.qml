@@ -22,8 +22,8 @@ Item {
     id: ball
     property bool active: false
 
-    property real velocityX: 1
-    property real velocityY: 5
+    property real velocityX: 10
+    property real velocityY: 15
 
     width: 48
     height: 48
