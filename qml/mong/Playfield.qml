@@ -147,6 +147,7 @@ Image {
             //x: tp1.x - paddle1.width / 2
             //x: touchArea1.mouseX - paddle1.width / 2
             anchors.bottom: parent.bottom
+            animationActive: playfield.state == 'play'
         }
 
         MongTouchArea {
@@ -169,6 +170,7 @@ Image {
             beamColor: "red"
             rotated: true
             anchors.top: parent.top
+            animationActive: playfield.state == 'play'
         }
 
         MongTouchArea {
@@ -181,7 +183,7 @@ Image {
     Ball {
         id: ball
         onActiveChanged: {
-            if (!active) {
+            if (!active && playfield.state == 'play') {
                 sounds.playOut()
                 countDown.start();
             }
@@ -191,7 +193,8 @@ Image {
     Rectangle {
         id: countDown
         rotation: (ball.velocityY < 0)?180:0
-        property int seconds: 3
+        property int defaultSeconds: 3
+        property int seconds: defaultSeconds
         height: 200
         width: 200
         color: "lightblue"
@@ -213,7 +216,7 @@ Image {
                 countDown.seconds--;
                 if (countDown.seconds == 0) {
                     running = false;
-                    countDown.seconds = 3;
+                    countDown.seconds = countDown.defaultSeconds
                     countDown.opacity = 0;
                     ball.active = true;
                 }
@@ -225,6 +228,7 @@ Image {
         }
 
         function start() {
+            seconds = defaultSeconds
             opacity = 1;
             innerTimer.start();
         }
@@ -232,6 +236,7 @@ Image {
         function stop() {
             opacity = 0;
             innerTimer.stop();
+            ball.active = false
         }
     }
 

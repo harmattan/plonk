@@ -24,6 +24,15 @@ Item {
     height: 400
     width: 400
 
+    property bool isForegroundApp: mongView.active
+
+    onIsForegroundAppChanged: {
+        if (!isForegroundApp) {
+            /* Pause gameplay when switching to another task */
+            playfield.state = "pause"
+        }
+    }
+
     Item {
         height: container.width
         width: container.height

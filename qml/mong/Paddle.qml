@@ -19,6 +19,8 @@
 import Qt 4.7
 
 Item {
+    id: paddle
+    property bool animationActive: true
     property int score: 0
     property bool rotated: false
     property color beamColor: "red"
@@ -81,7 +83,7 @@ Item {
 
             // TODO: Only animate when moving/expanding/shrinking
             RotationAnimation on rotation {
-                running: true
+                running: paddle.animationActive
                 loops: Animation.Infinite
                 from: 0
                 to: 360
@@ -102,7 +104,7 @@ Item {
 
             // TODO: Only animate when moving/expanding/shrinking
             RotationAnimation on rotation {
-                running: true
+                running: paddle.animationActive
                 loops: Animation.Infinite
                 from: 360
                 to: 0

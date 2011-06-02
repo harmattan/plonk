@@ -24,6 +24,8 @@ SOURCES += src/main.cpp
 SOURCES += src/qdeclarativetoucharea.cpp
 HEADERS += src/qdeclarativetoucharea.h
 
+HEADERS += src/mongview.h
+
 RESOURCES += mong.qrc
 
 unix {

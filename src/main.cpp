@@ -25,6 +25,7 @@
 #endif
 
 #include "qdeclarativetoucharea.h"
+#include "mongview.h"
 
 int main(int argc, char *argv[])
 {
@@ -33,7 +34,11 @@ int main(int argc, char *argv[])
     /* Enable support for TouchArea and TouchPoint */
     QDeclarativeTouchArea::registerQML();
 
-    QDeclarativeView view;
+    /* Use our Mong-specific QDeclarativeView with active window tracking */
+    MongView view;
+
+    /* Expose our QDeclarativeView as 'mongView' to QML */
+    view.rootContext()->setContextProperty("mongView", &view);
 
 #ifdef QT_OPENGL_LIB
     /* Using OpenGL for increased performance */
