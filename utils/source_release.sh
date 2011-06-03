@@ -9,7 +9,7 @@ VERSION=`cat mong.spec | grep ^Version: | cut -d: -f2`
 
 echo -n "Building tarball for version $VERSION..."
 
-git archive --prefix=mong/ --format=tar master | gzip >mong-$VERSION.tar.gz
+git archive --prefix=mong-$VERSION/ --format=tar master | gzip >mong-$VERSION.tar.gz
 
 echo "done."
 
