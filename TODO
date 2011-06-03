@@ -1,17 +1,21 @@
 * Make the countdown start and appear *after* the 3-paddle-scoreboard or replace the countdown with something else (e.g. Player taps to launch ball)
+  * Pushed custom numbers and "GO!" graphics. -TS
 
 * At the end of a game, "Blue wins" or "Red wins" should be displayed
 until a user presses the button 
 
+
 * Display the number of won matches on the main menu
+  * Pushed overlays to go on a 'stretched' menu panel (see prototype in src/art/proto). -TS
 
 * Implement score reset
+  * Art pushed and initial animation is complete. -TS
+  * Reset gear needs to retract behind the panel when going to About screen and come back out when going back to the Main menu.
 
 * Add 'Exit' button
 
 * Replace ball with puck
-
-* Could the puck (now a ball) be changed in the layering order so that it passes behind the paddles?
+  * Art has been pushed. -TS
 
 * In hopes that it won't get lost in the noise... I think we should go back to
   the larger logo for the About screen. I was expecting the screen to "grow"
