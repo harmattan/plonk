@@ -55,5 +55,6 @@
         <file>qml/mong/MongMouseArea.qml</file>
         <file>qml/mong/img/menu/gear.png</file>
         <file>qml/mong/img/menu/gear_shadow.png</file>
+        <file>qml/mong/Countdown.qml</file>
     </qresource>
 </RCC>

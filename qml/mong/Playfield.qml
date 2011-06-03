@@ -29,7 +29,7 @@ Image {
     property bool collisionDebug: false
 
     /* By default the playfield is in 'pause' state */
-    state: "pause"
+    property bool gameOn: false
 
     width: 400
     height: 400
@@ -109,42 +109,11 @@ Image {
         }
     }
 
-    /*
-    Text {
-        id: score1
-        font.pixelSize: 60
-        font.bold: true
-        color: "blue"
-        text: paddle1.score
-
-        anchors {
-            left: parent.left
-            leftMargin: 20
-            verticalCenter: parent.verticalCenter
-        }
-    }
-
-    Text {
-        id: score2
-        font.pixelSize: 60
-        font.bold: true
-        color: "red"
-        text: paddle2.score
-
-        anchors {
-            right: parent.right
-            rightMargin: 20
-            verticalCenter: parent.verticalCenter
-        }
-    }
-    */
-
     Ball {
         id: ball
         onActiveChanged: {
-            if (!active && playfield.state == 'play') {
+            if (!active && playfield.gameOn) {
                 sounds.playOut()
-                countDown.start();
             }
         }
         onBallOutPlayer1: playfield.ballOutPlayer1()
@@ -161,17 +130,15 @@ Image {
         Paddle {
             id: paddle1
             beamColor: "red"
-            //x: tp1.x - paddle1.width / 2
-            //x: touchArea1.mouseX - paddle1.width / 2
             anchors.bottom: parent.bottom
-            animationActive: playfield.state == 'play'
+            animationActive: gameOn
         }
 
         MongTouchArea {
             id: touchArea1
             paddle: paddle1
             anchors.fill: parent
-            enabled: playfield.state == 'play'
+            enabled: gameOn
         }
 
     }
@@ -188,64 +155,14 @@ Image {
             beamColor: "blue"
             rotated: true
             anchors.top: parent.top
-            animationActive: playfield.state == 'play'
+            animationActive: gameOn
         }
 
         MongTouchArea {
             id: touchArea2
             paddle: paddle2
             anchors.fill: parent
-            enabled: playfield.state == 'play'
-        }
-    }
-
-    Rectangle {
-        id: countDown
-        rotation: (ball.velocityY < 0)?180:0
-        property int defaultSeconds: 3
-        property int seconds: defaultSeconds
-        height: 200
-        width: 200
-        color: "lightblue"
-        opacity: 0.8
-        radius: 20
-        anchors.centerIn: parent
-
-        Text {
-            text: innerTimer.running?countDown.seconds:'GO!'
-            font.pixelSize: innerTimer.running?150:100
-            anchors.centerIn: parent
-        }
-
-        Timer {
-            id: innerTimer
-            repeat: true
-            interval: 1000
-            onTriggered: {
-                countDown.seconds--;
-                if (countDown.seconds == 0) {
-                    running = false;
-                    countDown.seconds = countDown.defaultSeconds
-                    countDown.opacity = 0;
-                    ball.active = true;
-                }
-            }
-        }
-
-        Behavior on opacity {
-            PropertyAnimation { duration: 200 }
-        }
-
-        function start() {
-            seconds = defaultSeconds
-            opacity = 1;
-            innerTimer.start();
-        }
-
-        function stop() {
-            opacity = 0;
-            innerTimer.stop();
-            ball.active = false
+            enabled: gameOn
         }
     }
 
@@ -273,16 +190,18 @@ Image {
         height: 10
     }
 
-    states: [
-        State {
-            name: "pause"
-            StateChangeScript { script: countDown.stop() }
-        },
-        State {
-            name: "play"
-            // Currently we just start the countdown
-            StateChangeScript { script: countDown.start() }
-        }
-    ]
+    function startMatch() {
+        playfield.gameOn = true
+        ball.active = true
+    }
+
+    function stopMatch() {
+        playfield.gameOn = false
+        ball.active = false
+    }
+
+    function pauseMatch() {
+        ball.active = false
+    }
 }
 

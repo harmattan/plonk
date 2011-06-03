@@ -29,11 +29,12 @@ Item {
     onIsForegroundAppChanged: {
         if (!isForegroundApp) {
             /* Pause gameplay when switching to another task */
-            playfield.state = "pause"
+            playfield.pauseMatch()
         }
     }
 
     Item {
+        // Rotate everything into portrait orienation
         height: container.width
         width: container.height
         rotation: 270
@@ -51,15 +52,23 @@ Item {
             opacity: 0
             anchors.centerIn: playfield
             onGameOver: {
-                playfield.state = "pause";
+                playfield.stopMatch();
                 reset();
             }
+            onReady: countdown.start()
+        }
+
+        Countdown {
+            id: countdown
+            opacity: 0
+            anchors.centerIn: playfield
+            onTriggert: playfield.startMatch()
         }
 
         Menu {
             anchors.centerIn: parent
-            opacity: playfield.state == "pause" ? 1 : 0
-            onPlayClicked: playfield.state = "play"
+            opacity: (playfield.gameOn || countdown.opacity == 1) ? 0 : 1
+            onPlayClicked: countdown.start()
         }
     }
 }

@@ -22,11 +22,13 @@ Item {
     id: scoreboard
 
     signal gameOver
+    signal ready
 
     property int blueCount: 3
     property int redCount: 3
+    property int oldBlueCount: 3
+    property int oldRedCount: 3
     property int fadeTime: 150
-    property alias busy: showScoreboard.running
 
     width: base.width
     height: base.height
@@ -100,7 +102,7 @@ Item {
     }
 
     SequentialAnimation {
-        id: showScoreboard
+        id: animation
 
         PropertyAnimation {
             target: scoreboard
@@ -111,8 +113,31 @@ Item {
         }
 
         PropertyAnimation {
+            // Wait
+            duration: 500
+        }
+
+        ScriptAction {
+            // Remove red or blue score symbol
+            script: {
+                if (redCount < oldRedCount) {
+                    if (redCount == 2) scoreRed3.hidden = true
+                    if (redCount == 1) scoreRed2.hidden = true
+                    if (redCount == 0) scoreRed1.hidden = true
+                    oldRedCount = redCount
+                }
+                if (blueCount < oldBlueCount) {
+                    if (blueCount == 2) scoreBlue3.hidden = true
+                    if (blueCount == 1) scoreBlue2.hidden = true
+                    if (blueCount == 0) scoreBlue1.hidden = true
+                    oldBlueCount = blueCount
+                }
+            }
+        }
+
+        PropertyAnimation {
             // Just wait some time and do nothing
-            duration: 1000
+            duration: 2000
         }
 
         PropertyAnimation {
@@ -122,53 +147,34 @@ Item {
             to: 0
             duration: 300
         }
-    }
 
-// For testing (remove later)
-//    Timer {
-//        interval: 1000
-//        running: true
-//        repeat: true
-//        onTriggered: decreaseBlueCount()
-//    }
-
-    Timer {
-        id: gameOverTimer
-        repeat: false
-        interval: 2000
-        onTriggered: scoreboard.gameOver();
+        ScriptAction {
+            // Signal ready() if paddles left. gameOver() if not
+            script: {
+                if (blueCount == 0 || redCount == 0) {
+                    scoreboard.gameOver();
+                } else {
+                    scoreboard.ready()
+                }
+            }
+        }
     }
 
     function decreaseRedCount() {
-        showScoreboard.start();
-        if (redCount == 3) scoreRed3.hidden = true;
-        if (redCount == 2) scoreRed2.hidden = true;
-        if (redCount == 1) {
-            scoreRed1.hidden = true;
-            gameOverTimer.start();
-
-        }
-        if (redCount  < 1) return false;
         scoreboard.redCount--;
-        return true;
+        animation.start();
     }
 
     function decreaseBlueCount() {
-        showScoreboard.start();
-        if (blueCount == 3) scoreBlue3.hidden = true;
-        if (blueCount == 2) scoreBlue2.hidden = true;
-        if (blueCount == 1) {
-            scoreBlue1.hidden = true;
-            gameOverTimer.start();
-        }
-        if (blueCount  < 1) return false;
         scoreboard.blueCount--;
-        return true;
+        animation.start();
     }
 
     function reset() {
         blueCount = 3;
         redCount = 3;
+        oldBlueCount = 3;
+        oldRedCount = 3;
 
         scoreBlue1.hidden = false;
         scoreBlue2.hidden = false;
