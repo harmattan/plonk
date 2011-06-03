@@ -10,7 +10,7 @@ until a user presses the button
 
 * Implement score reset
   * Art pushed and initial animation is complete. -TS
-  * Reset gear needs to retract behind the panel when going to About screen and come back out when going back to the Main menu.
+  * Reset gear needs to retract ba little further into the panel so that it can't be seen.
 
 * Add 'Exit' button
 
