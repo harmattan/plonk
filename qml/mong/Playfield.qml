@@ -139,6 +139,18 @@ Image {
     }
     */
 
+    Ball {
+        id: ball
+        onActiveChanged: {
+            if (!active && playfield.state == 'play') {
+                sounds.playOut()
+                countDown.start();
+            }
+        }
+        onBallOutPlayer1: playfield.ballOutPlayer1()
+        onBallOutPlayer2: playfield.ballOutPlayer2()
+    }
+
     Item {
         id: bottomHalf
         height: parent.height / 2
@@ -185,18 +197,6 @@ Image {
             anchors.fill: parent
             enabled: playfield.state == 'play'
         }
-    }
-
-    Ball {
-        id: ball
-        onActiveChanged: {
-            if (!active && playfield.state == 'play') {
-                sounds.playOut()
-                countDown.start();
-            }
-        }
-        onBallOutPlayer1: playfield.ballOutPlayer1()
-        onBallOutPlayer2: playfield.ballOutPlayer2()
     }
 
     Rectangle {
