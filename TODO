@@ -1,0 +1,14 @@
+* Make the countdown start and appear *after* the 3-paddle-scoreboard or replace the countdown with something else (e.g. Player taps to launch ball)
+
+* At the end of a game, "Blue wins" or "Red wins" should be displayed
+until a user presses the button 
+
+* Display the number of won matches on the main menu
+
+* Implement score reset
+
+* Add 'Exit' button
+
+* Replace ball with puck
+
+
