@@ -16,7 +16,7 @@ Url:            http://thp.io/2011/mong/
 Group:          Games/Sports
 Source0:        %{name}-%{version}.tar.gz
 #BuildRequires:  pkgconfig(QtCore)
-BuildRequires:  libqt-devel
+BuildRequires:  libqt-devel libqtopengl-devel
 
 %description
 # Add here description of the package.
