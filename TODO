@@ -1,5 +1,6 @@
 * Make the countdown start and appear *after* the 3-paddle-scoreboard or replace the countdown with something else (e.g. Player taps to launch ball)
   * Pushed custom numbers and "GO!" graphics. -TS
+  * Countdown now starts after the scoreboard fades out. -CH
 
 * At the end of a game, "Blue wins" or "Red wins" should be displayed
 until a user presses the button 
@@ -21,4 +22,6 @@ until a user presses the button
   the larger logo for the About screen. I was expecting the screen to "grow"
   for the About screen and after seeing it thought that the larger logo worked
   great.  (+ remove the small logo from the qrc + qml dir to save some space)
+
+* Collision detection of ball seems to happen on the left side of the ball. Make sure that always the outer border (left and right) is used for collision detection
 
