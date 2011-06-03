@@ -51,6 +51,12 @@ Item {
                 duration: 500;
                 easing.type: Easing.OutBounce
             }
+
+            onRotationChanged: {
+                if (gearImg.rotation > 65) {
+                    gearAnim.start()
+                }
+            }
         }
 
         MouseArea {
