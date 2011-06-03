@@ -132,13 +132,23 @@ Item {
 //        onTriggered: decreaseBlueCount()
 //    }
 
+    Timer {
+        id: gameOverTimer
+        repeat: false
+        interval: 2000
+        onTriggered: scoreboard.gameOver();
+    }
+
     function decreaseRedCount() {
         showScoreboard.start();
         if (redCount == 3) scoreRed3.hidden = true;
         if (redCount == 2) scoreRed2.hidden = true;
-        if (redCount == 1) scoreRed1.hidden = true;
-        if (redCount == 0) scoreboard.gameOver();
-        if (redCount  < 0) return false;
+        if (redCount == 1) {
+            scoreRed1.hidden = true;
+            gameOverTimer.start();
+
+        }
+        if (redCount  < 1) return false;
         scoreboard.redCount--;
         return true;
     }
@@ -147,9 +157,11 @@ Item {
         showScoreboard.start();
         if (blueCount == 3) scoreBlue3.hidden = true;
         if (blueCount == 2) scoreBlue2.hidden = true;
-        if (blueCount == 1) scoreBlue1.hidden = true;
-        if (blueCount == 0) scoreboard.gameOver();
-        if (blueCount  < 0) return false;
+        if (blueCount == 1) {
+            scoreBlue1.hidden = true;
+            gameOverTimer.start();
+        }
+        if (blueCount  < 1) return false;
         scoreboard.blueCount--;
         return true;
     }
