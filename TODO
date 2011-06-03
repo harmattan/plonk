@@ -13,4 +13,8 @@ until a user presses the button
 
 * Could the puck (now a ball) be changed in the layering order so that it passes behind the paddles?
 
+* In hopes that it won't get lost in the noise... I think we should go back to
+  the larger logo for the About screen. I was expecting the screen to "grow"
+  for the About screen and after seeing it thought that the larger logo worked
+  great.  (+ remove the small logo from the qrc + qml dir to save some space)
 
