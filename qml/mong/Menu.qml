@@ -18,10 +18,154 @@
 
 import Qt 4.7
 
-BorderImage {
+Item {
     id: menu
     signal playClicked
     signal aboutClicked
+
+    Item {
+        id: gear
+        height: gearImg.height
+        width: gearImg.width
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+
+        Image {
+            id: gearImg
+            source: "img/menu/gear_shadow.png"
+            smooth: true
+            anchors.centerIn: parent
+
+            Image {
+                source: "img/menu/gear.png"
+                smooth: true
+                anchors.centerIn: parent
+            }
+
+            PropertyAnimation {
+                id: gearAnim
+                target: gearImg
+                property: "rotation"
+                from: gearImg.rotation
+                to: 0
+                duration: 500;
+                easing.type: Easing.OutBounce
+            }
+        }
+
+        MouseArea {
+            property int oldX
+            anchors.fill: parent
+            onMousePositionChanged: {
+                if (mouseX < oldX) {
+                    gearImg.rotation++
+                }
+                oldX = mouseX
+            }
+            onReleased: {
+                gearAnim.start()
+            }
+        }
+    }
+
+    BorderImage {
+        id: background
+
+        source: "img/menu/base.png"
+        anchors.fill: parent
+        anchors.bottomMargin: 115
+
+        border {
+            left: 100
+            top: 100
+            right: 100
+            bottom: 100
+        }
+
+        Item {
+            id: mainMenuContainer
+            anchors.fill: parent
+
+            Behavior on opacity { PropertyAnimation { } }
+
+            Image {
+                id: imageTitle
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.top: parent.top
+                anchors.topMargin: 40
+                source: "img/menu/title.png"
+                transformOrigin: Item.Top
+                Behavior on scale { PropertyAnimation { } }
+            }
+
+            MenuButton {
+                id: playButton
+                anchors.horizontalCenter: parent.horizontalCenter
+                y: 181
+                imageOff: "img/menu/btn_play_off.png"
+                imageOn:  "img/menu/btn_play_on.png"
+                onClicked: menu.playClicked()
+            }
+
+            MenuButton {
+                id: aboutButton
+                anchors.horizontalCenter: parent.horizontalCenter
+                y: 281
+                imageOff: "img/menu/btn_about_off.png"
+                imageOn:  "img/menu/btn_about_on.png"
+                onClicked: menu.aboutClicked()
+            }
+        }
+
+        MouseArea {
+            id: aboutMenuContainer
+            anchors.fill: parent
+            Behavior on opacity { PropertyAnimation { } }
+
+            Image {
+                id: imageTitleAbout
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.top: parent.top
+                anchors.topMargin: 40
+                source: "img/menu/title_about.png"
+                transformOrigin: Item.Top
+                Behavior on scale { PropertyAnimation { } }
+            }
+
+            Item {
+                anchors {
+                    top: imageTitleAbout.bottom
+                    left: parent.left
+                    bottom: parent.bottom
+                    right: parent.right
+                    leftMargin: 50
+                    topMargin: 20
+                    rightMargin: 50
+                    bottomMargin: 50
+                }
+
+                /* TODO: Scroll this by setting the y offset of the Text
+                   below as with the movie credits (when we got enough text) */
+
+                clip: true
+
+                Text {
+                    anchors.centerIn: parent
+                    horizontalAlignment: Text.AlignHCenter
+                    text: '<center><h1>Version 1.0</h1><h2>"Revenge of the Killer Paddle"</h2><p><strong>Programming</strong><br>Cornelius Hald<br>Thomas Perl</p><p><strong>Graphics</strong><br>Tim Samoff</p><p><strong>Sound Effects</strong><br>Erik Stein</p><br><p>Initially developed at the MeeGo Conference 2011 in San Francisco.<br>Sound effects from the air hockey tables at the Hacker Lounge.</p></center>'
+                }
+            }
+
+            onClicked: menu.state = 'mainMenu'
+        }
+    }
+
+    onAboutClicked: {
+        state = 'aboutMenu'
+    }
+
+    Behavior on width { PropertyAnimation { duration: 500 } }
+    Behavior on height { PropertyAnimation { easing.type: Easing.OutBounce; duration: 1000 } }
 
     state: 'mainMenu'
     states: [
@@ -30,7 +174,7 @@ BorderImage {
             PropertyChanges {
                 target: menu
                 width: 500
-                height: 416
+                height: 416 + 115
             }
             PropertyChanges {
                 target: mainMenuContainer
@@ -50,7 +194,7 @@ BorderImage {
             PropertyChanges {
                 target: menu
                 width: 600
-                height: 600
+                height: 600 + 115
             }
             PropertyChanges {
                 target: mainMenuContainer
@@ -66,98 +210,4 @@ BorderImage {
             }
         }
     ]
-
-    onAboutClicked: {
-        state = 'aboutMenu'
-    }
-
-    Behavior on width { PropertyAnimation { duration: 500 } }
-    Behavior on height { PropertyAnimation { easing.type: Easing.OutBounce; duration: 1000 } }
-
-    source: "img/menu/base.png"
-
-    border {
-        left: 100
-        top: 100
-        right: 100
-        bottom: 100
-    }
-
-    Item {
-        id: mainMenuContainer
-        anchors.fill: parent
-
-        Behavior on opacity { PropertyAnimation { } }
-
-        Image {
-            id: imageTitle
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: parent.top
-            anchors.topMargin: 40
-            source: "img/menu/title.png"
-            transformOrigin: Item.Top
-            Behavior on scale { PropertyAnimation { } }
-        }
-
-        MenuButton {
-            id: playButton
-            anchors.horizontalCenter: parent.horizontalCenter
-            y: 181
-            imageOff: "img/menu/btn_play_off.png"
-            imageOn:  "img/menu/btn_play_on.png"
-            onClicked: menu.playClicked()
-        }
-
-        MenuButton {
-            id: aboutButton
-            anchors.horizontalCenter: parent.horizontalCenter
-            y: 281
-            imageOff: "img/menu/btn_about_off.png"
-            imageOn:  "img/menu/btn_about_on.png"
-            onClicked: menu.aboutClicked()
-        }
-    }
-
-    MouseArea {
-        id: aboutMenuContainer
-        anchors.fill: parent
-        Behavior on opacity { PropertyAnimation { } }
-
-        Image {
-            id: imageTitleAbout
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: parent.top
-            anchors.topMargin: 40
-            source: "img/menu/title_about.png"
-            transformOrigin: Item.Top
-            Behavior on scale { PropertyAnimation { } }
-        }
-
-        Item {
-            anchors {
-                top: imageTitleAbout.bottom
-                left: parent.left
-                bottom: parent.bottom
-                right: parent.right
-                leftMargin: 50
-                topMargin: 20
-                rightMargin: 50
-                bottomMargin: 50
-            }
-
-            /* TODO: Scroll this by setting the y offset of the Text
-               below as with the movie credits (when we got enough text) */
-
-            clip: true
-
-            Text {
-                anchors.centerIn: parent
-                horizontalAlignment: Text.AlignHCenter
-                text: '<center><h1>Version 1.0</h1><h2>"Revenge of the Killer Paddle"</h2><p><strong>Programming</strong><br>Cornelius Hald<br>Thomas Perl</p><p><strong>Graphics</strong><br>Tim Samoff</p><p><strong>Sound Effects</strong><br>Erik Stein</p><br><p>Initially developed at the MeeGo Conference 2011 in San Francisco.<br>Sound effects from the air hockey tables at the Hacker Lounge.</p></center>'
-            }
-        }
-
-        onClicked: menu.state = 'mainMenu'
-    }
-
 }
