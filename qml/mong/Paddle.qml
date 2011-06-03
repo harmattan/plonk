@@ -121,6 +121,10 @@ Item {
         }
     }
 
+    Behavior on x {
+        NumberAnimation { duration: 50 }
+    }
+
     function glow() {
         lightUp.start()
     }
