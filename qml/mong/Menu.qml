@@ -29,6 +29,7 @@ Item {
         width: gearImg.width
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter
+        Behavior on anchors.bottomMargin { PropertyAnimation { duration: 500 } }
 
         Image {
             id: gearImg
@@ -194,6 +195,10 @@ Item {
                 target: imageTitleAbout
                 scale: 4
             }
+            PropertyChanges {
+                target: gear
+                anchors.bottomMargin: 0
+            }
         },
         State {
             name: 'aboutMenu'
@@ -213,6 +218,10 @@ Item {
             PropertyChanges {
                 target: imageTitle
                 scale: .25
+            }
+            PropertyChanges {
+                target: gear
+                anchors.bottomMargin: 115
             }
         }
     ]
