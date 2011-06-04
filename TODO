@@ -1,12 +1,16 @@
 * At the end of a game, "Blue wins" or "Red wins" should be displayed
-until a user presses the button 
+  until a user presses the button 
  * IMO not that important -CH
+ * I agree with Conny. -TS
 
 * Reset gear needs to retract a little further into the panel so that it can't be seen.
 
 * Add 'Exit' button
+ * Art pushed (and explained via email). -TS
 
-* Rest ball speed after a player scored
+* Reset ball speed after a player scored
+
+* Scoreboard should fly in from the side (left or right doesn't matter), with gears turning. Then, pause it a second (gears stopped) for the particle animation. Then, fly it off to the other side with gears turning again.
 
 * In hopes that it won't get lost in the noise... I think we should go back to
   the larger logo for the About screen. I was expecting the screen to "grow"
@@ -16,6 +20,12 @@ until a user presses the button
 * Fine-tune ball speed to make it more fun
 
 * Add power zone to the center of the paddle. If ball hits power zone, gauge increases.
+ * Is this a "power" zone or, is the paddle going to grow when the gauge gets to the top? We need to decide on this.
+ * If it is a "power" zone, then when the gauge gets to the top, the gears can start turning, indicating that the player has more "power."
+
+* Countdown: The "3" appears to be a few pixels higher than the other numbers. Maybe my eyes are playing tricks, though.
+
+* Implement "Level" modes (art already pushed).
 
 
 
