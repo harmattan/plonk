@@ -1,40 +1,28 @@
+/*
+    Mong - A multi-touch pong-like game for MeeGo Tablets
+    Copyright (C) 2011 Cornelius Hald, Thomas Perl, Tim Samoff
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
 import Qt 4.7
 
-Item {
+Image {
     id: marble
+    property bool active: true
+
     width: 48
     height: 48
-
-    // FIXME: Need to inject velocity of ball here via properties
-
-    property bool active: true
-    property int step: 0
-
-    Timer {
-        running: marble.active
-        repeat: true
-        interval: 33
-        triggeredOnStart: true
-
-        onTriggered: {
-            var steps = 'abcdefghijkl'
-            marble.step += 1
-            marble.step %= steps.length
-            base.source = 'img/marble/mong_marble_orange_'+steps[marble.step]+'.png'
-
-            // FIXME: Calculate rotation based on direction (vX, vY)
-            base.rotation += 1
-        }
-    }
-
-
-    Image {
-        id: base
-    }
-
-    Image {
-        id: highlight
-        source: 'img/marble/mong_marble_highlight.png'
-    }
+    source: "img/ball.png"
 }
