@@ -20,7 +20,7 @@ import Qt 4.7
 
 Item {
     id: paddle
-    property bool animationActive: true
+    property bool animationActive: false
     property bool rotated: false
     property color beamColor: "red"
     property color beamHighlightColor: "yellow"
