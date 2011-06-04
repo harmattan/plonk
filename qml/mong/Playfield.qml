@@ -84,7 +84,7 @@ Image {
                     ballObj.y > (paddlePos.y - ballObj.height)) {
                     /* vertical collision */
                     ballObj.velocityY *= -1
-                    ballObj.velocityY *= .5 + (1-accuracy)
+                    ballObj.velocityY *= (1.35 - (1-accuracy))
                     ballObj.velocityX += 2 * direction * (1-accuracy)
                     ballObj.y = (paddlePos.y + paddleObj.beamHeight)
                     paddleObj.glow()
@@ -94,7 +94,7 @@ Image {
                 if (ballObj.y > (paddlePos.y - ballObj.height) &&
                     ballObj.y < (paddlePos.y + paddleObj.beamHeight)) {
                     ballObj.velocityY *= -1
-                    ballObj.velocityY *= .5 + (1-accuracy)
+                    ballObj.velocityY *= (1.35 - (1-accuracy))
                     ballObj.velocityX += 2 * direction * (1-accuracy)
                     ballObj.y = (paddlePos.y - ballObj.height)
                     paddleObj.glow()
@@ -104,8 +104,13 @@ Image {
         }
 
         /* Make sure the ball isn't too slow */
-        while (Math.abs(ballObj.velocityY) < 5) {
-            ballObj.velocityY *= 1.5
+        while (Math.abs(ballObj.velocityY) < 8) {
+            ballObj.velocityY *= 1.2
+        }
+
+        /* Make sure the ball isn't too fast */
+        while (Math.abs(ballObj.velocitY) > 25) {
+            ballObj.velocityY *= 0.8
         }
     }
 
