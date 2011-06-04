@@ -129,6 +129,7 @@ Image {
 
         Paddle {
             id: paddle1
+            x: (playfield.width / 2) - (paddle1.width / 2)
             beamColor: "red"
             anchors.bottom: parent.bottom
             animationActive: gameOn
@@ -152,6 +153,7 @@ Image {
 
         Paddle {
             id: paddle2
+            x: (playfield.width / 2) - (paddle1.width / 2)
             beamColor: "blue"
             rotated: true
             anchors.top: parent.top
