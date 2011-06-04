@@ -33,6 +33,7 @@ Item {
 
     width: 48
     height: 48
+    opacity: active ? 1 : 0
 
     Marble { active: ball.active }
 
