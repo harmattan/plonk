@@ -143,14 +143,6 @@ Item {
                 }
 
                 Image {
-                    id: image1
-                    source: "img/menu/screw.png"
-                    smooth: true
-                    rotation: gearImg.rotation
-                    anchors. centerIn: parent
-                }
-
-                Image {
                     source: "img/menu/score_blue.png"
                     Text {
                         font.pixelSize: 50
@@ -235,12 +227,6 @@ Item {
             PropertyChanges {
                 target: gear
                 anchors.bottomMargin: 0
-            }
-
-            PropertyChanges {
-                target: image1
-                anchors.verticalCenterOffset: -15
-                anchors.horizontalCenterOffset: 4
             }
         },
         State {
