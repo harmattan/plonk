@@ -1,5 +1,6 @@
 * At the end of a game, "Blue wins" or "Red wins" should be displayed
 until a user presses the button 
+ * IMO not that important -CH
 
 * Reset gear needs to retract a little further into the panel so that it can't be seen.
 
@@ -10,8 +11,9 @@ until a user presses the button
   for the About screen and after seeing it thought that the larger logo worked
   great.  (+ remove the small logo from the qrc + qml dir to save some space)
 
-* Collision detection of ball seems to happen on the left side of the ball. Make sure that always the outer border (left and right) is used for collision detection
+* Fine-tune ball speed to make it more fun
 
-* Gears on paddle should only rotate if paddle is expanding/shrinking.
+* Add power zone to the center of the paddle. If ball hits power zone, gauge increases.
+
 
 
