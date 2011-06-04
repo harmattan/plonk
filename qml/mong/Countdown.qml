@@ -13,7 +13,7 @@ Item {
 
     Image {
         id: countImg
-        source: innerTimer.running ? "img/countdown/"+countDown.seconds+".png" : "img/countdown/go.png"
+        source: (innerTimer.running && countDown.seconds > 0) ? "img/countdown/"+countDown.seconds+".png" : "img/countdown/go.png"
         anchors.centerIn: parent
     }
 

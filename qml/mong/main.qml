@@ -53,6 +53,7 @@ Item {
             anchors.centerIn: playfield
             onGameOver: {
                 playfield.stopMatch();
+                if (blueCount < redCount) menu.scoreRed++; else menu.scoreBlue++;
                 reset();
             }
             onReady: countdown.start()
@@ -66,6 +67,7 @@ Item {
         }
 
         Menu {
+            id: menu
             anchors.centerIn: parent
             opacity: (playfield.gameOn || countdown.opacity == 1) ? 0 : 1
             onPlayClicked: countdown.start()

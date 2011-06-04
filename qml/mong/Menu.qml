@@ -22,6 +22,8 @@ Item {
     id: menu
     signal playClicked
     signal aboutClicked
+    property int scoreRed: 0
+    property int scoreBlue: 0
 
     Item {
         id: gear
@@ -56,6 +58,8 @@ Item {
             onRotationChanged: {
                 if (gearImg.rotation > 65) {
                     gearAnim.start()
+                    menu.scoreBlue = 0
+                    menu.scoreRed = 0
                 }
             }
         }
@@ -133,7 +137,7 @@ Item {
                     source: "img/menu/score_red.png"
                     Text {
                         font.pixelSize: 50
-                        text: "0"
+                        text: scoreRed
                         anchors.centerIn: parent
                     }
                 }
@@ -150,7 +154,7 @@ Item {
                     source: "img/menu/score_blue.png"
                     Text {
                         font.pixelSize: 50
-                        text: "12"
+                        text: scoreBlue
                         anchors.centerIn: parent
                     }
                 }

@@ -5,9 +5,7 @@ until a user presses the button
   * Pushed overlays to go on a 'stretched' menu panel (see prototype in src/art/proto). -TS
   * Implemented graphics. Still needs logic. -CH
 
-* Implement score reset
-  * Art pushed and initial animation is complete. -TS
-  * Reset gear needs to retract a little further into the panel so that it can't be seen.
+* Reset gear needs to retract a little further into the panel so that it can't be seen.
 
 * Add 'Exit' button
 
