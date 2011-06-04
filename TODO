@@ -3,6 +3,7 @@ until a user presses the button
 
 * Display the number of won matches on the main menu
   * Pushed overlays to go on a 'stretched' menu panel (see prototype in src/art/proto). -TS
+  * Implemented graphics. Still needs logic. -CH
 
 * Implement score reset
   * Art pushed and initial animation is complete. -TS

@@ -122,6 +122,39 @@ Item {
                 imageOn:  "img/menu/btn_about_on.png"
                 onClicked: menu.aboutClicked()
             }
+
+            Row {
+                id: matchCounter
+                y: 390
+                spacing: 50
+                anchors.horizontalCenter: parent.horizontalCenter
+
+                Image {
+                    source: "img/menu/score_red.png"
+                    Text {
+                        font.pixelSize: 50
+                        text: "0"
+                        anchors.centerIn: parent
+                    }
+                }
+
+                Image {
+                    id: image1
+                    source: "img/menu/screw.png"
+                    smooth: true
+                    rotation: gearImg.rotation
+                    anchors. centerIn: parent
+                }
+
+                Image {
+                    source: "img/menu/score_blue.png"
+                    Text {
+                        font.pixelSize: 50
+                        text: "12"
+                        anchors.centerIn: parent
+                    }
+                }
+            }
         }
 
         MouseArea {
@@ -181,7 +214,7 @@ Item {
             PropertyChanges {
                 target: menu
                 width: 500
-                height: 416 + 115
+                height: 580
             }
             PropertyChanges {
                 target: mainMenuContainer
@@ -198,6 +231,12 @@ Item {
             PropertyChanges {
                 target: gear
                 anchors.bottomMargin: 0
+            }
+
+            PropertyChanges {
+                target: image1
+                anchors.verticalCenterOffset: -15
+                anchors.horizontalCenterOffset: 4
             }
         },
         State {
