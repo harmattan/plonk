@@ -3,19 +3,6 @@
         <file>qml/mong/Ball.qml</file>
         <file>qml/mong/img/background.png</file>
         <file>qml/mong/img/ball.png</file>
-        <file>qml/mong/img/marble/mong_marble_highlight.png</file>
-        <file>qml/mong/img/marble/mong_marble_orange_a.png</file>
-        <file>qml/mong/img/marble/mong_marble_orange_b.png</file>
-        <file>qml/mong/img/marble/mong_marble_orange_c.png</file>
-        <file>qml/mong/img/marble/mong_marble_orange_d.png</file>
-        <file>qml/mong/img/marble/mong_marble_orange_e.png</file>
-        <file>qml/mong/img/marble/mong_marble_orange_f.png</file>
-        <file>qml/mong/img/marble/mong_marble_orange_g.png</file>
-        <file>qml/mong/img/marble/mong_marble_orange_h.png</file>
-        <file>qml/mong/img/marble/mong_marble_orange_i.png</file>
-        <file>qml/mong/img/marble/mong_marble_orange_j.png</file>
-        <file>qml/mong/img/marble/mong_marble_orange_k.png</file>
-        <file>qml/mong/img/marble/mong_marble_orange_l.png</file>
         <file>qml/mong/img/menu/base.png</file>
         <file>qml/mong/img/menu/btn_about_off.png</file>
         <file>qml/mong/img/menu/btn_about_on.png</file>
