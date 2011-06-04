@@ -1,6 +1,6 @@
-import QtQuick 1.0
+import Qt 4.7
 
-Rectangle {
+Item {
     id: countDown
     signal triggert
     //rotation: (ball.velocityY < 0)?180:0
@@ -8,14 +8,12 @@ Rectangle {
     property int seconds: defaultSeconds
     height: 200
     width: 200
-    color: "lightblue"
     opacity: 0.8
-    radius: 20
     anchors.centerIn: parent
 
-    Text {
-        text: innerTimer.running ? countDown.seconds : 'GO!'
-        font.pixelSize: innerTimer.running ? 150 : 100
+    Image {
+        id: countImg
+        source: innerTimer.running ? "img/countdown/"+countDown.seconds+".png" : "img/countdown/go.png"
         anchors.centerIn: parent
     }
 

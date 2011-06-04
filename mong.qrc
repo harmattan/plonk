@@ -43,5 +43,9 @@
         <file>qml/mong/img/menu/gear.png</file>
         <file>qml/mong/img/menu/gear_shadow.png</file>
         <file>qml/mong/Countdown.qml</file>
+        <file>qml/mong/img/countdown/1.png</file>
+        <file>qml/mong/img/countdown/2.png</file>
+        <file>qml/mong/img/countdown/3.png</file>
+        <file>qml/mong/img/countdown/go.png</file>
     </qresource>
 </RCC>
