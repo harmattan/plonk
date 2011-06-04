@@ -16,3 +16,6 @@ until a user presses the button
 
 * Collision detection of ball seems to happen on the left side of the ball. Make sure that always the outer border (left and right) is used for collision detection
 
+* Gears on paddle should only rotate if paddle is expanding/shrinking.
+
+
