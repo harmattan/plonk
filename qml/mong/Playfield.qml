@@ -17,7 +17,7 @@
  */
 
 import Qt 4.7
-import com.meego 1.0
+//import com.meego 1.0
 
 Image {
     id: playfield
@@ -132,7 +132,6 @@ Image {
             x: (playfield.width / 2) - (paddle1.width / 2)
             beamColor: "red"
             anchors.bottom: parent.bottom
-            animationActive: gameOn
         }
 
         MongTouchArea {
@@ -157,7 +156,6 @@ Image {
             beamColor: "blue"
             rotated: true
             anchors.top: parent.top
-            animationActive: gameOn
         }
 
         MongTouchArea {
