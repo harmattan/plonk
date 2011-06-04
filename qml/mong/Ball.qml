@@ -53,9 +53,9 @@ Item {
         if (x < 0) {
             velocityX *= -1
             x = 0
-        } else if (x > playfield.width) {
+        } else if (x > playfield.width - ball.width) {
             velocityX *= -1
-            x = playfield.width
+            x = playfield.width - ball.width
         }
     }
 
