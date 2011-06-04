@@ -1,10 +1,6 @@
 * At the end of a game, "Blue wins" or "Red wins" should be displayed
 until a user presses the button 
 
-* Display the number of won matches on the main menu
-  * Pushed overlays to go on a 'stretched' menu panel (see prototype in src/art/proto). -TS
-  * Implemented graphics. Still needs logic. -CH
-
 * Reset gear needs to retract a little further into the panel so that it can't be seen.
 
 * Add 'Exit' button
