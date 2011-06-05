@@ -78,6 +78,8 @@ Item {
                     easing.type: Easing.OutQuad
                 }
 
+                ScriptAction { script: scoreboard.animate = false }
+
                 ScriptAction {
                     script: scoreboard.animatePaddleLoss()
                 }
@@ -86,6 +88,8 @@ Item {
                     // do nothing
                     duration: 1500
                 }
+
+                ScriptAction { script: scoreboard.animate = true }
 
                 PropertyAnimation {
                     target: scoreboard
