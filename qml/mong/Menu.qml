@@ -96,14 +96,22 @@ Item {
         Item {
             id: mainMenuContainer
             anchors.fill: parent
+            anchors.topMargin: 30
 
             Behavior on opacity { PropertyAnimation { } }
+
+            MenuButton {
+                id: powerButton
+                anchors.horizontalCenter: parent.horizontalCenter
+                imageOff: "img/menu/btn_power_on.png"
+                imageOn: "img/menu/btn_power_off.png"
+                onClicked: Qt.quit()
+            }
 
             Image {
                 id: imageTitle
                 anchors.horizontalCenter: parent.horizontalCenter
-                anchors.top: parent.top
-                anchors.topMargin: 40
+                y: 40
                 source: "img/menu/title.png"
                 transformOrigin: Item.Top
                 Behavior on scale { PropertyAnimation { } }
@@ -112,7 +120,7 @@ Item {
             MenuButton {
                 id: playButton
                 anchors.horizontalCenter: parent.horizontalCenter
-                y: 181
+                y: 190
                 imageOff: "img/menu/btn_play_off.png"
                 imageOn:  "img/menu/btn_play_on.png"
                 onClicked: menu.playClicked()
@@ -121,7 +129,7 @@ Item {
             MenuButton {
                 id: aboutButton
                 anchors.horizontalCenter: parent.horizontalCenter
-                y: 281
+                y: 290
                 imageOff: "img/menu/btn_about_off.png"
                 imageOn:  "img/menu/btn_about_on.png"
                 onClicked: menu.aboutClicked()
@@ -210,10 +218,13 @@ Item {
             PropertyChanges {
                 target: menu
                 width: 500
-                height: 580
+                height: 640
             }
             PropertyChanges {
                 target: mainMenuContainer
+                width: 500
+                height: 600
+                anchors.bottomMargin: -24
                 opacity: 1
             }
             PropertyChanges {
@@ -227,6 +238,41 @@ Item {
             PropertyChanges {
                 target: gear
                 anchors.bottomMargin: 0
+            }
+
+            PropertyChanges {
+                target: imageTitle
+                x: 57
+                y: 91
+                anchors.horizontalCenterOffset: 0
+            }
+
+            PropertyChanges {
+                target: playButton
+                x: 72
+                y: 220
+                anchors.horizontalCenterOffset: 1
+            }
+
+            PropertyChanges {
+                target: aboutButton
+                x: 73
+                y: 321
+                anchors.horizontalCenterOffset: 1
+            }
+
+            PropertyChanges {
+                target: background
+                width: 500
+                height: 540
+                anchors.bottomMargin: 85
+            }
+
+            PropertyChanges {
+                target: matchCounter
+                x: 124
+                y: 415
+                anchors.horizontalCenterOffset: 1
             }
         },
         State {
@@ -251,6 +297,14 @@ Item {
             PropertyChanges {
                 target: gear
                 anchors.bottomMargin: 115
+            }
+
+            PropertyChanges {
+                target: imageTitleAbout
+                x: 196
+                y: 119
+                anchors.topMargin: 119
+                anchors.horizontalCenterOffset: 1
             }
         }
     ]
