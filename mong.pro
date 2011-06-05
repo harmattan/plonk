@@ -33,15 +33,18 @@ unix {
     PREFIX = /usr
   }
 
-  BINDIR = $$PREFIX/bin
+  # MeeGo packaging and compliance guidelines
+  # see http://appdeveloper.intel.com/en-us/article/meego-packaging-and-compliance-guidelines
+  MEEGODIR = /opt/com.thpinfo.mong
+
   DATADIR = $$PREFIX/share
 
-  target.path = $$BINDIR
+  target.path = $$MEEGODIR
 
   desktop.path = $$DATADIR/applications
   desktop.files = mong.desktop
 
-  icon.path = $$DATADIR/mong
+  icon.path = $$MEEGODIR
   icon.files = mong.png
 
   INSTALLS += target icon desktop

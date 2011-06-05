@@ -1,9 +1,10 @@
 [Desktop Entry]
 Encoding=UTF-8
 Version=1.0
-Type=Application
-Terminal=false
 Name=Mong
-Exec=/usr/bin/mong
-Icon=/usr/share/mong/mong.png
+Comment=Multi-touch, two-player pong game for MeeGo.
+Exec=/opt/com.thpinfo.mong/mong
+Icon=/opt/com.thpinfo.mong/mong.png
+Type=Application
 Categories=Game;SportsGame;
+Terminal=false
