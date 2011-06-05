@@ -93,18 +93,23 @@ Item {
         }
     }
 
-    Binding {
-        target: ball
-        property: "x"
-        value: parent.width / 2
-        when: !ball.active
-    }
+//    Binding {
+//        target: ball
+//        property: "x"
+//        value: parent.width / 2
+//        when: !ball.active
+//    }
 
-    Binding {
-        target: ball
-        property: "y"
-        value: parent.height / 2
-        when: !ball.active
+//    Binding {
+//        target: ball
+//        property: "y"
+//        value: parent.height / 2
+//        when: !ball.active
+//    }
+
+    function resetPosition() {
+        x = parent.width / 2
+        y = parent.height / 2
     }
 
     // Resets the ball to default values and adds

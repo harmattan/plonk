@@ -139,7 +139,7 @@ Image {
             anchors.bottom: parent.bottom
         }
 
-        MongTouchArea {
+        MongMouseArea {
             id: touchArea1
             paddle: paddle1
             anchors.fill: parent
@@ -163,7 +163,7 @@ Image {
             anchors.top: parent.top
         }
 
-        MongTouchArea {
+        MongMouseArea {
             id: touchArea2
             paddle: paddle2
             anchors.fill: parent
@@ -195,18 +195,26 @@ Image {
         height: 10
     }
 
-    function startMatch() {
-        playfield.gameOn = true
+    function reset() {
+        playfield.gameOn = false
+
+        // Put both paddles into the middle
+        paddle1.x = (playfield.width / 2) - (paddle1.width / 2)
+        paddle2.x = (playfield.width / 2) - (paddle2.width / 2)
+    }
+
+    function pauseBall() {
+        ball.active = false
+    }
+
+    function resumeBall() {
         ball.active = true
     }
 
-    function stopMatch() {
-        playfield.gameOn = false
-        ball.active = false
-    }
-
-    function pauseMatch() {
-        ball.active = false
+    function newBall() {
+        ball.resetPosition()
+        ball.resetSpeed()
+        ball.active = true
     }
 }
 

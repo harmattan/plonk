@@ -29,7 +29,10 @@ Item {
     onIsForegroundAppChanged: {
         if (!isForegroundApp) {
             /* Pause gameplay when switching to another task */
-            playfield.pauseMatch()
+            // TODO: This is currently no real pause. It just aborts the current match
+            playfield.pauseBall()
+            playfield.reset()
+            scoreboard.reset()
         }
     }
 
@@ -52,25 +55,28 @@ Item {
             opacity: 0
             anchors.centerIn: playfield
             onGameOver: {
-                playfield.stopMatch();
+                playfield.reset();
                 if (blueCount < redCount) menu.scoreRed++; else menu.scoreBlue++;
                 reset();
             }
-            onReady: countdown.start()
+            onReady: if (isForegroundApp) countdown.start()
         }
 
         Countdown {
             id: countdown
             opacity: 0
             anchors.centerIn: playfield
-            onTriggert: playfield.startMatch()
+            onTriggert: if (isForegroundApp) playfield.newBall()
         }
 
         Menu {
             id: menu
             anchors.centerIn: parent
             opacity: (playfield.gameOn || countdown.opacity == 1) ? 0 : 1
-            onPlayClicked: countdown.start()
+            onPlayClicked: {
+                playfield.gameOn = true
+                countdown.start()
+            }
         }
     }
 }
