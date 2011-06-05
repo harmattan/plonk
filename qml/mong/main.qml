@@ -45,21 +45,70 @@ Item {
 
         Playfield {
             id: playfield
-            onBallOutPlayer1: scoreboard.decreaseBlueCount()
-            onBallOutPlayer2: scoreboard.decreaseRedCount()
+            onBallOutPlayer1: {
+                scoreboard.decreaseBlueCount()
+                scoreboardAnim.start()
+            }
+            onBallOutPlayer2: {
+                scoreboard.decreaseRedCount()
+                scoreboardAnim.start()
+            }
             anchors.fill: parent
         }
 
         Scoreboard {
             id: scoreboard
-            opacity: 0
-            anchors.centerIn: playfield
-            onGameOver: {
-                playfield.reset();
-                if (blueCount < redCount) menu.scoreRed++; else menu.scoreBlue++;
-                reset();
+            opacity: 1
+            anchors.verticalCenter: playfield.verticalCenter
+            x: playfield.width
+
+            // TODO: It would be great if the rotation speed of the gears
+            // would match its x movement
+            SequentialAnimation {
+                id: scoreboardAnim
+
+                ScriptAction { script: scoreboard.animate = true }
+
+                PropertyAnimation {
+                    target: scoreboard
+                    property: "x"
+                    from: playfield.width
+                    to: playfield.width / 2 - scoreboard.width / 2
+                    duration: 1000
+                    easing.type: Easing.OutQuad
+                }
+
+                ScriptAction {
+                    script: scoreboard.animatePaddleLoss()
+                }
+
+                PropertyAnimation {
+                    // do nothing
+                    duration: 1500
+                }
+
+                PropertyAnimation {
+                    target: scoreboard
+                    property: "x"
+                    to: -scoreboard.width
+                    duration: 1000
+                    easing.type: Easing.InQuad
+                }
+
+                ScriptAction { script: scoreboard.animate = false }
+
+                ScriptAction {
+                    script: {
+                        if (scoreboard.gameOver) {
+                            playfield.reset();
+                            if (scoreboard.blueCount < scoreboard.redCount) menu.scoreRed++; else menu.scoreBlue++;
+                            scoreboard.reset();
+                        } else {
+                            if (isForegroundApp) countdown.start()
+                        }
+                    }
+                }
             }
-            onReady: if (isForegroundApp) countdown.start()
         }
 
         Countdown {

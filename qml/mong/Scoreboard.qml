@@ -21,13 +21,12 @@ import Qt 4.7
 Item {
     id: scoreboard
 
-    signal gameOver
-    signal ready
-
+    property bool animate: false
     property int blueCount: 3
     property int redCount: 3
     property int oldBlueCount: 3
     property int oldRedCount: 3
+    property bool gameOver: blueCount == 0 || redCount == 0
     property int fadeTime: 150
 
     width: base.width
@@ -45,6 +44,14 @@ Item {
         x: 0
         y: 34
         source: "img/scoreboard/gear.png"
+        smooth: true
+        RotationAnimation on rotation {
+            from: 0
+            to: 360
+            duration: 3000
+            loops: Animation.Infinite
+            running: scoreboard.animate
+        }
     }
 
     Image {
@@ -52,6 +59,14 @@ Item {
         x: 357
         y: 34
         source: "img/scoreboard/gear.png"
+        smooth: true
+        RotationAnimation on rotation {
+            from: 0
+            to: 360
+            duration: 3000
+            loops: Animation.Infinite
+            running: scoreboard.animate
+        }
     }
 
     Image {
@@ -101,73 +116,29 @@ Item {
         color: "red"
     }
 
-    SequentialAnimation {
-        id: animation
-
-        PropertyAnimation {
-            target: scoreboard
-            property: "opacity"
-            from: 0
-            to: 1
-            duration: 500
+    function animatePaddleLoss() {
+        if (redCount < oldRedCount) {
+            if (redCount == 2) scoreRed3.hidden = true
+            if (redCount == 1) scoreRed2.hidden = true
+            if (redCount == 0) scoreRed1.hidden = true
+            oldRedCount = redCount
         }
-
-        PropertyAnimation {
-            // Wait
-            duration: 500
-        }
-
-        ScriptAction {
-            // Remove red or blue score symbol
-            script: {
-                if (redCount < oldRedCount) {
-                    if (redCount == 2) scoreRed3.hidden = true
-                    if (redCount == 1) scoreRed2.hidden = true
-                    if (redCount == 0) scoreRed1.hidden = true
-                    oldRedCount = redCount
-                }
-                if (blueCount < oldBlueCount) {
-                    if (blueCount == 2) scoreBlue3.hidden = true
-                    if (blueCount == 1) scoreBlue2.hidden = true
-                    if (blueCount == 0) scoreBlue1.hidden = true
-                    oldBlueCount = blueCount
-                }
-            }
-        }
-
-        PropertyAnimation {
-            // Just wait some time and do nothing
-            duration: 2000
-        }
-
-        PropertyAnimation {
-            target: scoreboard
-            property: "opacity"
-            from: 1
-            to: 0
-            duration: 300
-        }
-
-        ScriptAction {
-            // Signal ready() if paddles left. gameOver() if not
-            script: {
-                if (blueCount == 0 || redCount == 0) {
-                    scoreboard.gameOver();
-                } else {
-                    scoreboard.ready()
-                }
-            }
+        if (blueCount < oldBlueCount) {
+            if (blueCount == 2) scoreBlue3.hidden = true
+            if (blueCount == 1) scoreBlue2.hidden = true
+            if (blueCount == 0) scoreBlue1.hidden = true
+            oldBlueCount = blueCount
         }
     }
 
     function decreaseRedCount() {
         scoreboard.redCount--;
-        animation.start();
+        //animation.start();
     }
 
     function decreaseBlueCount() {
         scoreboard.blueCount--;
-        animation.start();
+        //animation.start();
     }
 
     function reset() {
