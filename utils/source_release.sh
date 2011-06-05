@@ -5,11 +5,14 @@ if [ ! -f mong.spec ]; then
     exit 1
 fi
 
+NAME=`cat mong.spec | grep ^Name: | cut -d: -f2 | tr -d ' '`
 VERSION=`cat mong.spec | grep ^Version: | cut -d: -f2`
 
 echo -n "Building tarball for version $VERSION..."
 
-git archive --prefix=mong-$VERSION/ --format=tar master | gzip >mong-$VERSION.tar.gz
+DIRNAME="$NAME-$VERSION"
+
+git archive --prefix=$DIRNAME/ --format=tar master | gzip >$DIRNAME.tar.gz
 
 echo "done."
 
