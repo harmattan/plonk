@@ -104,7 +104,7 @@ Item {
                             if (scoreboard.blueCount < scoreboard.redCount) menu.scoreRed++; else menu.scoreBlue++;
                             scoreboard.reset();
                         } else {
-                            if (isForegroundApp) countdown.start()
+                            if (container.isForegroundApp) countdown.start()
                         }
                     }
                 }
@@ -115,7 +115,7 @@ Item {
             id: countdown
             opacity: 0
             anchors.centerIn: playfield
-            onTriggert: if (isForegroundApp) playfield.newBall()
+            onTriggert: if (container.isForegroundApp) playfield.newBall()
         }
 
         Menu {

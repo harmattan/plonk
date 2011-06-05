@@ -84,7 +84,7 @@ Image {
                     ballObj.y > (paddlePos.y - ballObj.height)) {
                     /* vertical collision */
                     ballObj.velocityY *= -1
-                    ballObj.velocityY *= (1.35 - (1-accuracy))
+                    ballObj.velocityY *= (1.4 - (1-accuracy))
                     ballObj.velocityX += 2 * direction * (1-accuracy)
                     ballObj.y = (paddlePos.y + paddleObj.beamHeight)
                     paddleObj.glow()
@@ -94,7 +94,7 @@ Image {
                 if (ballObj.y > (paddlePos.y - ballObj.height) &&
                     ballObj.y < (paddlePos.y + paddleObj.beamHeight)) {
                     ballObj.velocityY *= -1
-                    ballObj.velocityY *= (1.35 - (1-accuracy))
+                    ballObj.velocityY *= (1.4 - (1-accuracy))
                     ballObj.velocityX += 2 * direction * (1-accuracy)
                     ballObj.y = (paddlePos.y - ballObj.height)
                     paddleObj.glow()
@@ -104,7 +104,7 @@ Image {
         }
 
         /* Make sure the ball isn't too slow */
-        while (Math.abs(ballObj.velocityY) < 8) {
+        while (Math.abs(ballObj.velocityY) < 10) {
             ballObj.velocityY *= 1.2
         }
 
@@ -139,7 +139,7 @@ Image {
             anchors.bottom: parent.bottom
         }
 
-        MongMouseArea {
+        MongTouchArea {
             id: touchArea1
             paddle: paddle1
             anchors.fill: parent
@@ -163,7 +163,7 @@ Image {
             anchors.top: parent.top
         }
 
-        MongMouseArea {
+        MongTouchArea {
             id: touchArea2
             paddle: paddle2
             anchors.fill: parent
