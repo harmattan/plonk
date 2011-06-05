@@ -49,6 +49,7 @@
         <file>qml/mong/img/countdown/go.png</file>
         <file>qml/mong/img/menu/score_blue.png</file>
         <file>qml/mong/img/menu/score_red.png</file>
-        <file>qml/mong/img/menu/screw.png</file>
+        <file>qml/mong/img/menu/btn_power_off.png</file>
+        <file>qml/mong/img/menu/btn_power_on.png</file>
     </qresource>
 </RCC>
