@@ -1,16 +1,9 @@
-* At the end of a game, "Blue wins" or "Red wins" should be displayed
-  until a user presses the button 
- * IMO not that important -CH
- * I agree with Conny. -TS
+== Version 1.0 (Monday 6th June) ==
+* Fix the menu to make it nice looking again. Power button needs to be there as well.
+* Everything from 'Next Version' if possible :)
 
+== Next Version ==
 * Reset gear needs to retract a little further into the panel so that it can't be seen.
-
-* Add 'Exit' button
- * Art pushed (and explained via email). -TS
-
-* Reset ball speed after a player scored
-
-* Scoreboard should fly in from the side (left or right doesn't matter), with gears turning. Then, pause it a second (gears stopped) for the particle animation. Then, fly it off to the other side with gears turning again.
 
 * In hopes that it won't get lost in the noise... I think we should go back to
   the larger logo for the About screen. I was expecting the screen to "grow"
@@ -24,8 +17,12 @@
  * If it is a "power" zone, then when the gauge gets to the top, the gears can start turning, indicating that the player has more "power."
 
 * Countdown: The "3" appears to be a few pixels higher than the other numbers. Maybe my eyes are playing tricks, though.
+ * That a problem with the artwork. I'm just showing the images as they are. -CH
 
 * Implement "Level" modes (art already pushed).
 
-
+* At the end of a game, "Blue wins" or "Red wins" should be displayed
+  until a user presses the button 
+ * IMO not that important -CH
+ * I agree with Conny. -TS
 
