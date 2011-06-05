@@ -26,8 +26,11 @@ Item {
 
     property bool active: false
 
-    property real velocityX: 10
+    property real velocityX: 8
     property real velocityY: 15
+
+    property real defaultVelocityX: 8
+    property real defaultVelocityY: 15
 
     property int lastMilliseconds: mongView.currentTimeMillis()
 
@@ -42,11 +45,13 @@ Item {
             velocityY *= -1
             y = 0
             ball.ballOutPlayer1()
+            resetSpeed()
             ball.active = false
         } else if (y > playfield.height) {
             velocityY *= -1
             y = playfield.height
             ball.ballOutPlayer2()
+            resetSpeed()
             ball.active = false
         }
 
@@ -100,6 +105,15 @@ Item {
         property: "y"
         value: parent.height / 2
         when: !ball.active
+    }
+
+    // Resets the ball to default values and adds
+    // a random effect to make it less predictable
+    function resetSpeed() {
+        var randX = Math.random() > 0.5 ? 1 : -1
+        var randY = Math.random() > 0.5 ? 1 : -1
+        velocityX = defaultVelocityX * randX
+        velocityY = defaultVelocityY * randY
     }
 
 }
