@@ -58,6 +58,8 @@ int main(int argc, char *argv[])
     view.setResizeMode(QDeclarativeView::SizeRootObjectToView);
     view.showFullScreen();
 
+    QObject::connect(view.engine(), SIGNAL(quit()), &app, SLOT(quit()));
+
     return app.exec();
 }
 
