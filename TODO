@@ -1,5 +1,7 @@
 == Version 1.0 (Monday 6th June) ==
-* Fix the menu to make it nice looking again. Power button needs to be there as well.
+* Fix the menu to make it nice looking again.
+ * Power button needs to be there as well.
+  * Make power button actually quit the app (it currently just sends it to the background)
 * Everything from 'Next Version' if possible :)
 
 == Next Version ==
@@ -7,21 +9,18 @@
 
 * Reset gear needs to retract a little further into the panel so that it can't be seen.
 
-* In hopes that it won't get lost in the noise... I think we should go back to
-  the larger logo for the About screen. I was expecting the screen to "grow"
-  for the About screen and after seeing it thought that the larger logo worked
-  great.  (+ remove the small logo from the qrc + qml dir to save some space)
+* Go back to the larger logo for the About screen.
+ * Remove the small logo from the qrc + qml dir to save some space
 
 * Fine-tune ball speed to make it more fun
+ * Implement "Level" modes (art already pushed).
 
 * Add power zone to the center of the paddle. If ball hits power zone, gauge increases.
- * Is this a "power" zone or, is the paddle going to grow when the gauge gets to the top? We need to decide on this.
- * If it is a "power" zone, then when the gauge gets to the top, the gears can start turning, indicating that the player has more "power."
+ * When the gauge gets to the top, the paddle grows (and gears turn). Paddle stays long for several seconds, as the gauge decreases back to 0, when the paddle shrinks (and the gears move).
 
 * Countdown: The "3" appears to be a few pixels higher than the other numbers. Maybe my eyes are playing tricks, though.
  * That a problem with the artwork. I'm just showing the images as they are. -CH
-
-* Implement "Level" modes (art already pushed).
+ * Weird. I check the art and the numbers align just fine. I'll check again. -TS
 
 * At the end of a game, "Blue wins" or "Red wins" should be displayed
   until a user presses the button 
