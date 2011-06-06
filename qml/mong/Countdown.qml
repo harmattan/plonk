@@ -3,13 +3,15 @@ import Qt 4.7
 Item {
     id: countDown
     signal triggert
-    //rotation: (ball.velocityY < 0)?180:0
     property int defaultSeconds: 3
     property int seconds: defaultSeconds
     height: 200
     width: 200
     opacity: 0.8
     anchors.centerIn: parent
+
+    function faceToPlayer1() { rotation = 0 }
+    function faceToPlayer2() { rotation = 180 }
 
     Image {
         id: countImg

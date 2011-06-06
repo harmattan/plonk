@@ -48,10 +48,12 @@ Item {
             onBallOutPlayer1: {
                 scoreboard.decreaseBlueCount()
                 scoreboardAnim.start()
+                countdown.faceToPlayer1()
             }
             onBallOutPlayer2: {
                 scoreboard.decreaseRedCount()
                 scoreboardAnim.start()
+                countdown.faceToPlayer2()
             }
             anchors.fill: parent
         }
