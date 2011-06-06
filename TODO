@@ -2,6 +2,7 @@
 * Fix the menu to make it nice looking again.
  * Power button needs to be there as well.
   * Make power button actually quit the app (it currently just sends it to the background)
+* Make puck spin based on angle…?
 * Everything from 'Next Version' if possible :)
 
 == Next Version ==
