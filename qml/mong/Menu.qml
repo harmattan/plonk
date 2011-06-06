@@ -79,19 +79,11 @@ Item {
         }
     }
 
-    BorderImage {
+    MenuBackground {
         id: background
 
-        source: "img/menu/base.png"
         anchors.fill: parent
         anchors.bottomMargin: 115
-
-        border {
-            left: 100
-            top: 100
-            right: 100
-            bottom: 100
-        }
 
         Item {
             id: mainMenuContainer

@@ -51,5 +51,8 @@
         <file>qml/mong/img/menu/score_red.png</file>
         <file>qml/mong/img/menu/btn_power_off.png</file>
         <file>qml/mong/img/menu/btn_power_on.png</file>
+        <file>qml/mong/MenuBackground.qml</file>
+        <file>qml/mong/img/menu/base_top.png</file>
+        <file>qml/mong/img/menu/base_top_shadow.png</file>
     </qresource>
 </RCC>
