@@ -77,6 +77,8 @@ Item {
         }
 
         onTriggered: {
+            var oldX = ball.x
+            var oldY = ball.y
             var now = mongView.currentTimeMillis()
             var diff = now - ball.lastMilliseconds
             var xdiff = ball.velocityX * diff / 16
@@ -88,8 +90,8 @@ Item {
             ball.y += ydiff
             ball.checkBorderCollision()
 
-            playfield.collisionCheck(paddle1, ball, false)
-            playfield.collisionCheck(paddle2, ball, true)
+            playfield.collisionCheck(paddle1, ball, oldX, oldY, false)
+            playfield.collisionCheck(paddle2, ball, oldX, oldY, true)
         }
     }
 

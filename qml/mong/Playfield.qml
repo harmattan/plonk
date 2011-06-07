@@ -40,7 +40,7 @@ Image {
 
     source: "img/background.png"
 
-    function collisionCheck(paddleObj, ballObj, isTop) {
+    function collisionCheck(paddleObj, ballObj, oldX, oldY, isTop) {
         var paddlePos = playfield.mapFromItem(paddleObj, paddleObj.beamX, paddleObj.beamY)
         var ballPos = playfield.mapFromItem(ballObj, 0, 0)
 
@@ -50,7 +50,28 @@ Image {
             paddlePos.y -= paddleObj.beamHeight
         }
 
+        var px1 = paddlePos.x
+        var px2 = paddlePos.x + paddleObj.beamWidth
+        var py = paddlePos.y + paddleObj.beamHeight
+        var bx1 = oldX
+        var by1 = oldY
+        var bx2 = ballPos.x
+        var by2 = ballPos.y
+
+        var intersectionPoint = mongView.intersectBallPath(px1, py, px2, py, bx1, by1, bx2, by2)
+
+        /**
+         * FIXME: If intersectionPoint.x != -1 and intersectionPoint.y != -1, then
+         * a collision has occurred at exactly this point. Move the ball there and
+         * reverse its speed, etc..
+         **/
+
         if (playfield.collisionDebug) {
+            /* Debug the position of the intersection point (ball / paddle) */
+            if (intersectionPoint.x != -1 && intersectionPoint.y != -1) {
+                console.log('ISP: ' + intersectionPoint.x + '/' + intersectionPoint.y)
+            }
+
             var dbgPaddle = dbgPaddle1
             if (isTop) {
                 dbgPaddle = dbgPaddle2

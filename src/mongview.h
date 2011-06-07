@@ -69,6 +69,26 @@ public:
         return (now.tv_sec*1000 + now.tv_usec/1000);
     }
 
+    Q_INVOKABLE
+    QPointF intersectBallPath(float paddleX1, float paddleY1,
+                              float paddleX2, float paddleY2,
+                              float ballOldX, float ballOldY,
+                              float ballNewX, float ballNewY) {
+        /* Check if (and where) the ball hit the paddle since the last step */
+        QLineF paddleLine = QLineF(paddleX1, paddleY1, paddleX2, paddleY2);
+        QLineF ballLine = QLineF(ballOldX, ballOldY, ballNewX, ballNewY);
+        QPointF intersectionPoint;
+        QLineF::IntersectType intersectionType;
+
+        intersectionType = paddleLine.intersect(ballLine, &intersectionPoint);
+
+        if (intersectionType == QLineF::BoundedIntersection) {
+            return intersectionPoint;
+        }
+
+        return QPointF(-1, -1);
+    }
+
 private:
     bool _active;
 
