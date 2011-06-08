@@ -26,10 +26,10 @@ Item {
 
     property bool active: false
 
-    property real velocityX: 8
-    property real velocityY: 15
+    property real velocityX: 0
+    property real velocityY: 0
 
-    property real defaultVelocityX: 8
+    property real defaultVelocityX: 12
     property real defaultVelocityY: 15
 
     property int lastMilliseconds: mongView.currentTimeMillis()
@@ -95,20 +95,7 @@ Item {
         }
     }
 
-//    Binding {
-//        target: ball
-//        property: "x"
-//        value: parent.width / 2
-//        when: !ball.active
-//    }
-
-//    Binding {
-//        target: ball
-//        property: "y"
-//        value: parent.height / 2
-//        when: !ball.active
-//    }
-
+    // Set ball in the middle of the playing field
     function resetPosition() {
         x = parent.width / 2
         y = parent.height / 2
@@ -117,10 +104,14 @@ Item {
     // Resets the ball to default values and adds
     // a random effect to make it less predictable
     function resetSpeed() {
-        var randX = Math.random() > 0.5 ? 1 : -1
-        var randY = Math.random() > 0.5 ? 1 : -1
-        velocityX = defaultVelocityX * randX
-        velocityY = defaultVelocityY * randY
+        // Value between +/- defaultVelocityX -> Defines the angle
+        var rand = Math.floor(Math.random() * defaultVelocityX + 1)
+
+        // Randomly left or right -> Defines the direction
+        velocityX = rand * Math.random() > 0.5 ? 1 : -1
+
+        // Rest to default velocity, but keep the direction
+        velocityY = velocityY > 0 ? defaultVelocityY : defaultVelocityY * -1
     }
 
 }
