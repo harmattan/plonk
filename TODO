@@ -1,10 +1,12 @@
 == Version 1.0 (Monday 6th June) ==
 * Make power button actually quit the app (it currently just sends it to the background)
 * Make puck spin based on angle…?
+ * Are we doing this, or should the puck just stay static? If it spins, the "logo" will be unreadable; I have sort of been enjoying it as a static element. -TS
 * Everything from 'Next Version' if possible :)
 
 == Next Version ==
 * Add more sounds. Paddle explosion. Bouncing of the walls. More?
+ * Do I need to get some sounds for these elements? Or, are there enough from what was recorded in SF? -TS
 
 * Reset gear needs to retract a little further into the panel so that it can't be seen.
 
