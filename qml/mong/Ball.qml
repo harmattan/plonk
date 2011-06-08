@@ -108,7 +108,7 @@ Item {
         var rand = Math.floor(Math.random() * defaultVelocityX + 1)
 
         // Randomly left or right -> Defines the direction
-        velocityX = rand * Math.random() > 0.5 ? 1 : -1
+        velocityX = rand * (Math.random() > 0.5 ? 1 : -1)
 
         // Rest to default velocity, but keep the direction
         velocityY = velocityY > 0 ? defaultVelocityY : defaultVelocityY * -1
