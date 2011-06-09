@@ -8,7 +8,7 @@
 #AutoReqProv: no
 
 Name:           com.thpinfo.mong
-Version:1.0.1
+Version:1.0.2
 Release:        1
 License:        GPLv3 or later
 Summary:        A multi-touch pong-like game for two players

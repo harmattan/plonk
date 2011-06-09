@@ -25,8 +25,14 @@ SOURCES += src/qdeclarativetoucharea.cpp
 HEADERS += src/qdeclarativetoucharea.h
 
 HEADERS += src/mongview.h
+HEADERS += src/config.h
 
 RESOURCES += mong.qrc
+
+release.target = release
+release.commands = sh utils/source_release.sh release
+
+QMAKE_EXTRA_TARGETS += release
 
 unix {
   isEmpty(PREFIX) {

@@ -5,3 +5,13 @@ Dependencies:
  * Qt Mobility >= 1.1 Declarative Plugins
  * Qt Declarative Particles Plugin (libqt4-declarative-particles)
 
+Creating a new release:
+
+ 1.) Hack, hack, hack
+ 2.) Update version in src/config.h
+ 3.) Run "make release" (to update specfiles, etc..)
+ 4.) Commit everything, tag using "git tag 1.0.x"
+ 5.) Push stuff: git push ; git push --tags
+ 6.) Run "make release" again
+ 7.) Upload mong.spec + the source tarball to the OBS
+

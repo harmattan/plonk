@@ -24,6 +24,8 @@
 
 #include <sys/time.h>
 
+#include "config.h"
+
 class MongView : public QDeclarativeView
 {
     Q_OBJECT
@@ -33,6 +35,10 @@ public:
         /* Expose our QDeclarativeView as 'mongView' to QML */
         rootContext()->setContextProperty("mongView", this);
     }
+
+    QString version() { return MONG_VERSION; }
+
+    Q_PROPERTY(QString version READ version NOTIFY versionChanged)
 
     bool active() { return _active; }
 
@@ -94,6 +100,7 @@ private:
 
 signals:
     void activeChanged();
+    void versionChanged(); /* Should never be emitted ;) */
 
 };
 
