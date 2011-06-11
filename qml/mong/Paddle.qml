@@ -100,7 +100,7 @@ Item {
         }
     }
 
-    Behavior on x {
+    Behavior on anchors.horizontalCenterOffset {
         NumberAnimation { duration: 50 }
     }
 
@@ -110,11 +110,6 @@ Item {
 
     function growPaddle() {
         paddle.width += 20
-    }
-
-    MouseArea {
-        anchors.fill: parent
-        onClicked: growPaddle()
     }
 
 }

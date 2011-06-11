@@ -45,7 +45,7 @@ TouchArea {
                 if (touchArea.paddleTouched && touchArea.enabled) {
                     var newX = touchPoint.x - touchArea.offsetXStart
                     if (Math.abs(newX - touchArea.paddle.x) > 3) {
-                        touchArea.paddle.x = newX
+                        touchArea.paddle.anchors.horizontalCenterOffset = newX - touchArea.width / 2
                     }
                 }
             }
@@ -54,8 +54,8 @@ TouchArea {
 
     onTouchStart: {
         if (touchArea.paddle.x < touchPoint.x &&
-            touchPoint.x < touchArea.paddle.x + touchArea.paddle.width) {
-            touchArea.offsetXStart = touchPoint.x - touchArea.paddle.x
+                touchPoint.x < touchArea.paddle.x + touchArea.paddle.width) {
+            touchArea.offsetXStart = touchPoint.x - (touchArea.paddle.x + touchArea.paddle.width / 2)
             touchArea.paddleTouched = true
         }
     }
