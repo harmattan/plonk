@@ -14,8 +14,6 @@
 * Add more sounds. Paddle explosion. Bouncing of the walls. More?
  * Do I need to get some sounds for these elements? Or, are there enough from what was recorded in SF? -TS
 
-* Reset gear needs to retract a little further into the panel so that it can't be seen.
-
 * Go back to the larger logo for the About screen.
  * Remove the small logo from the qrc + qml dir to save some space
 

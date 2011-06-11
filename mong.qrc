@@ -54,5 +54,6 @@
         <file>qml/mong/MenuBackground.qml</file>
         <file>qml/mong/img/menu/base_top.png</file>
         <file>qml/mong/img/menu/base_top_shadow.png</file>
+        <file>qml/mong/MenuGear.qml</file>
     </qresource>
 </RCC>

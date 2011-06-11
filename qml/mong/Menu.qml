@@ -25,57 +25,14 @@ Item {
     property int scoreRed: 0
     property int scoreBlue: 0
 
-    Item {
+    MenuGear {
         id: gear
-        height: gearImg.height
-        width: gearImg.width
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter
         Behavior on anchors.bottomMargin { PropertyAnimation { duration: 500 } }
-
-        Image {
-            id: gearImg
-            source: "img/menu/gear_shadow.png"
-            smooth: true
-            anchors.centerIn: parent
-
-            Image {
-                source: "img/menu/gear.png"
-                smooth: true
-                anchors.centerIn: parent
-            }
-
-            PropertyAnimation {
-                id: gearAnim
-                target: gearImg
-                property: "rotation"
-                from: gearImg.rotation
-                to: 0
-                duration: 500;
-                easing.type: Easing.OutBounce
-            }
-
-            onRotationChanged: {
-                if (gearImg.rotation > 65) {
-                    gearAnim.start()
-                    menu.scoreBlue = 0
-                    menu.scoreRed = 0
-                }
-            }
-        }
-
-        MouseArea {
-            property int oldX
-            anchors.fill: parent
-            onMousePositionChanged: {
-                if (mouseX < oldX) {
-                    gearImg.rotation++
-                }
-                oldX = mouseX
-            }
-            onReleased: {
-                gearAnim.start()
-            }
+        onResetScore: {
+            scoreRed = 0
+            scoreBlue = 0
         }
     }
 
@@ -288,7 +245,7 @@ Item {
             }
             PropertyChanges {
                 target: gear
-                anchors.bottomMargin: 115
+                anchors.bottomMargin: 130
             }
 
             PropertyChanges {
