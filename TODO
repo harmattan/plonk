@@ -13,6 +13,7 @@
 
 * Add more sounds. Paddle explosion. Bouncing of the walls. More?
  * Do I need to get some sounds for these elements? Or, are there enough from what was recorded in SF? -TS
+  * If you could get those sounds, it would be great. I think we're already using all MeeGoConf sounds. -CH
 
 * Go back to the larger logo for the About screen.
  * Remove the small logo from the qrc + qml dir to save some space
