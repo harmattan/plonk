@@ -2,7 +2,7 @@ import Qt 4.7
 
 Item {
     id: container
-    property alias animationActive: animation.running
+    property bool animationActive: true
     width: baseImg.width
     height: baseImg.height
 
@@ -17,6 +17,7 @@ Item {
 
         RotationAnimation on rotation {
             id: animation
+            running: animationActive
             loops: Animation.Infinite
             from: 0
             to: 360

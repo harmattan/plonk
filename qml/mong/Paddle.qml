@@ -25,8 +25,7 @@ Item {
     property bool rotated: false
     property color beamColor: "red"
     property color beamHighlightColor: "yellow"
-
-    property alias beamX: beam.x
+    property int beamX: mapFromItem(container, beamX, 0).x
     property alias beamY: beam.y
     property alias beamWidth: beam.width
     property alias beamHeight: beam.height
@@ -36,54 +35,69 @@ Item {
 
     rotation: rotated ? 180 : 0
 
-    Rectangle {
-        id: beam
-        color: beamColor
-        height: 16
-        y: 21
-        anchors.left: paddleLeft.left
-        anchors.leftMargin: 15
-        anchors.right: paddleRight.right
-        anchors.rightMargin: 15
+    Item {
+        // This container is there to let the paddle grow from the center. Therefore we
+        // place the middle piece exactly onto x=0 and left the left piece grow into negativ x-values
+        // and the right piece into positive x-values.
+        id: container
+        y: 0
+        anchors.horizontalCenter: parent.horizontalCenter
 
-        SequentialAnimation {
-            id: lightUp
+        Rectangle {
+            id: beam
+            color: beamColor
+            height: 16
+            y: 21
+            anchors.left: paddleLeft.left
+            anchors.leftMargin: 15
+            anchors.right: paddleRight.right
+            anchors.rightMargin: 15
 
-            ColorAnimation {
-                target: beam
-                property: 'color'
-                to: beamHighlightColor
-                duration: 150
-            }
+            SequentialAnimation {
+                id: lightUp
 
-            ColorAnimation {
-                target: beam
-                property: 'color'
-                to: beamColor
-                duration: 250
+                ColorAnimation {
+                    target: beam
+                    property: 'color'
+                    to: beamHighlightColor
+                    duration: 150
+                }
+
+                ColorAnimation {
+                    target: beam
+                    property: 'color'
+                    to: beamColor
+                    duration: 250
+                }
             }
         }
-    }
 
-    Image {
-        source: "img/paddle/extender.png"
-        anchors.left: paddleLeft.horizontalCenter
-        anchors.right: paddleRight.horizontalCenter
-    }
+        Image {
+            source: "img/paddle/extender.png"
+            anchors.left: paddleLeft.horizontalCenter
+            anchors.right: paddleRight.horizontalCenter
+        }
 
-    PaddleMiddle {
-        id: paddleMiddle
-        anchors.horizontalCenter: parent.horizontalCenter
-    }
+        PaddleMiddle {
+            id: paddleMiddle
+            x: 0 - width / 2
+        }
 
-    PaddleLeft {
-        id: paddleLeft
-        anchors.left: parent.left
-    }
+        PaddleLeft {
+            id: paddleLeft
+            x: -175 - ((paddle.width - 350) / 2)
+            Behavior on x {
+                PropertyAnimation { duration: 300; easing.type: Easing.OutQuad }
+            }
+        }
 
-    PaddleRight {
-        id: paddleRight
-        anchors.right: parent.right
+        PaddleRight {
+            id: paddleRight
+            x: (175 - width) + ((paddle.width - 350) / 2)
+            Behavior on x {
+                PropertyAnimation { duration: 300; easing.type: Easing.OutQuad }
+            }
+        }
     }
 
     Behavior on x {
@@ -95,13 +109,12 @@ Item {
     }
 
     function growPaddle() {
-        paddle.width = 400
+        paddle.width += 20
     }
 
     MouseArea {
         anchors.fill: parent
         onClicked: growPaddle()
     }
-
 
 }
