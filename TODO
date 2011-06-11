@@ -25,8 +25,5 @@
 * Add power zone to the center of the paddle. If ball hits power zone, gauge increases.
  * When the gauge gets to the top, the paddle grows (and gears turn). Paddle stays long for several seconds, as the gauge decreases back to 0, when the paddle shrinks (and the gears move).
 
-* At the end of a game, "Blue wins" or "Red wins" should be displayed
-  until a user presses the button 
- * IMO not that important -CH
- * I agree with Conny. -TS
+* Add support for keyboard input ("Netbook Edition")
 
