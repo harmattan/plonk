@@ -74,6 +74,7 @@ Item {
 
         Image {
             source: "img/paddle/extender.png"
+            fillMode: Image.TileHorizontally
             anchors.left: paddleLeft.horizontalCenter
             anchors.right: paddleRight.horizontalCenter
         }
