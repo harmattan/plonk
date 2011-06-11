@@ -18,6 +18,7 @@
 
 import Qt 4.7
 
+
 Item {
     id: paddle
     property bool animationActive: false
@@ -64,9 +65,11 @@ Item {
         }
     }
 
-//    Image {
-//        source: "img/paddle/extender.png"
-//    }
+    Image {
+        source: "img/paddle/extender.png"
+        anchors.left: paddleLeft.horizontalCenter
+        anchors.right: paddleRight.horizontalCenter
+    }
 
     PaddleMiddle {
         id: paddleMiddle
