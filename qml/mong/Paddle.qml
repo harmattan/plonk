@@ -87,7 +87,13 @@ Item {
             id: paddleLeft
             x: -175 - ((paddle.width - 350) / 2)
             Behavior on x {
-                PropertyAnimation { duration: 300; easing.type: Easing.OutQuad }
+                SequentialAnimation {
+                    ScriptAction { script: paddleLeft.animationActive = true }
+                    PropertyAnimation { target: paddle;  duration: 500 } // Dummy, just wait
+                    PropertyAnimation { duration: 300; easing.type: Easing.OutQuad }
+                    PropertyAnimation { target: paddle;  duration: 500 } // Dummy, just wait
+                    ScriptAction { script: paddleLeft.animationActive = false }
+                }
             }
         }
 
@@ -95,7 +101,13 @@ Item {
             id: paddleRight
             x: (175 - width) + ((paddle.width - 350) / 2)
             Behavior on x {
-                PropertyAnimation { duration: 300; easing.type: Easing.OutQuad }
+                SequentialAnimation {
+                    ScriptAction { script: paddleRight.animationActive = true }
+                    PropertyAnimation { target: paddle;  duration: 500 } // Dummy, just wait
+                    PropertyAnimation { duration: 300; easing.type: Easing.OutQuad }
+                    PropertyAnimation { target: paddle;  duration: 500 } // Dummy, just wait
+                    ScriptAction { script: paddleRight.animationActive = false }
+                }
             }
         }
     }
@@ -110,6 +122,11 @@ Item {
 
     function growPaddle() {
         paddle.width += 20
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        onClicked: paddle.width += 50
     }
 
 }

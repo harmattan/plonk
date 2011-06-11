@@ -2,7 +2,7 @@ import Qt 4.7
 
 Item {
     id: container
-    property bool animationActive: true
+    property bool animationActive: false
     width: baseImg.width
     height: baseImg.height
 
@@ -19,6 +19,7 @@ Item {
             id: animation
             running: animationActive
             loops: Animation.Infinite
+            direction: RotationAnimation.Clockwise
             from: 0
             to: 360
             duration: 3000
