@@ -2,7 +2,9 @@ import Qt 4.7
 
 Image {
     id: base
-    property int gauge: 0
+    signal gaugeMax
+    property int value: 0
+
     source: "img/paddle/paddle_middle.png"
 
     Image {
@@ -11,38 +13,26 @@ Image {
         y: 36
         source: "img/paddle/gauge.png"
         smooth: true
+        rotation: 45 - (value * 11)
 
-        // TODO: Animation is only for demonstration. Later only animate gauge increase
-        // and decrease
-        SequentialAnimation {
-            loops: Animation.Infinite
-            running: true
+        Behavior on rotation {
+            RotationAnimation { duration: 500; easing.type: Easing.OutElastic }
+        }
+    }
 
-            RotationAnimation  {
-                target: gauge
-                property: "rotation"
-                from: 0
-                to: 45
-                duration: 500
-            }
+    Timer {
+        id: timer
+        interval: 1000
+        onTriggered: {
+            gaugeMax()
+            value = 0
+        }
+    }
 
-            // Pause
-            PropertyAnimation {
-                duration: 1000
-            }
-
-            RotationAnimation  {
-                target: gauge
-                property: "rotation"
-                from: 45
-                to: 0
-                duration: 500
-            }
-
-            // Pause
-            PropertyAnimation {
-                duration: 1000
-            }
+    function increase() {
+        if (!timer.running) {
+            value++
+            if (value >= 4) timer.start()
         }
     }
 }
