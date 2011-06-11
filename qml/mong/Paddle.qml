@@ -25,100 +25,62 @@ Item {
     property color beamColor: "red"
     property color beamHighlightColor: "yellow"
 
-    property int beamX: beam.x
-    property int beamY: beam.y
-    property int beamWidth: beam.width
-    property int beamHeight: beam.height
+    property alias beamX: beam.x
+    property alias beamY: beam.y
+    property alias beamWidth: beam.width
+    property alias beamHeight: beam.height
 
-    height: base.height
-    width: base.width
+    height: 130
+    width: 350
 
     rotation: rotated ? 180 : 0
 
-    Item {
-        id: container
+    Rectangle {
+        id: beam
+        color: beamColor
+        height: 16
+        y: 21
+        anchors.left: paddleLeft.left
+        anchors.leftMargin: 15
+        anchors.right: paddleRight.right
+        anchors.rightMargin: 15
 
-        Rectangle {
-            id: beam
-            color: beamColor
-            height: 16
-            width: 300
-            x: 21
-            y: 21
+        SequentialAnimation {
+            id: lightUp
 
-            SequentialAnimation {
-                id: lightUp
-
-                ColorAnimation {
-                    target: beam
-                    property: 'color'
-                    to: beamHighlightColor
-                    duration: 150
-                }
-
-                ColorAnimation {
-                    target: beam
-                    property: 'color'
-                    to: beamColor
-                    duration: 250
-                }
-            }
-        }
-
-        Image {
-            source: "img/paddle/extender.png"
-        }
-
-        Image {
-            id: leftGear
-            source: "img/paddle/gear.png"
-
-            anchors {
-                left: parent.left
-                top: parent.top
-                leftMargin: 33
-                topMargin: 55
+            ColorAnimation {
+                target: beam
+                property: 'color'
+                to: beamHighlightColor
+                duration: 150
             }
 
-            // TODO: Only animate when moving/expanding/shrinking
-            RotationAnimation on rotation {
-                running: paddle.animationActive
-                loops: Animation.Infinite
-                from: 0
-                to: 360
-                duration: 3000
+            ColorAnimation {
+                target: beam
+                property: 'color'
+                to: beamColor
+                duration: 250
             }
         }
+    }
 
-        Image {
-            id: rightGear
-            source: "img/paddle/gear.png"
+//    Image {
+//        source: "img/paddle/extender.png"
+//    }
 
-            anchors {
-                left: parent.left
-                top: parent.top
-                leftMargin: 252
-                topMargin: 55
-            }
+    PaddleMiddle {
+        id: paddleMiddle
+        anchors.horizontalCenter: parent.horizontalCenter
+    }
 
-            // TODO: Only animate when moving/expanding/shrinking
-            RotationAnimation on rotation {
-                running: paddle.animationActive
-                loops: Animation.Infinite
-                from: 360
-                to: 0
-                duration: 3000
-            }
-        }
+    PaddleLeft {
+        id: paddleLeft
+        anchors.left: parent.left
+    }
 
-        Image {
-            id: base
-            source: "img/paddle/base.png"
-        }
-
-        Image {
-            source: "img/paddle/gauge.png"
-        }
+    PaddleRight {
+        id: paddleRight
+        anchors.right: parent.right
     }
 
     Behavior on x {
@@ -128,4 +90,15 @@ Item {
     function glow() {
         lightUp.start()
     }
+
+    function growPaddle() {
+        paddle.width = 400
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        onClicked: growPaddle()
+    }
+
+
 }
