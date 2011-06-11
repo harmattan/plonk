@@ -10,7 +10,6 @@
         <file>qml/mong/img/menu/btn_play_on.png</file>
         <file>qml/mong/img/menu/title_about.png</file>
         <file>qml/mong/img/menu/title.png</file>
-        <file>qml/mong/img/paddle/base.png</file>
         <file>qml/mong/img/paddle/extender.png</file>
         <file>qml/mong/img/paddle/gauge.png</file>
         <file>qml/mong/img/paddle/gear.png</file>
@@ -55,5 +54,11 @@
         <file>qml/mong/img/menu/base_top.png</file>
         <file>qml/mong/img/menu/base_top_shadow.png</file>
         <file>qml/mong/MenuGear.qml</file>
+        <file>qml/mong/img/paddle/paddle_left.png</file>
+        <file>qml/mong/img/paddle/paddle_middle.png</file>
+        <file>qml/mong/img/paddle/paddle_right.png</file>
+        <file>qml/mong/PaddleLeft.qml</file>
+        <file>qml/mong/PaddleMiddle.qml</file>
+        <file>qml/mong/PaddleRight.qml</file>
     </qresource>
 </RCC>
