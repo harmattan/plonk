@@ -1,5 +1,4 @@
 == Version 1.0 (Monday 6th June) ==
-* Make power button actually quit the app (it currently just sends it to the background)
 * Make puck spin based on angle...?
  * Are we doing this, or should the puck just stay static? If it spins, the "logo" will be unreadable; I have sort of been enjoying it as a static element. -TS
 * Everything from 'Next Version' if possible :)
@@ -20,9 +19,6 @@
 
 * Fine-tune ball speed to make it more fun
  * Implement "Level" modes (art already pushed).
-
-* Add power zone to the center of the paddle. If ball hits power zone, gauge increases.
- * When the gauge gets to the top, the paddle grows (and gears turn). Paddle stays long for several seconds, as the gauge decreases back to 0, when the paddle shrinks (and the gears move).
 
 * Add support for keyboard input ("Netbook Edition")
 
