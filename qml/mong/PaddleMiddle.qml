@@ -29,7 +29,7 @@ Image {
         }
     }
 
-    function increase() {
+    function increaseGauge() {
         if (!timer.running) {
             value++
             if (value >= 4) timer.start()

@@ -99,6 +99,7 @@ Image {
             /* Accuracy: If the ball hits the paddle in the middle, it's 1.
                          Otherwise it's decreasing to 0 towards the paddle edges. */
             var accuracy = 2 * (.5 - (Math.abs(paddleCenter-ballCenter) / paddleObj.beamWidth))
+
             /* horizontal collision */
             if (isTop) {
                 if (ballObj.y < (paddlePos.y + paddleObj.beamHeight) &&
@@ -110,6 +111,9 @@ Image {
                     ballObj.y = (paddlePos.y + paddleObj.beamHeight)
                     paddleObj.glow()
                     sounds.playHit()
+                    if (accuracy > 0.8) {
+                        paddleObj.increaseGauge()
+                    }
                 }
             } else {
                 if (ballObj.y > (paddlePos.y - ballObj.height) &&
@@ -120,6 +124,9 @@ Image {
                     ballObj.y = (paddlePos.y - ballObj.height)
                     paddleObj.glow()
                     sounds.playHit()
+                    if (accuracy > 0.8) {
+                        paddleObj.increaseGauge()
+                    }
                 }
             }
         }

@@ -81,6 +81,19 @@ Item {
         PaddleMiddle {
             id: paddleMiddle
             x: 0 - width / 2
+
+            Timer {
+                id: timer
+                interval: 5000
+                onTriggered: paddle.width -= 70
+            }
+
+            onGaugeMax: {
+                if (!timer.running) {
+                    paddle.width += 70
+                    timer.start();
+                }
+            }
         }
 
         PaddleLeft {
@@ -120,13 +133,8 @@ Item {
         lightUp.start()
     }
 
-    function growPaddle() {
-        paddle.width += 20
-    }
-
-    MouseArea {
-        anchors.fill: parent
-        onClicked: paddle.width += 50
+    function increaseGauge() {
+        paddleMiddle.increaseGauge()
     }
 
 }
