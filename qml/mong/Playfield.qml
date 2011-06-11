@@ -178,7 +178,7 @@ Image {
 
         Paddle {
             id: paddle2
-            x: (playfield.width / 2) - (paddle1.width / 2)
+            x: (playfield.width / 2) - (paddle2.width / 2)
             beamColor: "blue"
             rotated: true
             anchors.top: parent.top
