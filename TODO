@@ -1,9 +1,11 @@
 == Version 1.0 (Monday 6th June) ==
 * Make puck spin based on angle...?
  * Are we doing this, or should the puck just stay static? If it spins, the "logo" will be unreadable; I have sort of been enjoying it as a static element. -TS
-* Everything from 'Next Version' if possible :)
 
 == Next Version ==
+* Need a v2.0 code name?
+ * Return of the Killer Paddle (?) - TS
+
 * Add some sort of intelligent rotation to the menus:
  * Finger "pushable"?
  * Faces last winner?
