@@ -1,0 +1,5 @@
+mong (1.0.2-1) unstable; urgency=low
+
+  * Initial Debian packaging
+
+ -- Thomas Perl <m@thp.io>  Sun, 12 Jun 2011 10:12:46 +0200

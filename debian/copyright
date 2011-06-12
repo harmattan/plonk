@@ -1,0 +1,36 @@
+This package was debianized by Thomas Perl <m@thp.io> on
+Sun, 12 Jun 2011 10:12:46 +0200.
+
+It was downloaded from http://thp.io/2011/mong/
+
+Upstream Author(s):
+
+    Cornelius Hald <cornelius.hald@tourschall.com>
+    Thomas Perl <m@thp.io>
+    Tim Samoff <tim@samoff.com>
+
+Copyright:
+
+    Copyright (C) 2011 Cornelius Hald, Thomas Perl, Tim Samoff
+
+License:
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+On Debian systems, the complete text of the GNU General
+Public License can be found in `/usr/share/common-licenses/GPL'.
+
+The Debian packaging is (C) 2011, Thomas Perl <m@thp.io> and
+is licensed under the GPL, see above.
+
