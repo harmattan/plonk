@@ -45,7 +45,7 @@ unix {
 
   DATADIR = $$PREFIX/share
 
-  target.path = $$MEEGODIR
+  target.path = $$MEEGODIR/bin
 
   desktop.path = $$DATADIR/applications
   desktop.files = mong.desktop
