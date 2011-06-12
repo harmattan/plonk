@@ -82,19 +82,8 @@ Item {
         PaddleMiddle {
             id: paddleMiddle
             x: 0 - width / 2
-
-            Timer {
-                id: timer
-                interval: 5000
-                onTriggered: paddle.width -= 70
-            }
-
-            onGaugeMax: {
-                if (!timer.running) {
-                    paddle.width += 70
-                    timer.start();
-                }
-            }
+            onGaugeMax: paddle.width += 70
+            onGaugeMin: paddle.width -= 70
         }
 
         PaddleLeft {

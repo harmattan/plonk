@@ -2,8 +2,13 @@ import Qt 4.7
 
 Image {
     id: base
+
     signal gaugeMax
+    signal gaugeMin
+
     property int value: 0
+    property int decreaseTime: 1000 // Time in ms it take to decrease gauge by 1 unit
+    property bool gaugeDecreases: false
 
     source: "img/paddle/paddle_middle.png"
 
@@ -22,17 +27,27 @@ Image {
 
     Timer {
         id: timer
-        interval: 1000
+        repeat: true
+        interval: decreaseTime
+        running: gaugeDecreases
         onTriggered: {
-            gaugeMax()
-            value = 0
+            value--
+            if (base.value <= 0) {
+                gaugeDecreases = false
+                gaugeMin()
+            }
         }
     }
 
     function increaseGauge() {
-        if (!timer.running) {
+        if (!gaugeDecreases) {
             value++
-            if (value >= 4) timer.start()
+            if (value >= 4) {
+                gaugeMax()
+                gaugeDecreases = true
+                timer.start()
+            }
         }
     }
+
 }
