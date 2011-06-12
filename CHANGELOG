@@ -10,13 +10,18 @@
 
 == Version 1.0.2 "Revenge of the Killer Paddle" (Monday 9th June 2011) ==
 
-* 
+* Added paddle gauge animation and...
+* Added paddle resizing when gauge reaches "top".
+* Debian packaging support.
 
 == Version 1.0.1 "Revenge of the Killer Paddle" (Monday 9th June 2011) ==
 
-* 
+* New menu with "power" button.
+* Increased "puck" physics and angular randomness.
+* Proper RPM packaging support.
 
 == Version 1.0 "Revenge of the Killer Paddle" (Monday 6th June 2011) ==
 
-* Much hacking
-* Version 1.0 released
+* Much hacking.
+* GPLv3 licensing on all project elements.
+* Version 1.0 released.
