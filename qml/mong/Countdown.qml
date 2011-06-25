@@ -8,6 +8,7 @@ Item {
     height: 200
     width: 200
     opacity: 0.8
+    rotation: 180
     anchors.centerIn: parent
 
     function faceToPlayer1() { rotation = 0 }
