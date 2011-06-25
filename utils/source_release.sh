@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # source_release.sh - Build a source tarball of Mong
 # Copyright (c) 2011-06-09 Thomas Perl <thp.io/about>
 # Released under the same terms as the mong source code.

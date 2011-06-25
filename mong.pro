@@ -30,7 +30,7 @@ HEADERS += src/config.h
 RESOURCES += mong.qrc
 
 release.target = release
-release.commands = sh utils/source_release.sh release
+release.commands = bash utils/source_release.sh release
 
 QMAKE_EXTRA_TARGETS += release
 
