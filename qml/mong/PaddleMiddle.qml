@@ -50,4 +50,8 @@ Image {
         }
     }
 
+    function resetGauge() {
+        value = 0
+    }
+
 }

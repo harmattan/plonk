@@ -241,6 +241,9 @@ Image {
         // Put both paddles into the middle
         paddle1.x = (playfield.width / 2) - (paddle1.width / 2)
         paddle2.x = (playfield.width / 2) - (paddle2.width / 2)
+
+        paddle1.resetGauge();
+        paddle2.resetGauge();
     }
 
     function pauseBall() {

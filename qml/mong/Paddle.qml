@@ -127,4 +127,8 @@ Item {
         paddleMiddle.increaseGauge()
     }
 
+    function resetGauge() {
+        paddleMiddle.resetGauge()
+    }
+
 }
