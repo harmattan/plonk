@@ -106,8 +106,9 @@ Image {
                     ballObj.y > (paddlePos.y - ballObj.height)) {
                     /* vertical collision */
                     ballObj.velocityY *= -1
-                    ballObj.velocityY *= (1.4 - (1-accuracy))
-                    ballObj.velocityX += 2 * direction * (1-accuracy)
+                    // Values between 0.9 and 1.2
+                    ballObj.velocityY *= (1.2 - 0.3 * (1 - accuracy))
+                    ballObj.velocityX += direction * 10 * (1 - accuracy) // 1.2
                     ballObj.y = (paddlePos.y + paddleObj.beamHeight)
                     paddleObj.glow()
                     sounds.playHit()
@@ -119,8 +120,9 @@ Image {
                 if (ballObj.y > (paddlePos.y - ballObj.height) &&
                     ballObj.y < (paddlePos.y + paddleObj.beamHeight)) {
                     ballObj.velocityY *= -1
-                    ballObj.velocityY *= (1.4 - (1-accuracy))
-                    ballObj.velocityX += 2 * direction * (1-accuracy)
+                    // Values between 0.9 and 1.2
+                    ballObj.velocityY *= (1.2 - 0.3 * (1 - accuracy))
+                    ballObj.velocityX += direction * 10 * (1 - accuracy)
                     ballObj.y = (paddlePos.y - ballObj.height)
                     paddleObj.glow()
                     sounds.playHit()
@@ -131,13 +133,23 @@ Image {
             }
         }
 
+        /* Make sure the ball angle is not too low */
+        while (Math.abs(ballObj.velocityX) < 5) {
+            ballObj.velocityX *= 1.2
+        }
+
+        /* Make sure the ball angle is not too extreme */
+        while (Math.abs(ballObj.velocityX) > 20) {
+            ballObj.velocityX *= 0.8
+        }
+
         /* Make sure the ball isn't too slow */
         while (Math.abs(ballObj.velocityY) < 10) {
             ballObj.velocityY *= 1.2
         }
 
         /* Make sure the ball isn't too fast */
-        while (Math.abs(ballObj.velocitY) > 25) {
+        while (Math.abs(ballObj.velocitY) > 20) {
             ballObj.velocityY *= 0.8
         }
     }
