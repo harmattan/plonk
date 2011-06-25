@@ -1,3 +1,9 @@
+== Bugs ==
+* If the screen is touched by one player, the menu does not work.
+ * I've tried to fix this by using TouchAreas instead of MouseAreas, however it's not that simple. If we want this to work, we basically need to cover the whole screen by a TouchArea while the menu is visible. The reason: If someone touches an area of the screen that is not covered by a TouchArea, this touch will block all other touches. -CH
+
+* If the games is started via the launch icon and then exited, it is still visible in the task-switcher even if the process is not running anymore.
+
 == Version 1.0 (Monday 6th June) ==
 * Make puck spin based on angle...?
  * Are we doing this, or should the puck just stay static? If it spins, the "logo" will be unreadable; I have sort of been enjoying it as a static element. -TS
