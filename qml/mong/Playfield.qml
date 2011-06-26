@@ -34,9 +34,9 @@ Image {
     width: 400
     height: 400
 
-    MongSounds {
-        id: sounds
-    }
+    //MongSounds {
+    //    id: sounds
+    //}
 
     source: "img/background.png"
 
@@ -111,7 +111,7 @@ Image {
                     ballObj.velocityX += direction * 10 * (1 - accuracy) // 1.2
                     ballObj.y = (paddlePos.y + paddleObj.beamHeight)
                     paddleObj.glow()
-                    sounds.playHit()
+                    //sounds.playHit()
                     if (accuracy > 0.8) {
                         paddleObj.increaseGauge()
                     }
@@ -125,7 +125,7 @@ Image {
                     ballObj.velocityX += direction * 10 * (1 - accuracy)
                     ballObj.y = (paddlePos.y - ballObj.height)
                     paddleObj.glow()
-                    sounds.playHit()
+                    //sounds.playHit()
                     if (accuracy > 0.8) {
                         paddleObj.increaseGauge()
                     }
@@ -158,7 +158,7 @@ Image {
         id: ball
         onActiveChanged: {
             if (!active && playfield.gameOn) {
-                sounds.playOut()
+                //sounds.playOut()
             }
         }
         onBallOutPlayer1: playfield.ballOutPlayer1()
