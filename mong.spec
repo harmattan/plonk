@@ -7,7 +7,7 @@
 # disable automatic dependency processing
 #AutoReqProv: no
 
-Name:           com.thpinfo.mong
+Name:           com.thpinfo.wetab.mong
 Version:1.0.3
 Release:        1
 License:        GPLv3 or later
