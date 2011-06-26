@@ -50,7 +50,7 @@ unix {
   desktop.path = $$DATADIR/applications
   desktop.files = mong.desktop
 
-  icon.path = ~/.appData/tiitoo-pinnwand/tiitoo-localbookmarks
+  icon.path = $$MEEGODIR
   icon.files = mong.png
 
   INSTALLS += target icon desktop
