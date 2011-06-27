@@ -7,7 +7,7 @@
 # disable automatic dependency processing
 #AutoReqProv: no
 
-Name:           com.thpinfo.wetab.mong
+Name:           com.thpinfo.mong
 Version:1.0.3
 Release:        1
 License:        GPLv3 or later
@@ -16,7 +16,8 @@ Url:            http://thp.io/2011/mong/
 Group:          Games/Sports
 Source0:        %{name}-%{version}.tar.gz
 #BuildRequires:  pkgconfig(QtCore)
-BuildRequires:  libqt-devel libqtopengl-devel libqdeclarative4-particles
+BuildRequires:  libqt-devel libqtopengl-devel
+requires:       libqdeclarative4-particles
 
 %description
 # Add here description of the package.
