@@ -4,13 +4,12 @@
 
 * If the games is started via the launch icon and then exited, it is still visible in the task-switcher even if the process is not running anymore.
 
-== Version 1.0 (Monday 6th June) ==
-* Make puck spin based on angle...?
- * Are we doing this, or should the puck just stay static? If it spins, the "logo" will be unreadable; I have sort of been enjoying it as a static element. -TS
-
 == Next Version ==
-* Need a v2.0 code name?
- * Return of the Killer Paddle (?) - TS
+* Change name of game to Plonk.
+
+* Add Randall Arnold to the credits for the "Plonk" name.
+
+* Make puck spin based on angle.
 
 * Add some sort of intelligent rotation to the menus:
  * Finger "pushable"?
@@ -18,15 +17,21 @@
  * Uses gravity?
  * Just make viewable in Landscape?
 
-* Add more sounds. Paddle explosion. Bouncing of the walls. More?
- * Do I need to get some sounds for these elements? Or, are there enough from what was recorded in SF? -TS
-  * If you could get those sounds, it would be great. I think we're already using all MeeGoConf sounds. -CH
+* Add more sounds:
+ * Paddle explosion
+ * Bouncing of the walls
+ * Gauge ticking sound
+ * Paddle lengthening sound
+ * Paddle shrinking sound
+ * Background music?
 
 * Go back to the larger logo for the About screen.
  * Remove the small logo from the qrc + qml dir to save some space
 
 * Fine-tune ball speed to make it more fun
  * Implement "Level" modes (art already pushed).
+
+* Implement "Pause" screen (art already pushed).
 
 * Add support for keyboard input ("Netbook Edition")
 
