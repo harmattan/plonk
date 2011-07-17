@@ -27,7 +27,7 @@ HEADERS += src/qdeclarativetoucharea.h
 HEADERS += src/mongview.h
 HEADERS += src/config.h
 
-RESOURCES += mong.qrc
+RESOURCES += plonk.qrc
 
 release.target = release
 release.commands = bash utils/source_release.sh release
@@ -41,17 +41,17 @@ unix {
 
   # MeeGo packaging and compliance guidelines
   # see http://appdeveloper.intel.com/en-us/article/meego-packaging-and-compliance-guidelines
-  MEEGODIR = /opt/com.thpinfo.mong
+  MEEGODIR = /opt/com.thpinfo.plonk
 
   DATADIR = $$PREFIX/share
 
   target.path = $$MEEGODIR/bin
 
   desktop.path = $$DATADIR/applications
-  desktop.files = mong.desktop
+  desktop.files = plonk.desktop
 
   icon.path = $$MEEGODIR
-  icon.files = mong.png
+  icon.files = plonk.png
 
   INSTALLS += target icon desktop
 }

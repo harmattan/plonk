@@ -7,12 +7,12 @@
 # disable automatic dependency processing
 #AutoReqProv: no
 
-Name:           com.thpinfo.mong
-Version:1.0.3
+Name:           com.thpinfo.plonk
+Version:        1.0.3
 Release:        1
 License:        GPLv3 or later
 Summary:        A multi-touch pong-like game for two players
-Url:            http://thp.io/2011/mong/
+Url:            http://thp.io/2011/plonk/
 Group:          Games/Sports
 Source0:        %{name}-%{version}.tar.gz
 #BuildRequires:  pkgconfig(QtCore)

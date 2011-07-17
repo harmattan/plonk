@@ -1,10 +1,11 @@
 [Desktop Entry]
 Encoding=UTF-8
 Version=1.0
-Name=Mong
+Name=Plonk
 Comment=Multi-touch, two-player pong game for MeeGo.
-Exec=/opt/com.thpinfo.mong/bin/mong
-Icon=/opt/com.thpinfo.mong/mong.png
+Exec=/opt/com.thpinfo.mong/bin/plonk
+Icon=/opt/com.thpinfo.mong/plonk.png
 Type=Application
 Categories=Game;SportsGame;
 Terminal=false
+Name[en_US]=plonk.desktop

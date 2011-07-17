@@ -120,7 +120,7 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.top: parent.top
                 anchors.topMargin: 40
-                source: "img/menu/title_about.png"
+                source: "img/menu/title.png"
                 transformOrigin: Item.Top
                 Behavior on scale { PropertyAnimation { } }
             }
@@ -145,7 +145,7 @@ Item {
                 Text {
                     anchors.centerIn: parent
                     horizontalAlignment: Text.AlignHCenter
-                    text: '<center><h1>Version ' + mongView.version + '</h1><p><strong>Programming</strong><br>Cornelius Hald<br>Thomas Perl</p><p><strong>Graphics</strong><br>Tim Samoff</p><p><strong>Sound Effects</strong><br>Erik Stein</p><br><p>Initially developed at the MeeGo Conference 2011 in San Francisco.<br>Sound effects from the air hockey tables at the Hacker Lounge.</p></center>'
+                    text: '<center><h1>Version ' + mongView.version + '</h1><p><strong>Programming</strong><br>Cornelius Hald<br>Thomas Perl</p><p><strong>Graphics</strong><br>Tim Samoff</p><p><strong>Sound Effects</strong><br>Erik Stein</p><p><strong>Name</strong><br>Randall Arnold</p><br<p>Initially developed at the MeeGo Conference 2011 in San Francisco.<br>Sound effects from the air hockey tables at the Hacker Lounge.</p></center>'
                 }
             }
 

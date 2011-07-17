@@ -3,7 +3,7 @@
 # Copyright (c) 2011-05-28 Thomas Perl <thp.io/about>
 # Released under the same terms as the mong source code.
 
-QRC_FILE=mong.qrc
+QRC_FILE=plonk.qrc
 SRC_DIRS=qml/
 
 echo -n "Updating $QRC_FILE from files in $SRC_DIRS ... "

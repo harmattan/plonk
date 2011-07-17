@@ -16,7 +16,7 @@ else
     exit 1
 fi
 
-MONG_SPEC=mong.spec
+MONG_SPEC=plonk.spec
 CONFIG_H=src/config.h
 
 if [ ! -f $MONG_SPEC -o ! -f $CONFIG_H ]; then
@@ -35,7 +35,7 @@ if ! git show-ref -q $VERSION; then
     exit 1
 fi
 
-NAME=`cat mong.spec | grep ^Name: | cut -d: -f2 | tr -d ' '`
+NAME=`cat $MONG_SPEC | grep ^Name: | cut -d: -f2 | tr -d ' '`
 
 if [ "$MODE" == "release" ]; then
     echo "Building stable release from Git tag $VERSION."

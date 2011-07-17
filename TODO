@@ -5,9 +5,6 @@
 * If the games is started via the launch icon and then exited, it is still visible in the task-switcher even if the process is not running anymore.
 
 == Next Version ==
-* Change name of game to Plonk.
-
-* Add Randall Arnold to the credits for the "Plonk" name.
 
 * Make puck spin based on angle.
 
@@ -24,9 +21,6 @@
  * Paddle lengthening sound
  * Paddle shrinking sound
  * Background music?
-
-* Go back to the larger logo for the About screen.
- * Remove the small logo from the qrc + qml dir to save some space
 
 * Fine-tune ball speed to make it more fun
  * Implement "Level" modes (art already pushed).
