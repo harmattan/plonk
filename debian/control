@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Thomas Perl <m@thp.io>
 Build-Depends: debhelper (>= 5), libqt4-dev
 Standards-Version: 3.7.3
-Homepage: http://thp.io/2011/mong/
+Homepage: http://thp.io/2011/plonk/
 
 Package: plonk
 Architecture: any
