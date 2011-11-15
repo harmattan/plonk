@@ -49,13 +49,13 @@ Item {
 
             Behavior on opacity { PropertyAnimation { } }
 
-            MenuButton {
+            /*MenuButton {
                 id: powerButton
                 anchors.horizontalCenter: parent.horizontalCenter
                 imageOff: "img/menu/btn_power_on.png"
                 imageOn: "img/menu/btn_power_off.png"
                 onClicked: Qt.quit()
-            }
+            }*/
 
             Image {
                 id: imageTitle
@@ -145,7 +145,7 @@ Item {
                 Text {
                     anchors.centerIn: parent
                     horizontalAlignment: Text.AlignHCenter
-                    text: '<center><h1>Version ' + mongView.version + '</h1><p><strong>Programming</strong><br>Cornelius Hald<br>Thomas Perl</p><p><strong>Graphics</strong><br>Tim Samoff</p><p><strong>Sound Effects</strong><br>Erik Stein</p><p><strong>Name</strong><br>Randall Arnold</p><br<p>Initially developed at the MeeGo Conference 2011 in San Francisco.<br>Sound effects from the air hockey tables at the Hacker Lounge.</p></center>'
+                    text: '<center><h1>Version ' + mongView.version + '</h1><p style="font-size: 18px;"><strong>Code:</strong> Cornelius Hald, Thomas Perl<br><br><strong>Artwork:</strong> Tim Samoff<br><br><strong>Sounds:</strong> Erik Stein<br><br><strong>Project name:</strong> Randall Arnold</p><br><p>Initially developed at the MeeGo Conference 2011 in San Francisco.<br>Sound effects from the air hockey tables at the Hacker Lounge.</p></center>'
                 }
             }
 
@@ -228,8 +228,8 @@ Item {
             name: 'aboutMenu'
             PropertyChanges {
                 target: menu
-                width: 600
-                height: 600 + 115
+                width: 500
+                height: 715
             }
             PropertyChanges {
                 target: mainMenuContainer

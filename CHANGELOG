@@ -1,27 +1,31 @@
-/*******
- *
- * MONG CHANGELONG
- *
-*******/
 
-== Version 2.0 "" () ==
+  ___ _    ___  _  _ _  __   ___ _                       _
+  | _ \ |  / _ \| \| | |/ /  / __| |_  __ _ _ _  __ _ ___| |   ___  __ _
+  |  _/ |_| (_) | .` | ' <  | (__| ' \/ _` | ' \/ _` / -_) |__/ _ \/ _` |
+  |_| |____\___/|_|\_|_|\_\  \___|_||_\__,_|_||_\__, \___|____\___/\__, |
+                                                |___/              |___/
 
-* 
 
-== Version 1.0.2 "Revenge of the Killer Paddle" (Monday 9th June 2011) ==
+            == Version 2.0.0 "Paddle of (Good) Mood" (2011-11-15) ==
 
-* Added paddle gauge animation and...
-* Added paddle resizing when gauge reaches "top".
-* Debian packaging support.
+ * Project renamed to "Plonk".
+ * MeeGo Harmattan support, including Swipe locking.
 
-== Version 1.0.1 "Revenge of the Killer Paddle" (Monday 9th June 2011) ==
+        == Version 1.0.2 "Revenge of the Killer Paddle" (2011-06-09) ==
 
-* New menu with "power" button.
-* Increased "puck" physics and angular randomness.
-* Proper RPM packaging support.
+ * Added paddle gauge animation and...
+ * Added paddle resizing when gauge reaches "top".
+ * Debian packaging support.
 
-== Version 1.0 "Revenge of the Killer Paddle" (Monday 6th June 2011) ==
+        == Version 1.0.1 "Revenge of the Killer Paddle" (2011-06-09) ==
 
-* Much hacking.
-* GPLv3 licensing on all project elements.
-* Version 1.0 released.
+ * New menu with "power" button.
+ * Increased "puck" physics and angular randomness.
+ * Proper RPM packaging support.
+
+         == Version 1.0 "Revenge of the Killer Paddle" (2011-06-06) ==
+
+ * Much hacking.
+ * GPLv3 licensing on all project elements.
+ * Version 1.0 released.
+

@@ -20,10 +20,6 @@
 #include <QtGui>
 #include <QtDeclarative>
 
-#ifdef QT_OPENGL_LIB
-# include <QGLWidget>
-#endif
-
 #include "qdeclarativetoucharea.h"
 #include "mongview.h"
 
@@ -36,15 +32,6 @@ int main(int argc, char *argv[])
 
     /* Use our Mong-specific QDeclarativeView with active window tracking */
     MongView view;
-
-#ifdef QT_OPENGL_LIB
-    /* Using OpenGL for increased performance */
-    QGLFormat format = QGLFormat::defaultFormat();
-    format.setSampleBuffers(true);
-    QGLWidget *glWidget = new QGLWidget(format);
-    glWidget->setAutoFillBackground(false);
-    view.setViewport(glWidget);
-#endif
 
     /* TODO: There might be settings for even better performance */
     view.setViewportUpdateMode(QGraphicsView::FullViewportUpdate);

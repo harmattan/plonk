@@ -26,7 +26,7 @@ clean:
 	dh_testdir
 	dh_testroot
 	rm -f build-stamp configure-stamp
-	$(MAKE) clean
+	-$(MAKE) clean
 	dh_clean
 
 install: build
@@ -34,7 +34,7 @@ install: build
 	dh_testroot
 	dh_clean -k
 	dh_installdirs
-	$(MAKE) INSTALL_ROOT="$(CURDIR)"/debian/mong install
+	$(MAKE) INSTALL_ROOT="$(CURDIR)"/debian/plonk install
 
 binary-indep: build install
 # We have nothing to do by default.

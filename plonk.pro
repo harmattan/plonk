@@ -17,33 +17,38 @@
 
 
 QT += declarative
-QT += opengl
 
 SOURCES += src/main.cpp
-
-SOURCES += src/qdeclarativetoucharea.cpp
-HEADERS += src/qdeclarativetoucharea.h
 
 HEADERS += src/mongview.h
 HEADERS += src/config.h
 
+# Always compress resources
 RESOURCES += plonk.qrc
+QMAKE_RESOURCE_FLAGS += -threshold 0 -compress 9
 
-release.target = release
-release.commands = bash utils/source_release.sh release
+# Cleaner compile screen output
+CONFIG += silent
 
-QMAKE_EXTRA_TARGETS += release
+# Store object files in build/
+OBJECTS_DIR = build
+MOC_DIR = build
+RCC_DIR = build
+
+# Declarative Touch Area
+SOURCES += src/qdeclarativetoucharea.cpp
+HEADERS += src/qdeclarativetoucharea.h
+
+# Swipe Control
+DEPENDPATH += swipe
+INCLUDEPATH += swipe
+SOURCES += swipe/swipecontrol.cc
+HEADERS += swipe/swipecontrol.h
+
 
 unix {
-  isEmpty(PREFIX) {
-    PREFIX = /usr
-  }
-
-  # MeeGo packaging and compliance guidelines
-  # see http://appdeveloper.intel.com/en-us/article/meego-packaging-and-compliance-guidelines
   MEEGODIR = /opt/com.thpinfo.plonk
-
-  DATADIR = $$PREFIX/share
+  DATADIR = /usr/share
 
   target.path = $$MEEGODIR/bin
 

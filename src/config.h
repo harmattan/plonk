@@ -20,6 +20,6 @@
  */
 
 /* Version of Mong. Please keep the same format - it's read by scripts! */
-#define MONG_VERSION "1.0.3"
+#define MONG_VERSION "2.0.0"
 
 #endif // CONFIG_H

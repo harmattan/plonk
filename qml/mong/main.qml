@@ -26,6 +26,12 @@ Item {
 
     property bool isForegroundApp: mongView.active
 
+    Binding {
+        target: swipeControl
+        property: 'locked'
+        value: playfield.gameOn
+    }
+
     onIsForegroundAppChanged: {
         if (!isForegroundApp) {
             /* Pause gameplay when switching to another task */
@@ -105,12 +111,14 @@ Item {
 
                 ScriptAction {
                     script: {
-                        if (scoreboard.gameOver) {
+                        if (scoreboard.gameOver || !playfield.gameOn) {
                             playfield.reset();
                             if (scoreboard.blueCount < scoreboard.redCount) menu.scoreRed++; else menu.scoreBlue++;
                             scoreboard.reset();
                         } else {
-                            if (container.isForegroundApp) countdown.start()
+                            if (container.isForegroundApp && playfield.gameOn) {
+                                countdown.start()
+                            }
                         }
                     }
                 }
@@ -122,6 +130,32 @@ Item {
             opacity: 0
             anchors.centerIn: playfield
             onTriggert: if (container.isForegroundApp) playfield.newBall()
+        }
+
+        Image {
+            Behavior on opacity { PropertyAnimation { } }
+            opacity: playfield.gameOn
+
+            source: "img/menu/btn_power_off.png"
+            anchors {
+                verticalCenter: parent.verticalCenter
+                right: parent.right
+            }
+
+            Image {
+                source: "img/menu/btn_power_on.png"
+                opacity: backToMenuButtonMouse.pressed ? 0 : 1
+                anchors.centerIn: parent
+            }
+
+            MouseArea {
+                id: backToMenuButtonMouse
+                anchors.fill: parent
+                onClicked: {
+                    playfield.gameOn = false
+                    countdown.stop()
+                }
+            }
         }
 
         Menu {

@@ -1,3 +1,9 @@
+plonk (2.0.0) harmattan; urgency=low
+
+  * Rename to "plonk"
+
+ -- Thomas Perl <m@thp.io>  Tue, 15 Nov 2011 11:31:34 +0100
+
 mong (1.0.2-1) unstable; urgency=low
 
   * Initial Debian packaging

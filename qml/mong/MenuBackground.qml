@@ -39,7 +39,7 @@ Item {
         anchors.topMargin: 70
     }
 
-    Image {
+    /*Image {
         id: topPanelShadow
         anchors.centerIn: topPanel
         anchors.verticalCenterOffset: -27
@@ -72,5 +72,5 @@ Item {
             anchors.fill: parent
             onClicked: Qt.quit()
         }
-    }
+    }*/
 }
