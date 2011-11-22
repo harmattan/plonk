@@ -1,3 +1,11 @@
+
+ 2.x TODO:
+
+  - Remove "zoom" effect of the logo from main menu -> about transition
+  - Fix "reset dial" interaction on Harmattan (make it easier)
+  - Symbian support (maybe - if there are devices without the MT bug)
+
+
 == Bugs ==
 * If the screen is touched by one player, the menu does not work.
  * I've tried to fix this by using TouchAreas instead of MouseAreas, however it's not that simple. If we want this to work, we basically need to cover the whole screen by a TouchArea while the menu is visible. The reason: If someone touches an area of the screen that is not covered by a TouchArea, this touch will block all other touches. -CH
