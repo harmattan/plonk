@@ -27,13 +27,15 @@ HEADERS += src/config.h
 RESOURCES += plonk.qrc
 QMAKE_RESOURCE_FLAGS += -threshold 0 -compress 9
 
-# Cleaner compile screen output
-CONFIG += silent
+!symbian {
+    # Cleaner compile screen output
+    CONFIG += silent
 
-# Store object files in build/
-OBJECTS_DIR = build
-MOC_DIR = build
-RCC_DIR = build
+    # Store object files in build/
+    OBJECTS_DIR = build
+    MOC_DIR = build
+    RCC_DIR = build
+}
 
 # Declarative Touch Area
 SOURCES += src/qdeclarativetoucharea.cpp
@@ -45,6 +47,12 @@ INCLUDEPATH += swipe
 SOURCES += swipe/swipecontrol.cc
 HEADERS += swipe/swipecontrol.h
 
+symbian {
+    # Zombian - The Undead OS
+    LIBS += -lcone -leikcore -lavkon
+
+    DEPLOYMENT.display_name = "Plonk"
+}
 
 unix {
   MEEGODIR = /opt/com.thpinfo.plonk

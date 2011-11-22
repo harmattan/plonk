@@ -49,13 +49,14 @@ Item {
 
             Behavior on opacity { PropertyAnimation { } }
 
-            /*MenuButton {
+            MenuButton {
                 id: powerButton
                 anchors.horizontalCenter: parent.horizontalCenter
                 imageOff: "img/menu/btn_power_on.png"
                 imageOn: "img/menu/btn_power_off.png"
                 onClicked: Qt.quit()
-            }*/
+                visible: mongView.isSymbian()
+            }
 
             Image {
                 id: imageTitle

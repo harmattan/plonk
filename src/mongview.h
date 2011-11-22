@@ -97,6 +97,15 @@ public:
         return QPointF(-1, -1);
     }
 
+    Q_INVOKABLE
+    bool isSymbian() {
+#if defined(Q_OS_SYMBIAN)
+        return true;
+#else
+        return false;
+#endif
+    }
+
 private:
     bool _active;
     SwipeControl *_swipeControl;

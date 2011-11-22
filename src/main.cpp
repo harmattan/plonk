@@ -23,9 +23,24 @@
 #include "qdeclarativetoucharea.h"
 #include "mongview.h"
 
+#ifdef Q_OS_SYMBIAN
+#  include <AknAppUi.h>
+#endif
+
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+
+    /* Force landscape mode on that undead OS */
+#ifdef Q_OS_SYMBIAN
+CAknAppUi* appUi = dynamic_cast<CAknAppUi*> (CEikonEnv::Static()->AppUi());
+TRAPD(error,
+if (appUi) {
+    // Lock application orientation into landscape
+    appUi->SetOrientationL(CAknAppUi::EAppUiOrientationLandscape);
+}
+);
+#endif
 
     /* Enable support for TouchArea and TouchPoint */
     QDeclarativeTouchArea::registerQML();

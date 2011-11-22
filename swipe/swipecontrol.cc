@@ -7,9 +7,11 @@
 
 #include "swipecontrol.h"
 
-#include <QX11Info>
-#include <X11/Xlib.h>
-#include <X11/Xatom.h>
+#if !defined(Q_OS_SYMBIAN)
+#  include <QX11Info>
+#  include <X11/Xlib.h>
+#  include <X11/Xatom.h>
+#endif
 
 SwipeControl::SwipeControl(QDeclarativeView *view, bool autoExpose)
     : QObject(view),
@@ -31,6 +33,7 @@ SwipeControl::SwipeControl(QDeclarativeView *view, bool autoExpose)
 void
 SwipeControl::updateLockedState()
 {
+#if !defined(Q_OS_SYMBIAN)
     QRect rect(0, 0, 0, 0);
 
     if (_locked) {
@@ -53,5 +56,6 @@ SwipeControl::updateLockedState()
     XChangeProperty(dpy, _view->winId(), customRegionAtom,
             XA_CARDINAL, 32, PropModeReplace,
             reinterpret_cast<unsigned char*>(&customRegion[0]), 4);
+#endif
 }
 

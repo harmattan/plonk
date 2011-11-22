@@ -39,11 +39,12 @@ Item {
         anchors.topMargin: 70
     }
 
-    /*Image {
+    Image {
         id: topPanelShadow
         anchors.centerIn: topPanel
         anchors.verticalCenterOffset: -27
         source: "img/menu/base_top_shadow.png"
+        visible: mongView.isSymbian()
     }
 
     Image {
@@ -52,6 +53,7 @@ Item {
         anchors.bottomMargin: -66
         anchors.horizontalCenter: basePanel.horizontalCenter
         source: "img/menu/base_top.png"
+        visible: mongView.isSymbian()
     }
 
     Image {
@@ -59,6 +61,7 @@ Item {
         source: "img/menu/btn_power_off.png"
         anchors.centerIn: topPanel
         anchors.verticalCenterOffset: -5
+        visible: mongView.isSymbian()
 
         Image {
             id: powerButtonOn
@@ -72,5 +75,5 @@ Item {
             anchors.fill: parent
             onClicked: Qt.quit()
         }
-    }*/
+    }
 }
