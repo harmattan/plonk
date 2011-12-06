@@ -1,3 +1,9 @@
+plonk (2.0.1) harmattan; urgency=low
+
+  * Single-instance only for Harmattan
+
+ -- Thomas Perl <m@thp.io>  Tue, 06 Dec 2011 11:34:00 +0100
+
 plonk (2.0.0) harmattan; urgency=low
 
   * Rename to "plonk"
