@@ -24,7 +24,7 @@ Image {
     }
 
     onRotationChanged: {
-        if (gear.rotation > 65) {
+        if (gear.rotation > 35) {
             gearAnim.start()
             gear.resetScore()
         }
