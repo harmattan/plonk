@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<qnx xmlns="http://www.qnx.com/schemas/application/1.0">
+    <id>de.zwong.plonk</id>
+    <name>Plonk</name>
+    <versionNumber>1.0.0</versionNumber>
+    <description>Plonk game</description>
+
+    <initialWindow>
+        <systemChrome>none</systemChrome>
+        <transparent>false</transparent>
+        <autoOrients>false</autoOrients>
+        <aspectRatio>landscape</aspectRatio>
+    </initialWindow>
+
+    <env var="QML_IMPORT_PATH" value="app/native/imports"/>
+    <env var="QT_PLUGIN_PATH" value="app/native/plugins"/>
+    <env var="LD_LIBRARY_PATH" value="app/native/lib"/>
+
+    <arg>-platform</arg>
+    <arg>blackberry</arg>
+    <author>KDAB</author>
+    <authorId>***PUT AUTHOR-ID HERE***</authorId>
+    <action system="true">run_native</action>
+    <category>core.games</category>
+
+    <asset entry="true" path="plonk" type="Qnx/Elf">plonk</asset>
+    <asset path="splashscreen.png">splashscreen.png</asset>
+    <asset path="plonk.png">plonk.png</asset>
+    <asset path="qml">qml</asset>
+
+    <!-- These values will be replaced when deploying in Qt Creator -->
+    <!-- COPIES SEVERAL VERSIONS OF LIBS INSTEAD OF USING SYM-LINKS. DEAKTIVATED.
+    <asset path="%QT_INSTALL_LIBS%">lib</asset>
+    <asset path="%QT_INSTALL_PLUGINS%">plugins</asset>
+    <asset path="%QT_INSTALL_IMPORTS%">imports</asset>
+    -->
+
+    <asset path="qt/lib">lib</asset>
+    <asset path="qt/plugins">plugins</asset>
+    <asset path="qt/imports">imports</asset>
+
+    <icon><image>plonk.png</image></icon>
+    <splashscreen>splashscreen.png</splashscreen>
+</qnx>
+

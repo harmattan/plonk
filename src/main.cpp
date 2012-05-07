@@ -19,6 +19,8 @@
 #include <QtCore>
 #include <QtGui>
 #include <QtDeclarative>
+#include <QGLWidget>
+#include <QGLFormat>
 
 #include "qdeclarativetoucharea.h"
 #include "mongview.h"
@@ -29,6 +31,8 @@
 
 int main(int argc, char *argv[])
 {
+    QApplication::setGraphicsSystem("opengl");
+
     QApplication app(argc, argv);
 
     /* Force landscape mode on that undead OS */
@@ -45,8 +49,15 @@ if (appUi) {
     /* Enable support for TouchArea and TouchPoint */
     QDeclarativeTouchArea::registerQML();
 
+
+    QGLFormat format = QGLFormat::defaultFormat();
+    format.setSampleBuffers(false);
+    QGLWidget *glWidget = new QGLWidget(format);
+    glWidget->setAutoFillBackground(false);
+
     /* Use our Mong-specific QDeclarativeView with active window tracking */
     MongView view;
+    view.setViewport(glWidget);
 
     /* TODO: There might be settings for even better performance */
     view.setViewportUpdateMode(QGraphicsView::FullViewportUpdate);

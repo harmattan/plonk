@@ -1,0 +1,27 @@
+Put Blackberry Qt libs in this directory.
+Tree should look like this:
+
+.
+├── imports
+│   └── Qt
+│       └── labs
+│           └── particles
+│               ├── libqmlparticlesplugin.so
+│               └── qmldir
+├── lib
+│   ├── libQtCore.so.4
+│   ├── libQtDeclarative.so.4
+│   ├── libQtGui.so.4
+│   ├── libQtMultimedia.so.4
+│   ├── libQtNetwork.so.4
+│   ├── libQtOpenGL.so.4
+│   ├── libQtScript.so.4
+│   ├── libQtSql.so.4
+│   ├── libQtSvg.so.4
+│   ├── libQtXmlPatterns.so.4
+│   └── libQtXml.so.4
+└── plugins
+    └── platforms
+        ├── libblackberry.so
+        └── libqminimal.so
+

@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-QT += declarative
+QT += declarative opengl
 
 SOURCES += src/main.cpp
 
@@ -29,7 +29,7 @@ QMAKE_RESOURCE_FLAGS += -threshold 0 -compress 9
 
 !symbian {
     # Cleaner compile screen output
-    CONFIG += silent
+    #CONFIG += silent
 
     # Store object files in build/
     OBJECTS_DIR = build
@@ -42,10 +42,10 @@ SOURCES += src/qdeclarativetoucharea.cpp
 HEADERS += src/qdeclarativetoucharea.h
 
 # Swipe Control
-DEPENDPATH += swipe
-INCLUDEPATH += swipe
-SOURCES += swipe/swipecontrol.cc
-HEADERS += swipe/swipecontrol.h
+#DEPENDPATH += swipe
+#INCLUDEPATH += swipe
+#SOURCES += swipe/swipecontrol.cc
+#HEADERS += swipe/swipecontrol.h
 
 symbian {
     # Zombian - The Undead OS
@@ -54,18 +54,20 @@ symbian {
     DEPLOYMENT.display_name = "Plonk"
 }
 
-unix {
-  MEEGODIR = /opt/com.thpinfo.plonk
-  DATADIR = /usr/share
+#unix {
+#  MEEGODIR = /opt/com.thpinfo.plonk
+#  DATADIR = /usr/share
+#
+#  target.path = $$MEEGODIR/bin
+#
+#  desktop.path = $$DATADIR/applications
+#  desktop.files = plonk.desktop
+#
+#  icon.path = $$MEEGODIR
+#  icon.files = plonk.png
+#
+#  INSTALLS += target icon desktop
+#}
 
-  target.path = $$MEEGODIR/bin
-
-  desktop.path = $$DATADIR/applications
-  desktop.files = plonk.desktop
-
-  icon.path = $$MEEGODIR
-  icon.files = plonk.png
-
-  INSTALLS += target icon desktop
-}
+OTHER_FILES += bar-descriptor.xml
 

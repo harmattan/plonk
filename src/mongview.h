@@ -24,18 +24,18 @@
 
 #include <sys/time.h>
 
-#include "swipecontrol.h"
+//#include "swipecontrol.h"
 #include "config.h"
 
 class MongView : public QDeclarativeView
 {
     Q_OBJECT
 public:
-    MongView() : QDeclarativeView(), _active(true), _swipeControl(NULL) {
+    MongView() : QDeclarativeView(), _active(true) {
         /* Expose our QDeclarativeView as 'mongView' to QML */
         rootContext()->setContextProperty("mongView", this);
         /* Enable SwipeControl for locking swipe*/
-        _swipeControl = new SwipeControl(this);
+        //_swipeControl = new SwipeControl(this);
     }
 
     QString version() { return MONG_VERSION; }
@@ -108,7 +108,7 @@ public:
 
 private:
     bool _active;
-    SwipeControl *_swipeControl;
+    //SwipeControl *_swipeControl;
 signals:
     void activeChanged();
     void versionChanged(); /* Should never be emitted ;) */

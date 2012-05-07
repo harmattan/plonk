@@ -26,11 +26,13 @@ Item {
 
     property bool isForegroundApp: mongView.active
 
+    /*
     Binding {
         target: swipeControl
         property: 'locked'
         value: playfield.gameOn
     }
+    */
 
     onIsForegroundAppChanged: {
         if (!isForegroundApp) {
