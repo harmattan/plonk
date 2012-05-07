@@ -49,7 +49,7 @@ if (appUi) {
     /* Enable support for TouchArea and TouchPoint */
     QDeclarativeTouchArea::registerQML();
 
-
+    /* GL viewport increases performance on blackberry */
     QGLFormat format = QGLFormat::defaultFormat();
     format.setSampleBuffers(false);
     QGLWidget *glWidget = new QGLWidget(format);
