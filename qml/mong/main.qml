@@ -16,13 +16,15 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import Qt 4.7
+import QtQuick 2.0
 
 Item {
     id: container
 
-    height: 400
-    width: 400
+    //height: 600
+    //width: 1024
+    height: 500
+    width: 900
 
     property bool isForegroundApp: mongView.active
 

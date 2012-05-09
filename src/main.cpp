@@ -17,12 +17,10 @@
  */
 
 #include <QtCore>
-#include <QtGui>
-#include <QtDeclarative>
-#include <QGLWidget>
-#include <QGLFormat>
+#include <QGuiApplication>
+#include <QtQuick/QQuickView>
+#include <QQmlEngine>
 
-#include "qdeclarativetoucharea.h"
 #include "mongview.h"
 
 #ifdef Q_OS_SYMBIAN
@@ -31,45 +29,34 @@
 
 int main(int argc, char *argv[])
 {
-    QApplication::setGraphicsSystem("opengl");
-
-    QApplication app(argc, argv);
+    QGuiApplication app(argc, argv);
 
     /* Force landscape mode on that undead OS */
 #ifdef Q_OS_SYMBIAN
-CAknAppUi* appUi = dynamic_cast<CAknAppUi*> (CEikonEnv::Static()->AppUi());
-TRAPD(error,
-if (appUi) {
-    // Lock application orientation into landscape
-    appUi->SetOrientationL(CAknAppUi::EAppUiOrientationLandscape);
-}
-);
+    CAknAppUi* appUi = dynamic_cast<CAknAppUi*> (CEikonEnv::Static()->AppUi());
+    TRAPD(error,
+    if (appUi) {
+        // Lock application orientation into landscape
+        appUi->SetOrientationL(CAknAppUi::EAppUiOrientationLandscape);
+    }
+    );
 #endif
-
-    /* Enable support for TouchArea and TouchPoint */
-    QDeclarativeTouchArea::registerQML();
-
-    /* GL viewport increases performance on blackberry */
-    QGLFormat format = QGLFormat::defaultFormat();
-    format.setSampleBuffers(false);
-    QGLWidget *glWidget = new QGLWidget(format);
-    glWidget->setAutoFillBackground(false);
 
     /* Use our Mong-specific QDeclarativeView with active window tracking */
     MongView view;
-    view.setViewport(glWidget);
 
-    /* TODO: There might be settings for even better performance */
-    view.setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
-    view.setAttribute(Qt::WA_OpaquePaintEvent);
-    view.setAttribute(Qt::WA_NoSystemBackground);
-    view.viewport()->setAttribute(Qt::WA_OpaquePaintEvent);
-    view.viewport()->setAttribute(Qt::WA_NoSystemBackground);
-
-    /* Prepare the QML view and load the game content */
-    view.setSource(QUrl("qrc:qml/mong/main.qml"));
-    view.setResizeMode(QDeclarativeView::SizeRootObjectToView);
+#ifdef Q_OS_QNX
+    qDebug() << "Starting on QNX";
+    // On QNX Qt5 resources don't seem to work properly
+    view.setSource(QUrl::fromLocalFile("app/native/qml/mong/main.qml"));
+    // On QNX Qt5 next line don't seem to work either
+    view.setResizeMode(QQuickView::SizeRootObjectToView);
     view.showFullScreen();
+#else
+    view.setSource(QUrl("qrc:qml/mong/main.qml"));
+    view.setResizeMode(QQuickView::SizeRootObjectToView);
+    view.show();
+#endif
 
     QObject::connect(view.engine(), SIGNAL(quit()), &app, SLOT(quit()));
 

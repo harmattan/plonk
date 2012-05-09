@@ -16,7 +16,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import Qt 4.7
+import QtQuick 2.0
 
 // MenuBackground including the power button. This background will scale to
 // almost any size without looking bad

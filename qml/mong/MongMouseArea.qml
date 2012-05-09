@@ -17,7 +17,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import Qt 4.7
+import QtQuick 2.0
 
 // The MongMouseArea is ment for debugging. This way Mong can be (limited) used on
 // devices without touch screen.

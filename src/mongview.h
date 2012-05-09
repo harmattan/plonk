@@ -20,18 +20,20 @@
  */
 
 #include <QtCore>
-#include <QtDeclarative>
+//#include <QtDeclarative>
+#include <QQmlContext>
+#include <QtQuick/QQuickView>
 
 #include <sys/time.h>
 
 //#include "swipecontrol.h"
 #include "config.h"
 
-class MongView : public QDeclarativeView
+class MongView : public QQuickView
 {
     Q_OBJECT
 public:
-    MongView() : QDeclarativeView(), _active(true) {
+    MongView() : QQuickView(), _active(true) {
         /* Expose our QDeclarativeView as 'mongView' to QML */
         rootContext()->setContextProperty("mongView", this);
         /* Enable SwipeControl for locking swipe*/
@@ -66,7 +68,7 @@ public:
                 break;
         }
 
-        return QDeclarativeView::event(event);
+        return QQuickView::event(event);
     }
 
     Q_INVOKABLE

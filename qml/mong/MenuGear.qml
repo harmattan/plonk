@@ -1,4 +1,4 @@
-import Qt 4.7
+import QtQuick 2.0
 
 Image {
     id: gear
@@ -33,7 +33,7 @@ Image {
     MouseArea {
         property int oldX
         anchors.fill: parent
-        onMousePositionChanged: {
+        onPositionChanged: {
             if (mouseX < oldX) {
                 gear.rotation++
             }

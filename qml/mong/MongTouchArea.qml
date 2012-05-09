@@ -17,12 +17,12 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import Qt 4.7
-import com.meego 1.0
+import QtQuick 2.0
+//import com.meego 1.0
 
 // The touch must originate inside the paddle otherwise it's ignored.
 // Because of the offset, it's also possible to grab the paddle at the left or right end.
-TouchArea {
+MultiPointTouchArea {
     id: touchArea
 
     /* Enabled or disabled? (disable while in menu, etc..) */
@@ -49,19 +49,31 @@ TouchArea {
                     }
                 }
             }
+
+            onPressedChanged: {
+                if (pressed) {
+                    if (touchArea.paddle.x < touchPoint.x &&
+                            touchPoint.x < touchArea.paddle.x + touchArea.paddle.width) {
+                        touchArea.offsetXStart = touchPoint.x - (touchArea.paddle.x + touchArea.paddle.width / 2)
+                        touchArea.paddleTouched = true
+                    }
+                } else {
+                    touchArea.paddleTouched = false
+                }
+            }
         }
     ]
 
-    onTouchStart: {
-        if (touchArea.paddle.x < touchPoint.x &&
-                touchPoint.x < touchArea.paddle.x + touchArea.paddle.width) {
-            touchArea.offsetXStart = touchPoint.x - (touchArea.paddle.x + touchArea.paddle.width / 2)
-            touchArea.paddleTouched = true
-        }
-    }
+//    onPressed: {
+//        if (touchArea.paddle.x < touchPoint.x &&
+//                touchPoint.x < touchArea.paddle.x + touchArea.paddle.width) {
+//            touchArea.offsetXStart = touchPoint.x - (touchArea.paddle.x + touchArea.paddle.width / 2)
+//            touchArea.paddleTouched = true
+//        }
+//    }
 
-    onTouchEnd: {
-        touchArea.paddleTouched = false
-    }
+//    onReleased: {
+//        touchArea.paddleTouched = false
+//    }
 }
 

@@ -16,8 +16,9 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import Qt 4.7
-import Qt.labs.particles 1.0
+import QtQuick 2.0
+//import Qt.labs.particles 1.0
+import QtQuick.Particles 2.0
 
 Item {
     id: scoreboardPaddle
@@ -34,22 +35,22 @@ Item {
         Behavior on opacity {
             ParallelAnimation {
                 PropertyAnimation { duration: fadeTime }
-                ScriptAction { script: part.burst(100, -1) }
+                //ScriptAction { script: part.burst(100, -1) }
             }
         }
     }
 
-    Particles {
-        id: part
-        anchors.centerIn: parent
-        width: 1
-        height: 1
-        source: 'img/particle_' + scoreboardPaddle.color + '.png'
-        count: 0 // Don't emit anything by default
-        lifeSpan: 800
-        lifeSpanDeviation: 100
-        angleDeviation: 360
-        velocity: 200
-        velocityDeviation: 190
-    }
+//    Particles {
+//        id: part
+//        anchors.centerIn: parent
+//        width: 1
+//        height: 1
+//        source: 'img/particle_' + scoreboardPaddle.color + '.png'
+//        count: 0 // Don't emit anything by default
+//        lifeSpan: 800
+//        lifeSpanDeviation: 100
+//        angleDeviation: 360
+//        velocity: 200
+//        velocityDeviation: 190
+//    }
 }

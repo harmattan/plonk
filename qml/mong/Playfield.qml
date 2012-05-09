@@ -16,7 +16,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import Qt 4.7
+import QtQuick 2.0
 //import com.meego 1.0
 
 Image {
@@ -185,7 +185,6 @@ Image {
             anchors.fill: parent
             enabled: gameOn
         }
-
     }
 
     Item {
@@ -203,6 +202,15 @@ Image {
             anchors.top: parent.top
         }
 
+//        MultiPointTouchArea {
+//            id: touchArea2
+//            maximumTouchPoints: 1
+//            minimumTouchPoints: 1
+//            anchors.fill: parent
+//            enabled: gameOn
+//            touchPoints: [TouchPoint { id: point1 }]
+//        }
+	
         MongTouchArea {
             id: touchArea2
             paddle: paddle2

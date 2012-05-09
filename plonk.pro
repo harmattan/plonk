@@ -16,7 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-QT += declarative opengl
+#QT += declarative quick
+QT += quick
 
 SOURCES += src/main.cpp
 
@@ -38,8 +39,8 @@ QMAKE_RESOURCE_FLAGS += -threshold 0 -compress 9
 }
 
 # Declarative Touch Area
-SOURCES += src/qdeclarativetoucharea.cpp
-HEADERS += src/qdeclarativetoucharea.h
+SOURCES +=
+HEADERS +=
 
 # Swipe Control
 #DEPENDPATH += swipe
@@ -52,6 +53,10 @@ symbian {
     LIBS += -lcone -leikcore -lavkon
 
     DEPLOYMENT.display_name = "Plonk"
+}
+
+qnx {
+    QMAKE_LFLAGS += '-Wl,-rpath,\'./app/native/lib\''
 }
 
 #unix {
@@ -69,5 +74,6 @@ symbian {
 #  INSTALLS += target icon desktop
 #}
 
-OTHER_FILES += bar-descriptor.xml
+OTHER_FILES += qml/mong/** \
+               bar-descriptor.xml
 
