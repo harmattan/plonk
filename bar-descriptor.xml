@@ -35,9 +35,9 @@
     <asset path="%QT_INSTALL_IMPORTS%">imports</asset>
     -->
 
-    <asset path="qt/lib">lib</asset>
-    <asset path="qt/plugins">plugins</asset>
-    <asset path="qt/imports">imports</asset>
+    <asset path="qt4/lib">lib</asset>
+    <asset path="qt4/plugins">plugins</asset>
+    <asset path="qt4/imports">imports</asset>
 
     <icon><image>plonk.png</image></icon>
     <splashscreen>splashscreen.png</splashscreen>
