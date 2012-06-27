@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <qnx xmlns="http://www.qnx.com/schemas/application/1.0">
-    <id>de.zwong.plonk</id>
-    <name>Plonk</name>
+    <id>de.zwong.plonk.qt5</id>
+    <name>Plonk Qt5</name>
     <versionNumber>1.0.0</versionNumber>
     <description>Plonk game</description>
 
@@ -40,9 +40,9 @@
     <asset path="%QT_INSTALL_IMPORTS%">imports</asset>
     -->
 
-    <asset path="qt/lib">lib</asset>
-    <asset path="qt/plugins">plugins</asset>
-    <asset path="qt/imports">imports</asset>
+    <asset path="qt5/lib">lib</asset>
+    <asset path="qt5/plugins">plugins</asset>
+    <asset path="qt5/imports">imports</asset>
 
     <icon><image>plonk.png</image></icon>
     <splashscreen>splashscreen.png</splashscreen>
