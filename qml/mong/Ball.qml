@@ -32,7 +32,8 @@ Item {
     property real defaultVelocityX: 12
     property real defaultVelocityY: 15
 
-    property int lastMilliseconds: mongView.currentTimeMillis()
+    // Use var here - int is too small
+    property var lastMilliseconds: mongView.currentTimeMillis()
 
     width: 48
     height: 48
@@ -81,11 +82,11 @@ Item {
             var oldY = ball.y
             var now = mongView.currentTimeMillis()
             var diff = now - ball.lastMilliseconds
+
             var xdiff = ball.velocityX * diff / 16
             var ydiff = ball.velocityY * diff / 16
 
             ball.lastMilliseconds = now
-
             ball.x += xdiff
             ball.y += ydiff
             ball.checkBorderCollision()
