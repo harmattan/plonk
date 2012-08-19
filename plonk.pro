@@ -74,6 +74,6 @@ qnx {
 #  INSTALLS += target icon desktop
 #}
 
-OTHER_FILES += qml/mong/** \
-               bar-descriptor.xml
-
+OTHER_FILES += qml/mong/*.qml \
+               bar-descriptor.xml \
+    qml/mong/test.qml

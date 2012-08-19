@@ -17,8 +17,7 @@
  */
 
 import QtQuick 2.0
-//import Qt.labs.particles 1.0
-//import QtQuick.Particles 2.0
+import QtQuick.Particles 2.0
 
 Item {
     id: scoreboardPaddle
@@ -35,22 +34,54 @@ Item {
         Behavior on opacity {
             ParallelAnimation {
                 PropertyAnimation { duration: fadeTime }
-                //ScriptAction { script: part.burst(100, -1) }
+                ScriptAction { script: emitter.burst(200) }
             }
         }
     }
 
-//    Particles {
-//        id: part
-//        anchors.centerIn: parent
-//        width: 1
-//        height: 1
-//        source: 'img/particle_' + scoreboardPaddle.color + '.png'
-//        count: 0 // Don't emit anything by default
-//        lifeSpan: 800
-//        lifeSpanDeviation: 100
-//        angleDeviation: 360
-//        velocity: 200
-//        velocityDeviation: 190
-//    }
+    ParticleSystem {
+        id: particles
+    }
+
+    ImageParticle {
+        system: particles
+        colorVariation: 0.2
+        alpha: 0.5
+        color: scoreboardPaddle.color
+        source: "img/particle.png"
+        // No idea why I need the sizeTable, but without I see nothing
+        sizeTable: "img/sizetable.png"
+    }
+
+    Emitter {
+        id: emitter
+        system: particles
+
+        // Emitter is a circle with 50x50px size
+        height: 50
+        width: 50
+        shape: EllipseShape {fill: true}
+
+        emitRate: 500
+
+        // Lifespan of the particles
+        lifeSpan: 1000
+        lifeSpanVariation: 500
+
+        // Only use burst
+        enabled: false
+
+        // Size of the particles
+        size: 16
+        sizeVariation: 8
+
+        // Start velocity and acceleration
+        velocity: PointDirection { xVariation: 500; yVariation: 500;}
+        acceleration: PointDirection { xVariation: 500; yVariation: 500;}
+
+        anchors.centerIn: parent
+    }
+
+
+
 }

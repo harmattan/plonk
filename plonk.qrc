@@ -59,5 +59,7 @@
         <file>qml/mong/PaddleLeft.qml</file>
         <file>qml/mong/PaddleMiddle.qml</file>
         <file>qml/mong/PaddleRight.qml</file>
+        <file>qml/mong/img/particle.png</file>
+        <file>qml/mong/img/sizetable.png</file>
     </qresource>
 </RCC>
