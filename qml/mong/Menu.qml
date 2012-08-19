@@ -144,10 +144,12 @@ Item {
                 clip: true
 
                 Text {
-                    anchors.centerIn: parent
+                    anchors.fill: parent
                     horizontalAlignment: Text.AlignHCenter
                     textFormat: Text.RichText
-                    text: '<h1>Version ' + mongView.version + '</h1><p style="font-size: 18px;"><strong>Code:</strong> Cornelius Hald, Thomas Perl<br><br><strong>Artwork:</strong> Tim Samoff<br><br><strong>Sounds:</strong> Erik Stein<br><br><strong>Project name:</strong> Randall Arnold</p><br><p>Initially developed at the MeeGo Conference 2011 in San Francisco.<br>Sound effects from the air hockey tables at the Hacker Lounge.</p>'
+                    font.pixelSize: 16
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                    text: '<h1>Version ' + mongView.version + '</h1><p"><strong>Code:</strong> Cornelius Hald, Thomas Perl<br><br><strong>Artwork:</strong> Tim Samoff<br><br><strong>Sounds:</strong> Erik Stein<br><br><strong>Project name:</strong> Randall Arnold</p><br><p>Initially developed at the MeeGo Conference 2011 in San Francisco. Sound effects from the air hockey tables at the Hacker Lounge.</p>'
                 }
             }
 
