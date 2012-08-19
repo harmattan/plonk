@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <qnx xmlns="http://www.qnx.com/schemas/application/1.0">
     <id>de.zwong.plonk</id>
-    <name>Plonk</name>
+    <name>Plonk Qt4</name>
     <versionNumber>1.0.0</versionNumber>
     <description>Plonk game</description>
 
@@ -16,10 +16,14 @@
     <env var="QT_PLUGIN_PATH" value="app/native/plugins"/>
     <env var="LD_LIBRARY_PATH" value="app/native/lib"/>
 
+    <!-- Looks to have the same effect as setting a GL viewport in main.cpp -->
+    <!--<env var="QBB_USE_OPENGL" value="1"/>-->
+
     <arg>-platform</arg>
     <arg>blackberry</arg>
-    <author>KDAB</author>
-    <authorId>***PUT AUTHOR-ID HERE***</authorId>
+
+    <author>Kodira</author>
+    <authorId>gYAAgB7aAXvpUhF3z1kKI_e-L0U</authorId>
     <action system="true">run_native</action>
     <category>core.games</category>
 
