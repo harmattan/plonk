@@ -113,7 +113,7 @@ Item {
 
         MouseArea {
             id: aboutMenuContainer
-            //anchors.fill: parent
+            anchors.fill: parent
             Behavior on opacity { PropertyAnimation { } }
 
             Image {
@@ -180,6 +180,7 @@ Item {
             PropertyChanges {
                 target: aboutMenuContainer
                 opacity: 0
+                enabled: false
             }
             PropertyChanges {
                 target: imageTitleAbout
@@ -239,6 +240,7 @@ Item {
             PropertyChanges {
                 target: aboutMenuContainer
                 opacity: 1
+                enabled: true
             }
             PropertyChanges {
                 target: imageTitle
