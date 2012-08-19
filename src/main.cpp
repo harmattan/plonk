@@ -44,17 +44,13 @@ int main(int argc, char *argv[])
 
     /* Use our Mong-specific QDeclarativeView with active window tracking */
     MongView view;
+    view.setSource(QUrl("qrc:///qml/mong/main.qml"));
+    view.setResizeMode(QQuickView::SizeRootObjectToView);
 
 #ifdef Q_OS_QNX
-    qDebug() << "Starting on QNX";
-    // On QNX Qt5 resources don't seem to work properly
-    view.setSource(QUrl::fromLocalFile("app/native/qml/mong/main.qml"));
-    // On QNX Qt5 next line don't seem to work either
-    view.setResizeMode(QQuickView::SizeRootObjectToView);
+    qDebug() << "Info: Starting Plonk on QNX";
     view.showFullScreen();
 #else
-    view.setSource(QUrl("qrc:qml/mong/main.qml"));
-    view.setResizeMode(QQuickView::SizeRootObjectToView);
     view.show();
 #endif
 

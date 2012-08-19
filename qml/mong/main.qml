@@ -21,8 +21,8 @@ import QtQuick 2.0
 Item {
     id: container
 
-    height: 600
-    width: 1024
+    height: 500
+    width: 800
 
     property bool isForegroundApp: mongView.active
 

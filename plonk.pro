@@ -17,7 +17,7 @@
 
 
 #QT += declarative quick
-QT += quick
+QT += qml quick
 
 SOURCES += src/main.cpp
 

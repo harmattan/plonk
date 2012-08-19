@@ -15,23 +15,23 @@
     <env var="QML_IMPORT_PATH" value="app/native/imports"/>
     <env var="QT_PLUGIN_PATH" value="app/native/plugins"/>
     <env var="LD_LIBRARY_PATH" value="app/native/lib"/>
-    <env var="QT_DEBUG_PLUGINS" value="1" />
-
-    <!-- NOT NEEDED FOR QT5 -->
-    <!--
-    <arg>-platform</arg>
-    <arg>blackberry</arg>
-    -->
     
-    <author>KDAB</author>
-    <authorId>***PUT AUTHOR-ID HERE***</authorId>
+    <!-- <env var="QT_DEBUG_PLUGINS" value="1" /> -->
+
+    <!-- Better performance?! -->
+    <env var="QBB_USE_OPENGL" value="1"/>
+
+    <!--<env var="QML_SHOW_FRAMERATE" value="1"/>-->
+
+    <author>Kodira UG</author>
+    <authorId>gYAAgB7aAXvpUhF3z1kKI_e-L0U</authorId>
     <action system="true">run_native</action>
     <category>core.games</category>
 
     <asset entry="true" path="plonk" type="Qnx/Elf">plonk</asset>
     <asset path="splashscreen.png">splashscreen.png</asset>
     <asset path="plonk.png">plonk.png</asset>
-    <asset path="qml">qml</asset>
+    <!--<asset path="qml">qml</asset>-->
 
     <!-- These values will be replaced when deploying in Qt Creator -->
     <!-- COPIES SEVERAL VERSIONS OF LIBS INSTEAD OF USING SYM-LINKS. DEAKTIVATED.
