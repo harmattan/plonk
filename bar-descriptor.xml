@@ -28,17 +28,13 @@
     <action system="true">run_native</action>
     <category>core.games</category>
 
+    <arg>-platform</arg>
+    <arg>qnx</arg>
+
     <asset entry="true" path="plonk" type="Qnx/Elf">plonk</asset>
     <asset path="splashscreen.png">splashscreen.png</asset>
     <asset path="plonk.png">plonk.png</asset>
-    <!--<asset path="qml">qml</asset>-->
-
-    <!-- These values will be replaced when deploying in Qt Creator -->
-    <!-- COPIES SEVERAL VERSIONS OF LIBS INSTEAD OF USING SYM-LINKS. DEAKTIVATED.
-    <asset path="%QT_INSTALL_LIBS%">lib</asset>
-    <asset path="%QT_INSTALL_PLUGINS%">plugins</asset>
-    <asset path="%QT_INSTALL_IMPORTS%">imports</asset>
-    -->
+    <asset path="qml/mong/snd">snd</asset>
 
     <asset path="qt5/lib">lib</asset>
     <asset path="qt5/plugins">plugins</asset>
@@ -46,5 +42,7 @@
 
     <icon><image>plonk.png</image></icon>
     <splashscreen>splashscreen.png</splashscreen>
+
+    <action>play_audio</action>
 </qnx>
 

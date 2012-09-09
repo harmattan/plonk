@@ -26,6 +26,14 @@
 
 #include <sys/time.h>
 
+#ifdef Q_OS_BLACKBERRY
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/stat.h>
+#include <mm/renderer.h>
+#include <QFileInfo>
+#endif
+
 //#include "swipecontrol.h"
 #include "config.h"
 
@@ -38,6 +46,15 @@ public:
         rootContext()->setContextProperty("mongView", this);
         /* Enable SwipeControl for locking swipe*/
         //_swipeControl = new SwipeControl(this);
+        #ifdef Q_OS_BLACKBERRY
+        initAudio();
+        #endif
+    }
+
+    ~MongView() {
+        #ifdef Q_OS_BLACKBERRY
+        deinitAudio();
+        #endif
     }
 
     QString version() { return MONG_VERSION; }
@@ -108,9 +125,56 @@ public:
 #endif
     }
 
+#ifdef Q_OS_BLACKBERRY
+    Q_INVOKABLE
+    void playHit() {
+        char cwd[PATH_MAX];
+        char input_url[PATH_MAX];
+
+        int index = qrand() % ((4 + 1) - 1) + 1;
+        getcwd(cwd, PATH_MAX);
+        snprintf(input_url, PATH_MAX, "file://%s%s%d%s", cwd, "/app/native/snd/hit", index, ".wav");
+
+        mmr_input_attach(m_ctxt, input_url, "track");
+        mmr_play(m_ctxt);
+    }
+
+    Q_INVOKABLE
+    void playOut() {
+        char cwd[PATH_MAX];
+        char input_url[PATH_MAX];
+
+        int index = qrand() % ((4 + 1) - 1) + 1;
+        getcwd(cwd, PATH_MAX);
+        snprintf(input_url, PATH_MAX, "file://%s%s%d%s", cwd, "/app/native/snd/out", index, ".wav");
+
+        mmr_input_attach(m_ctxt, input_url, "track");
+        mmr_play(m_ctxt);
+    }
+#endif
+
 private:
     bool _active;
     //SwipeControl *_swipeControl;
+#ifdef Q_OS_BLACKBERRY
+    mmr_context_t *m_ctxt;
+    mmr_connection_t *m_connection;
+
+    void initAudio() {
+        mode_t mode = S_IRUSR | S_IXUSR;
+        m_connection = mmr_connect(NULL);
+        m_ctxt = mmr_context_create(m_connection, "PlonkAudioPlayer", 0, mode);
+        mmr_output_attach(m_ctxt, "audio:default", "audio");
+    }
+
+    void deinitAudio() {
+        mmr_stop(m_ctxt);
+        mmr_input_detach(m_ctxt);
+        mmr_context_destroy(m_ctxt);
+        mmr_disconnect(m_connection);
+    }
+#endif
+
 signals:
     void activeChanged();
     void versionChanged(); /* Should never be emitted ;) */

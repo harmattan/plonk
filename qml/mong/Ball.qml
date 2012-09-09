@@ -17,6 +17,7 @@
  */
 
 import QtQuick 2.0
+import QtQuick.Particles 2.0
 
 Item {
     id: ball
@@ -113,6 +114,50 @@ Item {
 
         // Rest to default velocity, but keep the direction
         velocityY = velocityY > 0 ? defaultVelocityY : defaultVelocityY * -1
+    }
+
+//    ParticleSystem {
+//        id: ballParticles
+//    }
+
+    ImageParticle {
+        system: ballParticles
+        colorVariation: 0.5
+        alpha: 0.5
+        color: "white"
+        source: "img/particle.png"
+        // No idea why I need the sizeTable, but without I see nothing
+        sizeTable: "img/sizetable.png"
+    }
+
+    Emitter {
+        id: emitter
+        system: ballParticles
+
+        // Emitter is a circle with 50x50px size
+        height: 10
+        width: 10
+        shape: EllipseShape {fill: true}
+
+        emitRate: 200
+
+        // Lifespan of the particles
+        lifeSpan: 500
+        lifeSpanVariation: 500
+
+        enabled: true
+
+        // Size of the particles
+        size: 16
+        sizeVariation: 8
+
+        velocityFromMovement: 10
+
+        // Start velocity and acceleration
+        velocity: PointDirection { xVariation: 40; yVariation: 40;}
+        acceleration: PointDirection { xVariation: 40; yVariation: 40;}
+
+        anchors.centerIn: parent
     }
 
 }

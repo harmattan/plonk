@@ -57,6 +57,8 @@ symbian {
 
 qnx {
     QMAKE_LFLAGS += '-Wl,-rpath,\'./app/native/lib\''
+    # Needed for audio on Playbook
+    LIBS += -lstrm -lmmrndclient
 }
 
 #unix {

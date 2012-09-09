@@ -47,8 +47,8 @@ int main(int argc, char *argv[])
     view.setSource(QUrl("qrc:///qml/mong/main.qml"));
     view.setResizeMode(QQuickView::SizeRootObjectToView);
 
-#ifdef Q_OS_QNX
-    qDebug() << "Info: Starting Plonk on QNX";
+#ifdef Q_OS_BLACKBERRY
+    qDebug() << "Info: Starting Plonk on Blackberry";
     view.showFullScreen();
 #else
     view.show();

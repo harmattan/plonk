@@ -17,6 +17,7 @@
  */
 
 import QtQuick 2.0
+import QtQuick.Particles 2.0
 
 Image {
     id: playfield
@@ -111,6 +112,7 @@ Image {
                     ballObj.y = (paddlePos.y + paddleObj.beamHeight)
                     paddleObj.glow()
                     //sounds.playHit()
+                    mongView.playHit()
                     if (accuracy > 0.8) {
                         paddleObj.increaseGauge()
                     }
@@ -125,6 +127,7 @@ Image {
                     ballObj.y = (paddlePos.y - ballObj.height)
                     paddleObj.glow()
                     //sounds.playHit()
+                    mongView.playHit()
                     if (accuracy > 0.8) {
                         paddleObj.increaseGauge()
                     }
@@ -158,6 +161,7 @@ Image {
         onActiveChanged: {
             if (!active && playfield.gameOn) {
                 //sounds.playOut()
+                mongView.playOut()
             }
         }
         onBallOutPlayer1: playfield.ballOutPlayer1()
@@ -240,6 +244,10 @@ Image {
         opacity: playfield.collisionDebug?.5:0
         width: 10
         height: 10
+    }
+
+    ParticleSystem {
+        id: ballParticles
     }
 
     function reset() {
