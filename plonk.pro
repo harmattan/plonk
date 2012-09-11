@@ -19,9 +19,11 @@
 #QT += declarative quick
 QT += qml quick
 
-SOURCES += src/main.cpp
+SOURCES += src/main.cpp \
+    src/blackberryeventfilter.cpp
 
-HEADERS += src/mongview.h
+HEADERS += src/mongview.h \
+    src/blackberryeventfilter.h
 HEADERS += src/config.h
 
 # Always compress resources
