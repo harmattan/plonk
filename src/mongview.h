@@ -27,11 +27,17 @@
 #include <sys/time.h>
 
 #ifdef Q_OS_BLACKBERRY
+#include <QTimer>
 #include <stdio.h>
+#include <stdbool.h>
 #include <unistd.h>
 #include <sys/stat.h>
 #include <mm/renderer.h>
 #include <QFileInfo>
+#include <sys/platform.h>
+#include <bps/bps.h>
+#include <bps/navigator.h>
+#include <bps/event.h>
 #endif
 
 //#include "swipecontrol.h"
@@ -47,13 +53,21 @@ public:
         /* Enable SwipeControl for locking swipe*/
         //_swipeControl = new SwipeControl(this);
         #ifdef Q_OS_BLACKBERRY
+        bps_initialize();
+        //bps_set_verbosity(2);
+        navigator_request_events(0);
         initAudio();
+        m_bpsTimer.setSingleShot(false);
+        m_bpsTimer.setInterval(500);
+        m_bpsTimer.start();
+        connect(&m_bpsTimer, SIGNAL(timeout()), this, SLOT(handleBpsEvents()));
         #endif
     }
 
     ~MongView() {
         #ifdef Q_OS_BLACKBERRY
         deinitAudio();
+        bps_shutdown();
         #endif
     }
 
@@ -66,9 +80,11 @@ public:
     Q_PROPERTY(bool active READ active NOTIFY activeChanged)
 
     bool event(QEvent *event) {
+        qDebug() << "QT envent:" << event->type();
         switch (event->type()) {
             case QEvent::Leave:
             case QEvent::WindowDeactivate:
+                qDebug() << "WINDOW DEACTIVATE";
                 if (_active) {
                     _active = false;
                     emit activeChanged();
@@ -159,6 +175,7 @@ private:
 #ifdef Q_OS_BLACKBERRY
     mmr_context_t *m_ctxt;
     mmr_connection_t *m_connection;
+    QTimer m_bpsTimer;
 
     void initAudio() {
         mode_t mode = S_IRUSR | S_IXUSR;
@@ -174,6 +191,53 @@ private:
         mmr_disconnect(m_connection);
     }
 #endif
+
+
+private slots:
+#ifdef Q_OS_BLACKBERRY
+    void handleBpsEvents() {
+        /*
+         * For some reason we only get events during application startup. After that only
+         * irelevant events are in the queue. Maybe Qt is filtering them away - not sure yet.
+         */
+
+        bps_event_t *event = NULL;
+
+        for (;;) {
+            int rc = bps_get_event(&event, 0);
+            if (rc != BPS_SUCCESS) {
+                qDebug() << "ERROR: bps_get_event() failed";
+                event = NULL;
+                break;
+            }
+
+            if (event) {
+                int domain = bps_event_get_domain(event);
+                if (domain == navigator_get_domain()) {
+
+                    int code = bps_event_get_code(event);
+                    qDebug() << "Got Navigator event: " << code;
+
+                    if (code == NAVIGATOR_WINDOW_INACTIVE) {
+                        _active = false;
+                        emit activeChanged();
+
+                    } else if (code == NAVIGATOR_WINDOW_ACTIVE) {
+                        _active = true;
+                        emit activeChanged();
+
+                    } else if (code == NAVIGATOR_WINDOW_STATE) {
+                        qDebug() << "---------------------------------------- Window state -----------------------";
+                    }
+                }
+            } else {
+                // exit for loop
+                break;
+            }
+        }
+    }
+#endif
+
 
 signals:
     void activeChanged();

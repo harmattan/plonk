@@ -24,7 +24,7 @@ Item {
     height: 500
     width: 800
 
-    property bool isForegroundApp: true //mongView.active
+    property bool isForegroundApp: mongView.active
 
     /*
     Binding {

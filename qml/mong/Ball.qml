@@ -145,7 +145,7 @@ Item {
         lifeSpan: 500
         lifeSpanVariation: 500
 
-        enabled: true
+        enabled: active
 
         // Size of the particles
         size: 16
