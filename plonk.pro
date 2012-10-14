@@ -15,15 +15,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-
-#QT += declarative quick
 QT += qml quick
 
-SOURCES += src/main.cpp \
-    src/blackberryeventfilter.cpp
+SOURCES += src/main.cpp
 
-HEADERS += src/mongview.h \
-    src/blackberryeventfilter.h
+HEADERS += src/mongview.h
 HEADERS += src/config.h
 
 # Always compress resources
@@ -58,7 +54,8 @@ symbian {
 }
 
 qnx {
-    QMAKE_LFLAGS += '-Wl,-rpath,\'./app/native/lib\''
+    HEADERS += src/blackberryeventfilter.h
+    SOURCES += src/blackberryeventfilter.cpp
     # Needed for audio on Playbook
     LIBS += -lstrm -lmmrndclient
 }
@@ -79,5 +76,4 @@ qnx {
 #}
 
 OTHER_FILES += qml/mong/*.qml \
-               bar-descriptor.xml \
-    qml/mong/test.qml
+               bar-descriptor.xml

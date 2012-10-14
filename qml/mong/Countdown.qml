@@ -5,6 +5,7 @@ Item {
     signal triggert
     property int defaultSeconds: 3
     property int seconds: defaultSeconds
+    property bool _pause: false
     height: 200
     width: 200
     opacity: 0.8
@@ -48,5 +49,19 @@ Item {
     function stop() {
         opacity = 0;
         innerTimer.stop();
+    }
+
+    function pause() {
+        if (innerTimer.running) {
+            _pause = true
+            innerTimer.stop();
+        }
+    }
+
+    function resume() {
+        if (_pause) {
+            _pause = false
+            start()
+        }
     }
 }

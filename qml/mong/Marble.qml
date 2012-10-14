@@ -20,7 +20,6 @@ import QtQuick 2.0
 
 Image {
     id: marble
-    property bool active: true
 
     width: 48
     height: 48

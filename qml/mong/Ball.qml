@@ -40,7 +40,7 @@ Item {
     height: 48
     opacity: active ? 1 : 0
 
-    Marble { active: ball.active }
+    Marble { }
 
     function checkBorderCollision() {
         if (y < 0) {

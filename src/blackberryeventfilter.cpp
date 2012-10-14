@@ -1,4 +1,3 @@
-#include <QDebug>
 #include <bps/navigator.h>
 
 #include "blackberryeventfilter.h"

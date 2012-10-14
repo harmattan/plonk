@@ -31,6 +31,9 @@ Image {
     /* By default the playfield is in 'pause' state */
     property bool gameOn: false
 
+    /* Was the ball active before entering pause? */
+    property bool _prePauseBallActive: false
+
     width: 400
     height: 400
 
@@ -158,14 +161,22 @@ Image {
 
     Ball {
         id: ball
+        /*
         onActiveChanged: {
             if (!active && playfield.gameOn) {
                 //sounds.playOut()
                 mongView.playOut()
             }
         }
-        onBallOutPlayer1: playfield.ballOutPlayer1()
-        onBallOutPlayer2: playfield.ballOutPlayer2()
+        */
+        onBallOutPlayer1: {
+            mongView.playOut()
+            playfield.ballOutPlayer1()
+        }
+        onBallOutPlayer2: {
+            mongView.playOut()
+            playfield.ballOutPlayer2()
+        }
     }
 
     Item {
@@ -204,15 +215,6 @@ Image {
             rotated: true
             anchors.top: parent.top
         }
-
-//        MultiPointTouchArea {
-//            id: touchArea2
-//            maximumTouchPoints: 1
-//            minimumTouchPoints: 1
-//            anchors.fill: parent
-//            enabled: gameOn
-//            touchPoints: [TouchPoint { id: point1 }]
-//        }
 	
         MongTouchArea {
             id: touchArea2
@@ -252,6 +254,7 @@ Image {
 
     function reset() {
         playfield.gameOn = false
+        ball.active = false
 
         // Put both paddles into the middle
         paddle1.x = (playfield.width / 2) - (paddle1.width / 2)
@@ -262,11 +265,14 @@ Image {
     }
 
     function pauseBall() {
+        _prePauseBallActive = ball.active
         ball.active = false
     }
 
     function resumeBall() {
-        ball.active = true
+        if (!ball.active && _prePauseBallActive) {
+            ball.active = true
+        }
     }
 
     function newBall() {

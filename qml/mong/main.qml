@@ -24,8 +24,6 @@ Item {
     height: 500
     width: 800
 
-    property bool isForegroundApp: mongView.active
-
     /*
     Binding {
         target: swipeControl
@@ -34,13 +32,15 @@ Item {
     }
     */
 
-    onIsForegroundAppChanged: {
-        if (!isForegroundApp) {
-            /* Pause gameplay when switching to another task */
-            // TODO: This is currently no real pause. It just aborts the current match
-            playfield.pauseBall()
-            playfield.reset()
-            scoreboard.reset()
+    Connections {
+        target: mongView
+        onWindowInactive: {
+            if (playfield.gameOn) {
+                playfield.pauseBall()
+                pauseOverlay.visible = true
+                countdown.pause()
+                scoreboard.pause()
+            }
         }
     }
 
@@ -68,9 +68,29 @@ Item {
 
         Scoreboard {
             id: scoreboard
+            property bool _prePauseAnimation: false
             opacity: 1
             anchors.verticalCenter: playfield.verticalCenter
             x: playfield.width
+
+            function pause() {
+                if (scoreboardAnim.running) {
+                    scoreboardAnim.pause()
+                }
+                if (scoreboard.animate) {
+                    _prePauseAnimation = true
+                    scoreboard.animate = false
+                }
+            }
+
+            function resume() {
+                if (scoreboardAnim.paused) {
+                    scoreboardAnim.resume()
+                }
+                if (_prePauseAnimation) {
+                    scoreboard.animate = true
+                }
+            }
 
             // TODO: It would be great if the rotation speed of the gears
             // would match its x movement
@@ -118,7 +138,7 @@ Item {
                             if (scoreboard.blueCount < scoreboard.redCount) menu.scoreRed++; else menu.scoreBlue++;
                             scoreboard.reset();
                         } else {
-                            if (container.isForegroundApp && playfield.gameOn) {
+                            if (playfield.gameOn) {
                                 countdown.start()
                             }
                         }
@@ -131,7 +151,7 @@ Item {
             id: countdown
             opacity: 0
             anchors.centerIn: playfield
-            onTriggert: if (container.isForegroundApp) playfield.newBall()
+            onTriggert: playfield.newBall()
         }
 
         Image {
@@ -154,8 +174,9 @@ Item {
                 id: backToMenuButtonMouse
                 anchors.fill: parent
                 onClicked: {
-                    playfield.gameOn = false
                     countdown.stop()
+                    scoreboard.reset()
+                    playfield.reset()
                 }
             }
         }
@@ -168,6 +189,55 @@ Item {
             onPlayClicked: {
                 playfield.gameOn = true
                 countdown.start()
+            }
+        }
+
+        Item {
+            id: pauseOverlay
+            visible: false
+            anchors.fill: parent
+            Rectangle {
+                color: "black"
+                opacity: 0.7
+                anchors.fill: parent
+            }
+
+            BorderImage {
+                id: basePanel
+                height: 300
+                width: 400
+                source: "img/menu/base.png"
+                border {
+                    left: 100
+                    top: 100
+                    right: 100
+                    bottom: 100
+                }
+                anchors.centerIn: parent
+
+                Column {
+                    spacing: 10
+                    anchors.centerIn: parent
+                    Image {
+                        source: "img/pause.png"
+
+                    }
+                    Text {
+                        text: "Touch to resume"
+                        font.pixelSize: 16
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
+                }
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    pauseOverlay.visible = false
+                    playfield.resumeBall();
+                    countdown.resume();
+                    scoreboard.resume();
+                }
             }
         }
     }

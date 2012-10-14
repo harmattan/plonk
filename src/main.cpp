@@ -22,7 +22,6 @@
 #include <QQmlEngine>
 #include <QObject>
 
-#include "blackberryeventfilter.h"
 #include "mongview.h"
 
 #ifdef Q_OS_SYMBIAN
@@ -32,11 +31,6 @@
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
-
-#ifdef Q_OS_BLACKBERRY
-    BlackberryEventFilter filter;
-    app.installNativeEventFilter(&filter);
-#endif
 
     /* Force landscape mode on that undead OS */
 #ifdef Q_OS_SYMBIAN
@@ -56,8 +50,6 @@ int main(int argc, char *argv[])
 
 #ifdef Q_OS_BLACKBERRY
     qDebug() << "Info: Starting Plonk on Blackberry";
-    QObject::connect(&filter, SIGNAL(windowActive()), &view, SLOT(resume()));
-    QObject::connect(&filter, SIGNAL(windowInactive()), &view, SLOT(pause()));
     view.showFullScreen();
 #else
     view.show();

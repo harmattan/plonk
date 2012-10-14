@@ -22,6 +22,7 @@
 #include <QtCore>
 #include <QQmlContext>
 #include <QtQuick/QQuickView>
+#include <QGuiApplication>
 
 #include <sys/time.h>
 
@@ -37,6 +38,7 @@
 #include <bps/bps.h>
 #include <bps/navigator.h>
 #include <bps/event.h>
+#include "blackberryeventfilter.h"
 #endif
 
 //#include "swipecontrol.h"
@@ -45,6 +47,8 @@
 class MongView : public QQuickView
 {
     Q_OBJECT
+    Q_PROPERTY(QString version READ version NOTIFY versionChanged)
+
 public:
     MongView() : QQuickView(), _active(true) {
         /* Expose our QDeclarativeView as 'mongView' to QML */
@@ -52,6 +56,9 @@ public:
         /* Enable SwipeControl for locking swipe*/
         //_swipeControl = new SwipeControl(this);
         #ifdef Q_OS_BLACKBERRY
+        BlackberryEventFilter *filter = new BlackberryEventFilter(this);
+        QGuiApplication::instance()->installNativeEventFilter(filter);
+        connect(filter, SIGNAL(windowInactive()), this, SIGNAL(windowInactive()));
         initAudio();
         #endif
     }
@@ -63,23 +70,18 @@ public:
         #endif
     }
 
-    QString version() { return MONG_VERSION; }
-
-    Q_PROPERTY(QString version READ version NOTIFY versionChanged)
-
-    bool active() { return _active; }
-
-    Q_PROPERTY(bool active READ active NOTIFY activeChanged)
+    QString version() {
+        return MONG_VERSION;
+    }
 
     bool event(QEvent *event) {
         switch (event->type()) {
             case QEvent::Leave:
             case QEvent::WindowDeactivate:
-                pause();
+                emit windowInactive();
                 break;
             case QEvent::Enter:
             case QEvent::WindowActivate:
-                resume();
                 break;
             default:
                 break;
@@ -112,7 +114,6 @@ public:
         if (intersectionType == QLineF::BoundedIntersection) {
             return intersectionPoint;
         }
-
         return QPointF(-1, -1);
     }
 
@@ -125,9 +126,9 @@ public:
 #endif
     }
 
-#ifdef Q_OS_BLACKBERRY
     Q_INVOKABLE
     void playHit() {
+        #ifdef Q_OS_BLACKBERRY
         char cwd[PATH_MAX];
         char input_url[PATH_MAX];
 
@@ -137,10 +138,12 @@ public:
 
         mmr_input_attach(m_ctxt, input_url, "track");
         mmr_play(m_ctxt);
+        #endif
     }
 
     Q_INVOKABLE
     void playOut() {
+        #ifdef Q_OS_BLACKBERRY
         char cwd[PATH_MAX];
         char input_url[PATH_MAX];
 
@@ -150,8 +153,8 @@ public:
 
         mmr_input_attach(m_ctxt, input_url, "track");
         mmr_play(m_ctxt);
+        #endif
     }
-#endif
 
 private:
     bool _active;
@@ -176,25 +179,8 @@ private:
 #endif
 
 signals:
-    void activeChanged();
+    void windowInactive();
     void versionChanged(); /* Should never be emitted ;) */
-
-public slots:
-    void pause() {
-        if (_active == true) {
-            qDebug() << "INFO: Pausing the game";
-            _active = false;
-            emit activeChanged();
-        }
-    }
-
-    void resume() {
-        if (_active == false) {
-            qDebug() << "INFO: Resuming the game";
-            _active = true;
-            emit activeChanged();
-        }
-    }
 
 };
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <qnx xmlns="http://www.qnx.com/schemas/application/1.0">
-    <id>de.zwong.plonk.qt5</id>
-    <name>Plonk Qt5</name>
-    <versionNumber>1.0.0</versionNumber>
-    <description>Plonk game</description>
+    <id>de.kodira.plonk.qt5</id>
+    <name>Plonk</name>
+    <versionNumber>2.1.0</versionNumber>
+    <description>Simple two player Pong clone</description>
 
     <initialWindow>
         <systemChrome>none</systemChrome>
@@ -16,15 +16,15 @@
     <env var="QT_PLUGIN_PATH" value="app/native/plugins"/>
     <env var="LD_LIBRARY_PATH" value="app/native/lib"/>
     
-    <!-- <env var="QT_DEBUG_PLUGINS" value="1" /> -->
+    <!--<env var="QT_DEBUG_PLUGINS" value="1" />-->
 
     <!-- Better performance?! -->
-    <env var="QBB_USE_OPENGL" value="1"/>
+    <!--<env var="QBB_USE_OPENGL" value="1"/>-->
 
     <!--<env var="QML_SHOW_FRAMERATE" value="1"/>-->
 
-    <author>Kodira UG</author>
-    <authorId>gYAAgB7aAXvpUhF3z1kKI_e-L0U</authorId>
+    <author>Kodira</author>
+    <authorId>gYAAgL_PcYLD7BBtneIZf-PifPE</authorId>
     <action system="true">run_native</action>
     <category>core.games</category>
 
