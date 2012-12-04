@@ -28,6 +28,10 @@
 #  include <AknAppUi.h>
 #endif
 
+#ifdef Q_OS_BLACKBERRY
+#include <bps/navigator.h>
+#endif
+
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
@@ -50,6 +54,12 @@ int main(int argc, char *argv[])
 
 #ifdef Q_OS_BLACKBERRY
     qDebug() << "Info: Starting Plonk on Blackberry";
+
+    // Lock orientation into landscape mode
+    // Next line only exist on BB10 not on Playbook
+    navigator_set_orientation_mode(NAVIGATOR_LANDSCAPE, 0);
+    navigator_rotation_lock(true);
+
     view.showFullScreen();
 #else
     view.show();
