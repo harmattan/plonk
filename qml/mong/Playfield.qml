@@ -37,9 +37,11 @@ Image {
     width: 400
     height: 400
 
-    //MongSounds {
-    //    id: sounds
-    //}
+    /*
+    MongSounds {
+        id: sounds
+    }
+    */
 
     source: "img/background.png"
 
@@ -170,10 +172,12 @@ Image {
         }
         */
         onBallOutPlayer1: {
+            //sounds.playOut()
             mongView.playOut()
             playfield.ballOutPlayer1()
         }
         onBallOutPlayer2: {
+            //sounds.playOut()
             mongView.playOut()
             playfield.ballOutPlayer2()
         }

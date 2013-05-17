@@ -18,7 +18,7 @@
  */
 
 import QtQuick 2.0
-import QtMultimediaKit 1.1
+import QtMultimediaKit 5.0
 
 Item {
     function playHit() {

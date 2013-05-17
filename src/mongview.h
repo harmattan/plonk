@@ -41,6 +41,10 @@
 #include "blackberryeventfilter.h"
 #endif
 
+#ifdef Q_OS_ANDROID
+//#include <QSoundEffect>
+#endif
+
 //#include "swipecontrol.h"
 #include "config.h"
 
@@ -138,6 +142,17 @@ public:
 
         mmr_input_attach(m_ctxt, input_url, "track");
         mmr_play(m_ctxt);
+        #endif
+
+        #ifdef Q_OS_ANDROID
+        /*
+        QSoundEffect e;
+        e.setSource(QUrl("qrc:///qml/mong/snd/hit1.wav"));
+        qDebug() << "XXX Source is:" << e.source();
+        qDebug() << "XXX Is loaded:" << e.isLoaded();
+        e.setVolume(1);
+        e.play();
+        */
         #endif
     }
 
