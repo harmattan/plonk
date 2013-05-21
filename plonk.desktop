@@ -2,9 +2,11 @@
 Encoding=UTF-8
 Version=1.0
 Name=Plonk
-Comment=Multi-touch, two-player pong game for MeeGo.
-Exec=invoker --single-instance --type=e /opt/com.thpinfo.plonk/bin/plonk
-Icon=/opt/com.thpinfo.plonk/plonk.png
+Comment=Multi-touch, two-player pong game
+Exec=plonk
+Icon=/usr/share/plonk/plonk.png
 Type=Application
 Categories=Game;SportsGame;
 Terminal=false
+X-Ubuntu-Touch=true
+X-Ubuntu-StageHint=MainStage
