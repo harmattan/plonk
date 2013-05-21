@@ -3,7 +3,7 @@ Section: games
 Priority: optional
 Maintainer: Ken VanDine <ken.vandine@canonical.com>
 Build-Depends: debhelper (>= 9),
-               qtchooser,
+               qt5-default,
                qtbase5-dev,
                qtdeclarative5-dev,
 Standards-Version: 3.9.4
