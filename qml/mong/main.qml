@@ -17,12 +17,14 @@
  */
 
 import QtQuick 2.0
+import Ubuntu.Components 0.1
 
-Item {
+MainView {
     id: container
+    applicationName: "plonk"
 
-    height: 500
-    width: 800
+    width: units.gu(90)
+    height: units.gu(60)
 
     /*
     Binding {
@@ -45,11 +47,7 @@ Item {
     }
 
     Item {
-        // Rotate everything into portrait orienation
-        height: container.width
-        width: container.height
-        rotation: 270
-        anchors.centerIn: parent
+        anchors.fill: parent
 
         Playfield {
             id: playfield

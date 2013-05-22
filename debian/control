@@ -12,6 +12,8 @@ Vcs-Git: git://github.com/kenvandine/plonk.git
 
 Package: plonk
 Architecture: amd64 i386 armhf
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         qtdeclarative5-ubuntu-ui-toolkit-plugin
 Description: Multi-touch pong-like game for two players
  Plonk is an enjoyable multi-touch game.
