@@ -26,15 +26,13 @@ HEADERS += src/config.h
 RESOURCES += plonk.qrc
 QMAKE_RESOURCE_FLAGS += -threshold 0 -compress 9
 
-!symbian {
-    # Cleaner compile screen output
-    #CONFIG += silent
+# Cleaner compile screen output
+#CONFIG += silent
 
-    # Store object files in build/
-    OBJECTS_DIR = build
-    MOC_DIR = build
-    RCC_DIR = build
-}
+# Store object files in build/
+OBJECTS_DIR = build
+MOC_DIR = build
+RCC_DIR = build
 
 # Declarative Touch Area
 SOURCES +=
@@ -45,13 +43,6 @@ HEADERS +=
 #INCLUDEPATH += swipe
 #SOURCES += swipe/swipecontrol.cc
 #HEADERS += swipe/swipecontrol.h
-
-symbian {
-    # Zombian - The Undead OS
-    LIBS += -lcone -leikcore -lavkon
-
-    DEPLOYMENT.display_name = "Plonk"
-}
 
 qnx {
     HEADERS += src/blackberryeventfilter.h

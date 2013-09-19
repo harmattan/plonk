@@ -181,7 +181,6 @@ MainView {
 
         Menu {
             id: menu
-            scale: mongView.isSymbian()?.7:1
             anchors.centerIn: parent
             opacity: (playfield.gameOn || countdown.opacity == 1) ? 0 : 1
             onPlayClicked: {

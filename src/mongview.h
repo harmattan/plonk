@@ -118,15 +118,6 @@ public:
     }
 
     Q_INVOKABLE
-    bool isSymbian() {
-#if defined(Q_OS_SYMBIAN)
-        return true;
-#else
-        return false;
-#endif
-    }
-
-    Q_INVOKABLE
     void playHit() {
         #ifdef Q_OS_BLACKBERRY
         char cwd[PATH_MAX];

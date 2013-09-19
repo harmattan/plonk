@@ -55,7 +55,7 @@ Item {
                 imageOff: "img/menu/btn_power_on.png"
                 imageOn: "img/menu/btn_power_off.png"
                 onClicked: Qt.quit()
-                visible: mongView.isSymbian()
+                visible: background.needPowerButton
             }
 
             Image {

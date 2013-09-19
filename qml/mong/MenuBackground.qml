@@ -21,6 +21,9 @@ import QtQuick 2.0
 // MenuBackground including the power button. This background will scale to
 // almost any size without looking bad
 Item {
+    id: menuBackground
+
+    property bool needPowerButton: false
     width:  500
     height: 500
 
@@ -44,7 +47,7 @@ Item {
         anchors.centerIn: topPanel
         anchors.verticalCenterOffset: -27
         source: "img/menu/base_top_shadow.png"
-        visible: mongView.isSymbian()
+        visible: menuBackground.needPowerButton
     }
 
     Image {
@@ -53,7 +56,7 @@ Item {
         anchors.bottomMargin: -66
         anchors.horizontalCenter: basePanel.horizontalCenter
         source: "img/menu/base_top.png"
-        visible: mongView.isSymbian()
+        visible: menuBackground.needPowerButton
     }
 
     Image {
@@ -61,7 +64,7 @@ Item {
         source: "img/menu/btn_power_off.png"
         anchors.centerIn: topPanel
         anchors.verticalCenterOffset: -5
-        visible: mongView.isSymbian()
+        visible: menuBackground.needPowerButton
 
         Image {
             id: powerButtonOn
