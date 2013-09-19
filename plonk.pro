@@ -38,12 +38,6 @@ RCC_DIR = build
 SOURCES +=
 HEADERS +=
 
-# Swipe Control
-#DEPENDPATH += swipe
-#INCLUDEPATH += swipe
-#SOURCES += swipe/swipecontrol.cc
-#HEADERS += swipe/swipecontrol.h
-
 qnx {
     HEADERS += src/blackberryeventfilter.h
     SOURCES += src/blackberryeventfilter.cpp

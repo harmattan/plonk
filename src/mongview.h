@@ -41,7 +41,6 @@
 #include "blackberryeventfilter.h"
 #endif
 
-//#include "swipecontrol.h"
 #include "config.h"
 
 class MongView : public QQuickView
@@ -53,8 +52,6 @@ public:
     MongView() : QQuickView(), _active(true) {
         /* Expose our QDeclarativeView as 'mongView' to QML */
         rootContext()->setContextProperty("mongView", this);
-        /* Enable SwipeControl for locking swipe*/
-        //_swipeControl = new SwipeControl(this);
         #ifdef Q_OS_BLACKBERRY
         BlackberryEventFilter *filter = new BlackberryEventFilter(this);
         QGuiApplication::instance()->installNativeEventFilter(filter);
@@ -149,7 +146,6 @@ public:
 
 private:
     bool _active;
-    //SwipeControl *_swipeControl;
 #ifdef Q_OS_BLACKBERRY
     mmr_context_t *m_ctxt;
     mmr_connection_t *m_connection;
