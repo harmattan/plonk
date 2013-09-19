@@ -20,6 +20,8 @@
         <file>qml/mong/img/scoreboard/score_red.png</file>
         <file>qml/mong/img/scoreboard/shadow.png</file>
         <file>qml/mong/main.qml</file>
+        <file>qml/mong/main_ubuntu.qml</file>
+        <file>qml/mong/Plonk.qml</file>
         <file>qml/mong/Marble.qml</file>
         <file>qml/mong/MenuButton.qml</file>
         <file>qml/mong/Menu.qml</file>

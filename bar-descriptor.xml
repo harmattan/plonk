@@ -3,13 +3,16 @@
     <id>de.kodira.plonk.qt5</id>
     <name>Plonk</name>
     <versionNumber>2.1.3</versionNumber>
-    <buildId>11</buildId>
+    <buildId>10</buildId>
     <description>Simple two player Pong clone</description>
 
     <initialWindow>
         <systemChrome>none</systemChrome>
         <transparent>false</transparent>
-        <autoOrients>false</autoOrients>
+        <!-- A bit strange, but it looks like we have to enable auto orientation
+             so the app has the posibility to rotate to (forced) landscape.
+             Also code in main.cpp is needed. -->
+        <autoOrients>true</autoOrients>
         <aspectRatio>landscape</aspectRatio>
     </initialWindow>
 
@@ -17,11 +20,13 @@
     <env var="QT_PLUGIN_PATH" value="app/native/plugins"/>
     <env var="LD_LIBRARY_PATH" value="app/native/lib"/>
     
-    <!--<env var="QT_DEBUG_PLUGINS" value="1" />-->
+    <!--
+    <env var="QT_DEBUG_PLUGINS" value="1" />
+    <env var="LD_DEBUG" value="1" />
+    -->
 
     <!-- Better performance?! -->
     <!--<env var="QBB_USE_OPENGL" value="1"/>-->
-
     <!--<env var="QML_SHOW_FRAMERATE" value="1"/>-->
 
     <author>Kodira</author>
@@ -33,13 +38,13 @@
     <arg>qnx</arg>
 
     <asset entry="true" path="plonk" type="Qnx/Elf">plonk</asset>
-    <asset path="splashscreen.png">splashscreen.png</asset>
-    <asset path="plonk.png">plonk.png</asset>
+    <asset path="splashscreen_bb10.png">splashscreen.png</asset>
+    <asset path="plonk_bb10.png">plonk.png</asset>
     <asset path="qml/mong/snd">snd</asset>
 
-    <asset path="qt5.pb/lib">lib</asset>
-    <asset path="qt5.pb/plugins">plugins</asset>
-    <asset path="qt5.pb/imports">imports</asset>
+    <asset path="qt5/lib">lib</asset>
+    <asset path="qt5/plugins">plugins</asset>
+    <asset path="qt5/imports">imports</asset>
 
     <icon><image>plonk.png</image></icon>
     <splashscreen>splashscreen.png</splashscreen>

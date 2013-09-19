@@ -17,9 +17,13 @@
  */
 
 import QtQuick 2.0
+import Ubuntu.Components 0.1
 
-Plonk {
-    id: plonk
-    width: 540
-    height: 960
+MainView {
+    applicationName: "plonk"
+
+    width: units.gu(90)
+    height: units.gu(60)
+
+    Plonk { id: plonk }
 }
