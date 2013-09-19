@@ -1,0 +1,8 @@
+
+== Plonk for Blackberry 10 ==
+
+Use the BB10 SDK to build Plonk.
+Don't forget to also build Qt 5!
+
+BB10 Port Support: http://kodira.de/our-work/plonk/
+

@@ -12,9 +12,17 @@
 
                                == Dependencies ==
 
-   * Qt 4.7.1 or laster
-   * Qt Mobility 1.1 or later (+ QML plug-in)
-   * Qt Declarative Particles Plugin (libqt4-declarative-particles)
+   * Qt 5
+   * Qt Multimedia Kit
+   * Qt Quick Particles
+
+
+To build for a supported target platform:
+
+   ./configure --platform=<platform>
+   qmake && make (or follow the on-screen instructions, if any)
+
+
                                                                         __
                                                       _    _____  ___  / /
                                                      | |/|/ / _ \/ _ \/_/

@@ -1,0 +1,78 @@
+#!/bin/bash
+# Configure script for Plonk
+# 2013-09-19 Thomas Perl <m@thp.io>
+
+PLATFORM=
+
+fail() {
+    cat <<EOF
+
+    Usage: $0 [--platform=...|--clean|--sync-qrc]
+
+       --platform=[$(cd platform ; echo * | tr ' ' '|')]
+           Set up a build for the given platform
+
+       --clean
+           Clean the build directory
+
+       --sync-qrc
+           Synchronize the .qrc file with qml/
+
+EOF
+    echo "ERROR: $*"
+    exit 1
+}
+
+cleanup() {
+    for file in *; do
+        if [[ $(readlink $file) == platform/* ]]; then
+            rm -f $file
+        fi
+    done
+}
+
+sync_qrc() {
+    QRC_FILE=plonk.qrc
+    SRC_DIRS=qml
+
+    echo -n "Updating $QRC_FILE from files in $SRC_DIRS ... "
+    (
+    echo "<RCC>"
+    echo '<qresource prefix="/">'
+    find $SRC_DIRS -type f -exec echo "        <file>{}</file>" \; | sort
+    echo "</qresource>"
+    echo "</RCC>"
+    ) >$QRC_FILE
+    echo "done."
+}
+
+while [ $# -gt 0 ]; do
+    case $1 in
+        --clean)
+            [ -f Makefile ] && make distclean
+            cleanup
+            exit 0
+            ;;
+        --sync-qrc)
+            sync_qrc
+            exit 0
+            ;;
+        --platform=*)
+            PLATFORM=$(echo $1 | cut -d= -f2-)
+            ;;
+        *)
+            fail "Unknown option: $1"
+            ;;
+    esac
+
+    shift
+done
+
+if [ "$PLATFORM" != "" -a -d platform/$PLATFORM ]; then
+    echo "Configuring for platform: $PLATFORM"
+    cleanup
+    ln -s platform/$PLATFORM/* .
+    [ -f README.platform ] && cat README.platform
+else
+    fail "Platform not specified"
+fi

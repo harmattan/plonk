@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 
     /* Use our Mong-specific QDeclarativeView with active window tracking */
     MongView view;
-    view.setSource(QUrl("qrc:///qml/mong/main.qml"));
+    view.setSource(QUrl("qrc:///qml/main.qml"));
     view.setResizeMode(QQuickView::SizeRootObjectToView);
 
 #ifdef Q_OS_BLACKBERRY

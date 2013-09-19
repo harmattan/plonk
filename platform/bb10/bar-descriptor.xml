@@ -38,8 +38,8 @@
     <arg>qnx</arg>
 
     <asset entry="true" path="plonk" type="Qnx/Elf">plonk</asset>
-    <asset path="splashscreen_bb10.png">splashscreen.png</asset>
-    <asset path="plonk_bb10.png">plonk.png</asset>
+    <asset path="platform/bb10/splashscreen.png">splashscreen.png</asset>
+    <asset path="platform/bb10/plonk.png">plonk.png</asset>
     <asset path="qml/mong/snd">snd</asset>
 
     <asset path="qt5/lib">lib</asset>
@@ -51,4 +51,3 @@
 
     <action>play_audio</action>
 </qnx>
-

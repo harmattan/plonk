@@ -41,7 +41,7 @@
 #include "blackberryeventfilter.h"
 #endif
 
-#include "config.h"
+#define MONG_VERSION "3.0.0"
 
 class MongView : public QQuickView
 {
