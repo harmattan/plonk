@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Plonk
 Comment=Multi-touch, two-player pong game
-Exec=plonk
-Icon=/usr/share/plonk/plonk.png
+Exec=harbour-plonk
+Icon=/usr/share/harbour-plonk/harbour-plonk.png
 Type=Application
 Categories=Game;SportsGame;

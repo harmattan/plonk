@@ -1,4 +1,4 @@
-Name: plonk
+Name: harbour-plonk
 Version: 3.0.0
 Release: 1
 License: GPLv3 or later
